@@ -27185,27 +27185,35 @@ const MainView = ()=>{
         },
         {
             id: 2,
-            title: "Mastering JavaScript Functional Programming",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-            author: "Federico Kereki"
+            title: "The Godfather",
+            description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+            genre: "Adventure",
+            director: "Steven Spielberg",
+            image: "https://www.themoviedb.org/t/p/original/hMTncCsOwZZCNOo5SBhE1wQKpid.jpg"
         },
         {
             id: 3,
-            title: "JavaScript: The Good Parts",
-            image: "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
-            author: "Douglas Crockford"
+            title: "Inception",
+            description: "A thief who enters people's dreams to steal their secrets embarks on a mission to plant an idea into someone's mind.",
+            genre: "Crime",
+            director: "Francis Ford Coppola",
+            image: "https://www.themoviedb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg"
         },
         {
             id: 4,
-            title: "JavaScript: The Definitive Guide",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-            author: "David Flanagan"
+            title: "Jurassic Park",
+            description: "A group of people visit a remote island where cloned dinosaurs have been unleashed, leading to a fight for survival.",
+            genre: "Fantasy",
+            director: "James Cameron",
+            image: "https://www.themoviedb.org/t/p/original/b1xCNnyrPebIc7EWNZIa6jhb1Ww.jpg"
         },
         {
             id: 5,
-            title: "The Road to React",
-            image: "https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg",
-            author: "Robin Wieruch"
+            title: "Avatar",
+            description: "A paraplegic marine is dispatched to the moon Pandora on a unique mission, but he becomes torn between following orders and protecting an alien civilization.",
+            genre: "Crime",
+            director: "Quentin Tarantino",
+            image: "https://www.themoviedb.org/t/p/original/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
         }
     ]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
@@ -27214,14 +27222,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 49,
+        lineNumber: 57,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 53,
+        lineNumber: 61,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27232,16 +27240,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 59,
+                lineNumber: 67,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 57,
+        lineNumber: 65,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "SXJV1PL6JTPeQXAWW7Kq7mlHi/Q=");
+_s(MainView, "dckzP2TfA1PiN2zmeNlcHbpP/Ak=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
