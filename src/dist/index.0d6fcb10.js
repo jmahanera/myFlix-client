@@ -27177,9 +27177,11 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            title: "Eloquent JavaScript",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
-            author: "Marijn Haverbeke"
+            title: "The Avengers",
+            description: "Earth's mightiest heroes must come together to stop the powerful villain Thanos from destroying the universe.",
+            genre: "Science Fiction",
+            director: "Christopher Nolan",
+            image: "https://www.themoviedb.org/t/p/original/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"
         },
         {
             id: 2,
@@ -27212,14 +27214,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 47,
+        lineNumber: 49,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 51,
+        lineNumber: 53,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27230,16 +27232,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 57,
+                lineNumber: 59,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 55,
+        lineNumber: 57,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "0QcJxjWjshp9O7SSoc5bpgq+PDE=");
+_s(MainView, "SXJV1PL6JTPeQXAWW7Kq7mlHi/Q=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

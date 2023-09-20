@@ -6,10 +6,12 @@ export const MainView = () => {
   const [movies, setMovies] = useState([
     {
       id: 1,
-      title: "Eloquent JavaScript",
+      title: "The Avengers",
+      description:  "Earth's mightiest heroes must come together to stop the powerful villain Thanos from destroying the universe.",
+      genre: "Science Fiction",
+      director: "Christopher Nolan",
       image:
-        "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
-      author: "Marijn Haverbeke"
+        "https://www.themoviedb.org/t/p/original/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"
     },
     {
       id: 2,
