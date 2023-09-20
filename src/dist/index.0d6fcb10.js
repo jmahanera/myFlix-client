@@ -27208,7 +27208,8 @@ const MainView = ()=>{
     ]);
     const [selectedBook, setSelectedBook] = (0, _react.useState)(null);
     if (selectedBook) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookView.BookView), {
-        book: selectedBook
+        book: selectedBook,
+        onBackClick: ()=>setSelectedBook(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
         lineNumber: 47,

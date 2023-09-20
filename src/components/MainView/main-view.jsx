@@ -44,7 +44,7 @@ export const MainView = () => {
   const [selectedBook, setSelectedBook] = useState(null);
 
   if (selectedBook) {
-    return <BookView book={selectedBook} />;
+    return <BookView book={selectedBook} onBackClick={() => setSelectedBook(null)} />;
   }
 
   if (books.length === 0) {
