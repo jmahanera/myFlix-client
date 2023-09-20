@@ -51,11 +51,18 @@ export const MainView = () => {
     return <div>The list is empty!</div>;
   }
 
- return (
-   <div>
-    {books.map((book) => (
-      <BookCard key={book.id} book={book}/>
-    ))}
-  </div>
+  return (
+    <div>
+      <button
+        onClick={() => {
+          alert("Nice!");
+        }}
+      >
+        Click me!
+      </button>
+      {books.map((book) => (
+        <BookCard key={book.id} book={book} />
+      ))}
+    </div>
   );
-};
+}
