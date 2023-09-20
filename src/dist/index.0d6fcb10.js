@@ -27224,15 +27224,15 @@ const MainView = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {
                 book: book
-            }, void 0, false, {
+            }, book.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
                 lineNumber: 57,
-                columnNumber: 8
+                columnNumber: 7
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
         lineNumber: 55,
-        columnNumber: 5
+        columnNumber: 4
     }, undefined);
 };
 _s(MainView, "ONer5o2SQeyLS2Fub1a8q1cXv4k=");

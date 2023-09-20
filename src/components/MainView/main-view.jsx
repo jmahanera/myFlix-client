@@ -52,10 +52,10 @@ export const MainView = () => {
   }
 
  return (
-    <div>
-      {books.map((book) => (
-       <BookCard book={book} />
-      ))}
-    </div>
+   <div>
+    {books.map((book) => (
+      <BookCard key={book.id} book={book}/>
+    ))}
+  </div>
   );
 };
