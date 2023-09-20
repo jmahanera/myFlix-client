@@ -27256,9 +27256,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BookCard", ()=>BookCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const BookCard = ()=>{
+const BookCard = ({ book })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "some title"
+        children: book.title
     }, void 0, false, {
         fileName: "src/components/BookCard/book-card.jsx",
         lineNumber: 2,
