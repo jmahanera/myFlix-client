@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export const MainView = () => {
+  const [books, setBooks] = useState([]);
+
   return (
     <div>
       <div>Eloquent JavaScript</div>
