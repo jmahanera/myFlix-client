@@ -51,17 +51,16 @@ export const MainView = () => {
     return <div>The list is empty!</div>;
   }
 
-  return (
+ return (
     <div>
-      <button
-        onClick={() => {
-          alert("Nice!");
-        }}
-      >
-        Click me!
-      </button>
       {books.map((book) => (
-        <BookCard key={book.id} book={book} />
+        <BookCard
+          key={book.id}
+          book={book}
+          onClick={() => {
+            setSelectedBook(book);
+          }}
+        />
       ))}
     </div>
   );
