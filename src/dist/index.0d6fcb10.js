@@ -27429,11 +27429,14 @@ parcelHelpers.export(exports, "BookCard", ()=>BookCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 const BookCard = ({ book })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>{
+            setSelectedBook(book);
+        },
         children: book.title
     }, void 0, false, {
         fileName: "src/components/BookCard/book-card.jsx",
-        lineNumber: 2,
-        columnNumber: 10
+        lineNumber: 3,
+        columnNumber: 5
     }, undefined);
 };
 _c = BookCard;
