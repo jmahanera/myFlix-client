@@ -27222,12 +27222,10 @@ const MainView = ()=>{
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: book.title
-            }, book.id, false, {
+        children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {}, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
                 lineNumber: 57,
-                columnNumber: 9
+                columnNumber: 8
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",

@@ -54,7 +54,7 @@ export const MainView = () => {
  return (
     <div>
       {books.map((book) => (
-        <div key={book.id}>{book.title}</div>
+       <BookCard />
       ))}
     </div>
   );
