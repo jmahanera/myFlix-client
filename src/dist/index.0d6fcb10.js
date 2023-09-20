@@ -27360,14 +27360,26 @@ const MainView = ()=>{
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {
-                book: book
-            }, book.id, false, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>{
+                    alert("Nice!");
+                },
+                children: "Click me!"
+            }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 57,
-                columnNumber: 9
-            }, undefined))
-    }, void 0, false, {
+                lineNumber: 56,
+                columnNumber: 7
+            }, undefined),
+            books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {
+                    book: book
+                }, book.id, false, {
+                    fileName: "src/components/MainView/main-view.jsx",
+                    lineNumber: 64,
+                    columnNumber: 9
+                }, undefined))
+        ]
+    }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
         lineNumber: 55,
         columnNumber: 5
