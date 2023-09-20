@@ -27518,6 +27518,13 @@ const BookView = ({ book })=>{
                 fileName: "src/components/BookView/book-view.jsx",
                 lineNumber: 11,
                 columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                children: "Back"
+            }, void 0, false, {
+                fileName: "src/components/BookView/book-view.jsx",
+                lineNumber: 15,
+                columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
