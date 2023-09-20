@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { BookCard } from "../BookCard/book-card";
-import { BookView } from "../BookView/book-view";
+import { MovieCard } from "../MovieCard/movie-card";
+import { MovieView } from "../MovieView/movie-view";
 
 export const MainView = () => {
-  const [books, setBooks] = useState([
+  const [movies, setMovies] = useState([
     {
       id: 1,
       title: "Eloquent JavaScript",
@@ -41,24 +41,24 @@ export const MainView = () => {
     }
   ]);
 
-  const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  if (selectedBook) {
-    return <BookView book={selectedBook} onBackClick={() => setSelectedBook(null)} />;
+  if (selectedMovie) {
+    return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
   }
 
-  if (books.length === 0) {
+  if (movies.length === 0) {
     return <div>The list is empty!</div>;
   }
 
   return (
     <div>
-      {books.map((book) => (
-        <BookCard
-          key={book.id}
-          book={book}
-          onBookClick={(newSelectedBook) => {
-            setSelectedBook(newSelectedBook);
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
           }}
         />
       ))}
