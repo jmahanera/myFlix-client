@@ -27362,7 +27362,7 @@ const MainView = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {
                 book: book,
-                onClick: ()=>{
+                onClick: (book)=>{
                     setSelectedBook(book);
                 }
             }, book.id, false, {
