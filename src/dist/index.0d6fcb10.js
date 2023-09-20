@@ -27427,16 +27427,14 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BookCard", ()=>BookCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const BookCard = ({ book, onBookClick })=>{
+const BookCard = ({ book })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        onClick: ()=>{
-            onBookClick(book);
-        },
+        onClick: true,
         children: book.title
     }, void 0, false, {
         fileName: "src/components/BookCard/book-card.jsx",
-        lineNumber: 3,
-        columnNumber: 5
+        lineNumber: 2,
+        columnNumber: 10
     }, undefined);
 };
 _c = BookCard;
