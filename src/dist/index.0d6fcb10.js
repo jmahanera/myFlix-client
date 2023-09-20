@@ -27314,30 +27314,40 @@ const MainView = ()=>{
     const [books, setBooks] = (0, _react.useState)([
         {
             id: 1,
-            title: "Eloquent JavaScript"
+            title: "Eloquent JavaScript",
+            image: "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
+            author: "Marijn Haverbeke"
         },
         {
             id: 2,
-            title: "Mastering JavaScript Functional Programming"
+            title: "Mastering JavaScript Functional Programming",
+            image: "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+            author: "Federico Kereki"
         },
         {
             id: 3,
-            title: "JavaScript: The Good Parts"
+            title: "JavaScript: The Good Parts",
+            image: "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
+            author: "Douglas Crockford"
         },
         {
             id: 4,
-            title: "JavaScript: The Definitive Guide"
+            title: "JavaScript: The Definitive Guide",
+            image: "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+            author: "David Flanagan"
         },
         {
             id: 5,
-            title: "The Road to React"
+            title: "The Road to React",
+            image: "https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg",
+            author: "Robin Wieruch"
         }
     ]);
     if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 15,
+        lineNumber: 45,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27345,16 +27355,16 @@ const MainView = ()=>{
                 book: book
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 21,
+                lineNumber: 51,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 19,
+        lineNumber: 49,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "X0dJdGivF1isCp+0mgTv8gy0iE0=");
+_s(MainView, "+DksLH9tkjlcGCGucHf0FU/p0Zk=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
