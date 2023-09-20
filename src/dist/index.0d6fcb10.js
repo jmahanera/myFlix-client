@@ -27310,52 +27310,52 @@ var _react = require("react");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [books, setBooks] = (0, _react.useState)([]);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: "Eloquent JavaScript"
-            }, void 0, false, {
-                fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 8,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: "Mastering JavaScript Functional Programming"
-            }, void 0, false, {
-                fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 9,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: "JavaScript: The Good Parts"
-            }, void 0, false, {
-                fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 10,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: "JavaScript: The Definitive Guide"
-            }, void 0, false, {
-                fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 11,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: "The Road to React"
-            }, void 0, false, {
-                fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 12,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
+    const [books, setBooks] = (0, _react.useState)([
+        {
+            id: 1,
+            title: "Eloquent JavaScript"
+        },
+        {
+            id: 2,
+            title: "Mastering JavaScript Functional Programming"
+        },
+        {
+            id: 3,
+            title: "JavaScript: The Good Parts"
+        },
+        {
+            id: 4,
+            title: "JavaScript: The Definitive Guide"
+        },
+        {
+            id: 5,
+            title: "The Road to React"
+        }
+    ]);
+    if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "The list is empty!"
+    }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 7,
+        lineNumber: 13,
+        columnNumber: 12
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: books.map((book)=>{
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: book.title
+            }, void 0, false, {
+                fileName: "src/components/MainView/main-view.jsx",
+                lineNumber: 19,
+                columnNumber: 16
+            }, undefined);
+        })
+    }, void 0, false, {
+        fileName: "src/components/MainView/main-view.jsx",
+        lineNumber: 17,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "/iW9mSwgc4d+8Agrl++FSS1ccl8=");
+_s(MainView, "X0dJdGivF1isCp+0mgTv8gy0iE0=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
