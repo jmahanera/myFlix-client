@@ -45,7 +45,10 @@ export const MainView = () => {
       title: "Jurassic Park",
       description: "A group of people visit a remote island where cloned dinosaurs have been unleashed, leading to a fight for survival.",
       genre: "Fantasy",
+      actors: "Sam Neill & Laura Dern",
       director: "James Cameron",
+      director_bio: "James Cameron is a visionary director known for his groundbreaking use of technology in filmmaking.",
+      birthyear: "1954",
       image:
          "https://www.themoviedb.org/t/p/original/b1xCNnyrPebIc7EWNZIa6jhb1Ww.jpg"
     },
@@ -54,7 +57,10 @@ export const MainView = () => {
       title: "Avatar",
       description: "A paraplegic marine is dispatched to the moon Pandora on a unique mission, but he becomes torn between following orders and protecting an alien civilization.",
       genre: "Crime",
+      actors: "Sam Worthington & Zoe Saldana",
       director: "Quentin Tarantino",
+      director_bio: "Quentin Tarantino is a renowned director known for his unique storytelling style.",
+      birthyear: "1963",
       image:
          "https://www.themoviedb.org/t/p/original/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
     },

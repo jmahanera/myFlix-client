@@ -27213,7 +27213,10 @@ const MainView = ()=>{
             title: "Jurassic Park",
             description: "A group of people visit a remote island where cloned dinosaurs have been unleashed, leading to a fight for survival.",
             genre: "Fantasy",
+            actors: "Sam Neill & Laura Dern",
             director: "James Cameron",
+            director_bio: "James Cameron is a visionary director known for his groundbreaking use of technology in filmmaking.",
+            birthyear: "1954",
             image: "https://www.themoviedb.org/t/p/original/b1xCNnyrPebIc7EWNZIa6jhb1Ww.jpg"
         },
         {
@@ -27221,7 +27224,10 @@ const MainView = ()=>{
             title: "Avatar",
             description: "A paraplegic marine is dispatched to the moon Pandora on a unique mission, but he becomes torn between following orders and protecting an alien civilization.",
             genre: "Crime",
+            actors: "Sam Worthington & Zoe Saldana",
             director: "Quentin Tarantino",
+            director_bio: "Quentin Tarantino is a renowned director known for his unique storytelling style.",
+            birthyear: "1963",
             image: "https://www.themoviedb.org/t/p/original/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
         }
     ]);
@@ -27231,14 +27237,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 66,
+        lineNumber: 72,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 70,
+        lineNumber: 76,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27249,16 +27255,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 76,
+                lineNumber: 82,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 74,
+        lineNumber: 80,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "sxjUAfai9mZrykq8WcgDseH7vyg=");
+_s(MainView, "ldJUpnjDECN21K+Xidx7JBS8IhA=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
