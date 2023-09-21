@@ -21,7 +21,10 @@ export const MainView = () => {
       title: "The Godfather",
       description:"The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
       genre: "Adventure",
+      actors: "Marlon Brando & Al Pacino",
       director: "Steven Spielberg",
+      director_bio: "Steven Spielberg is a legendary director known for his groundbreaking films.",
+      birthyear: "1946",
       image:
          "https://www.themoviedb.org/t/p/original/hMTncCsOwZZCNOo5SBhE1wQKpid.jpg",
     },

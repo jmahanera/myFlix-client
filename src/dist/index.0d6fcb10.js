@@ -27180,7 +27180,7 @@ const MainView = ()=>{
             title: "The Avengers",
             description: "Earth's mightiest heroes must come together to stop the powerful villain Thanos from destroying the universe.",
             genre: "Science Fiction",
-            actors: "Leonardo DiCaprio & Joseph Gordon-Levitt",
+            actors: "Robert Downey, Scarlett Johansson & Chris Evans",
             director: "Christopher Nolan",
             director_bio: "Christopher Nolan is a visionary filmmaker known for his mind-bending movies",
             birthyear: "1970",
@@ -27191,7 +27191,10 @@ const MainView = ()=>{
             title: "The Godfather",
             description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
             genre: "Adventure",
+            actors: "Marlon Brando & Al Pacino",
             director: "Steven Spielberg",
+            director_bio: "Steven Spielberg is a legendary director known for his groundbreaking films.",
+            birthyear: "1946",
             image: "https://www.themoviedb.org/t/p/original/hMTncCsOwZZCNOo5SBhE1wQKpid.jpg"
         },
         {
@@ -27225,14 +27228,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 60,
+        lineNumber: 63,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 64,
+        lineNumber: 67,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27243,16 +27246,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 70,
+                lineNumber: 73,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 68,
+        lineNumber: 71,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "EYKWGdkB6qXjf5PSoK0U8kfVBPE=");
+_s(MainView, "tTilq4CzbBCZqbaoBmXwzyf5Utk=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
