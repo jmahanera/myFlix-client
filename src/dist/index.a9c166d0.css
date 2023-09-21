@@ -2,4 +2,9 @@
   color: #4682b4;
 }
 
+.MovieView div span:nth-child(odd) {
+  color: #2d0303;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=index.a9c166d0.css.map */
