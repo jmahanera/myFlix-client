@@ -9,7 +9,7 @@ export const MainView = () => {
       title: "The Avengers",
       description:  "Earth's mightiest heroes must come together to stop the powerful villain Thanos from destroying the universe.",
       genre: "Science Fiction",
-      actors: "Leonardo DiCaprio & Joseph Gordon-Levitt",
+      actors: "Robert Downey, Scarlett Johansson & Chris Evans",
       director: "Christopher Nolan",
       director_bio: "Christopher Nolan is a visionary filmmaker known for his mind-bending movies",
       birthyear: "1970",
