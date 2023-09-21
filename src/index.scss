@@ -6,13 +6,3 @@ $color: steelblue;
 // Define custom color and font-weight for the movie title
 $movie-title-color: rgb(45, 3, 3);
 $movie-title-font-weight: bold;
-
-// Apply styles to the movie title
-.MovieView {
-  div {
-    span:nth-child(odd) {
-      color: $movie-title-color;
-      font-weight: $movie-title-font-weight;
-    }
-  }
-}
