@@ -15,7 +15,7 @@ The development of myFlix-client involves using three primary languages:
 
 3. **SCSS (Sassy CSS):** SCSS is a preprocessor scripting language that is interpreted or compiled into CSS. It allows for more maintainable and organized stylesheets.
 
-### Package Dependencies:
+ Package Dependencies:
 The following packages play a crucial role in shaping the myFlix-client project:
 1. **React:** React is a powerful JavaScript library for building user interfaces. It allows for the creation of complex UIs through a component-based architecture.
 
