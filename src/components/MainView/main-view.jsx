@@ -33,7 +33,10 @@ export const MainView = () => {
       title: "Inception",
       description:   "A thief who enters people's dreams to steal their secrets embarks on a mission to plant an idea into someone's mind.",
       genre: "Crime",
+      actors: "Leonardo DiCaprio & Joseph Gordon-Levitt",
       director: "Francis Ford Coppola",
+      director_bio: "Francis Ford Coppola is an iconic director known for his masterpieces.",
+      birthyear: "1939",
       image:
          "https://www.themoviedb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg"
     },

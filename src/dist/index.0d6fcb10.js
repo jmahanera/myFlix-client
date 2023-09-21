@@ -27202,7 +27202,10 @@ const MainView = ()=>{
             title: "Inception",
             description: "A thief who enters people's dreams to steal their secrets embarks on a mission to plant an idea into someone's mind.",
             genre: "Crime",
+            actors: "Leonardo DiCaprio & Joseph Gordon-Levitt",
             director: "Francis Ford Coppola",
+            director_bio: "Francis Ford Coppola is an iconic director known for his masterpieces.",
+            birthyear: "1939",
             image: "https://www.themoviedb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg"
         },
         {
@@ -27228,14 +27231,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 63,
+        lineNumber: 66,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 67,
+        lineNumber: 70,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27246,16 +27249,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 73,
+                lineNumber: 76,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 71,
+        lineNumber: 74,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "tTilq4CzbBCZqbaoBmXwzyf5Utk=");
+_s(MainView, "sxjUAfai9mZrykq8WcgDseH7vyg=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
