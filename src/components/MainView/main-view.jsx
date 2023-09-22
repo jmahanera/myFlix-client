@@ -4,28 +4,28 @@ import { MovieView } from "../MovieView/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-   useEffect(() => {
+  useEffect(() => {
     fetch("http://www.omdbapi.com/?i=tt3896198&apikey=3b05af36")
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch movies");
+          throw new Error("Failed to fetch movie");
         }
         return response.json();
       })
       .then((data) => {
-        const moviesFromApi = data.map((movie) => ({
-          id: movie.id,
-          title: movie.title,
-          image: movie.poster_url,
-          director: movie.director_name
-        }));
-        setMovies(moviesFromApi);
+        // Assuming data is an object with movie information
+        const movieFromApi = {
+          id: data.id,
+          title: data.Title,
+          image: data.Poster,
+          director: data.Director
+        };
+        setMovies([movieFromApi]);
       })
       .catch((error) => {
-        console.error("Error fetching movies:", error);
+        console.error("Error fetching movie:", error);
       });
   }, []);
 
@@ -43,11 +43,11 @@ export const MainView = () => {
         <MovieCard
           key={movie.id}
           movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
+          onMovieClick={() => {
+            setSelectedMovie(movie);
           }}
         />
       ))}
     </div>
   );
-}
+};
