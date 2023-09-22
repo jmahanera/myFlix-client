@@ -27641,4 +27641,4 @@ $RefreshReg$(_c, "MovieView");
 }
 },{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"dLz1S","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"88yB5"}],"lJZlQ":[function() {},{}]},["9JgL0","hjBvO","d8Dch"], "d8Dch", "parcelRequireaec4")
 
-//# sourceMappingURL=index.0d6fcb10.js.map
+//# sourceMappingURL=index.js.map
