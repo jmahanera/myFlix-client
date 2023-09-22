@@ -27174,77 +27174,37 @@ var _movieView = require("../MovieView/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            id: 1,
-            title: "The Avengers",
-            description: "Earth's mightiest heroes must come together to stop the powerful villain Thanos from destroying the universe.",
-            genre: "Science Fiction",
-            actors: "Robert Downey, Scarlett Johansson & Chris Evans",
-            director: "Christopher Nolan",
-            director_bio: "Christopher Nolan is a visionary filmmaker known for his mind-bending movies",
-            birthyear: "1970",
-            image: "https://www.themoviedb.org/t/p/original/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"
-        },
-        {
-            id: 2,
-            title: "The Godfather",
-            description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-            genre: "Adventure",
-            actors: "Marlon Brando & Al Pacino",
-            director: "Steven Spielberg",
-            director_bio: "Steven Spielberg is a legendary director known for his groundbreaking films.",
-            birthyear: "1946",
-            image: "https://www.themoviedb.org/t/p/original/hMTncCsOwZZCNOo5SBhE1wQKpid.jpg"
-        },
-        {
-            id: 3,
-            title: "Inception",
-            description: "A thief who enters people's dreams to steal their secrets embarks on a mission to plant an idea into someone's mind.",
-            genre: "Crime",
-            actors: "Leonardo DiCaprio & Joseph Gordon-Levitt",
-            director: "Francis Ford Coppola",
-            director_bio: "Francis Ford Coppola is an iconic director known for his masterpieces.",
-            birthyear: "1939",
-            image: "https://www.themoviedb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg"
-        },
-        {
-            id: 4,
-            title: "Jurassic Park",
-            description: "A group of people visit a remote island where cloned dinosaurs have been unleashed, leading to a fight for survival.",
-            genre: "Fantasy",
-            actors: "Sam Neill & Laura Dern",
-            director: "James Cameron",
-            director_bio: "James Cameron is a visionary director known for his groundbreaking use of technology in filmmaking.",
-            birthyear: "1954",
-            image: "https://www.themoviedb.org/t/p/original/b1xCNnyrPebIc7EWNZIa6jhb1Ww.jpg"
-        },
-        {
-            id: 5,
-            title: "Avatar",
-            description: "A paraplegic marine is dispatched to the moon Pandora on a unique mission, but he becomes torn between following orders and protecting an alien civilization.",
-            genre: "Crime",
-            actors: "Sam Worthington & Zoe Saldana",
-            director: "Quentin Tarantino",
-            director_bio: "Quentin Tarantino is a renowned director known for his unique storytelling style.",
-            birthyear: "1963",
-            image: "https://www.themoviedb.org/t/p/original/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/").then((response)=>{
+            if (!response.ok) throw new Error("Failed to fetch movies");
+            return response.json();
+        }).then((data)=>{
+            const moviesFromApi = data.map((movie)=>({
+                    id: movie.id,
+                    title: movie.title,
+                    image: movie.poster_url,
+                    director: movie.director_name
+                }));
+            setMovies(moviesFromApi);
+        }).catch((error)=>{
+            console.error("Error fetching movies:", error);
+        });
+    }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 72,
+        lineNumber: 33,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 76,
+        lineNumber: 37,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27255,16 +27215,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 82,
+                lineNumber: 43,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 80,
+        lineNumber: 41,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "ldJUpnjDECN21K+Xidx7JBS8IhA=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
