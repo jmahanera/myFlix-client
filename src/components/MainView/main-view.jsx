@@ -8,7 +8,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
    useEffect(() => {
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/api")
+    fetch("http://www.omdbapi.com/?i=tt3896198&apikey=3b05af36")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch movies");
