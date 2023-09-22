@@ -27253,7 +27253,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
         children: movie.title
     }, void 0, false, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 3,
+        lineNumber: 5,
         columnNumber: 5
     }, undefined);
 };
