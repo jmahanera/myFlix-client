@@ -12,10 +12,11 @@ export const MainView = () => {
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
+            id: movie._id,
             title: movie.title,
             image: movie.image,
             director: movie.director,
-            genre: movie.genre           
+            genre: movie.genre,           
           };
         });
 
@@ -35,12 +36,16 @@ export const MainView = () => {
    return (
     <div>
       {movies.map((movie) => (
-        <MovieCard
-          key={movie._id}
-          movie={movie}
-          onMovieClick={() => setSelectedMovie(movie)}
-        />
+        <MovieCard key={movie._id} movie={movie} onMovieClick={() => setSelectedMovie(movie)} />
       ))}
     </div>
   );
 };
+
+export default MainView;
+
+
+
+
+
+
