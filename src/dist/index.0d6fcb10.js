@@ -27176,7 +27176,7 @@ const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies/image").then((response)=>response.json()).then((data)=>{
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies/").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
                     id: movie._id,
