@@ -27254,8 +27254,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image,
-                    alt: movie.title
+                    src: movie.image
                 }, void 0, false, {
                     fileName: "src/components/MovieCard/movie-card.jsx",
                     lineNumber: 13,
