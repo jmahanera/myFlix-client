@@ -27248,17 +27248,8 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 const MovieCard = ({ movie, onMovieClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        onClick: ()=>{
-            onMovieClick(movie);
-        },
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-            src: movie.image,
-            alt: movie.title
-        }, void 0, false, {
-            fileName: "src/components/MovieCard/movie-card.jsx",
-            lineNumber: 13,
-            columnNumber: 7
-        }, undefined)
+        onClick: ()=>onMovieClick(movie),
+        children: movie.title
     }, void 0, false, {
         fileName: "src/components/MovieCard/movie-card.jsx",
         lineNumber: 7,
