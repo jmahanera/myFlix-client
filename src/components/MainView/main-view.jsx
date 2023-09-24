@@ -25,7 +25,7 @@ export const MainView = () => {
         setMovies([movieFromApi]);
       })
       .catch((error) => {
-        console.error("Error fetching movie:", error);
+        console.error("Error fetching the movie:", error);
       });
   }, []);
 
