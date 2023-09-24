@@ -15,15 +15,14 @@ export const MainView = () => {
         return response.json();  
       })
       .then((data) => {
-        // Assuming data is an object with movie information
-        const movieFromApi = {
-          id: data.id,
-          title: data.Title,
-          image: data.Poster,
-          director: data.Director
-        };
-        setMovies([movieFromApi]);
-      })
+  const moviesFromApi = data.map((movie) => ({
+    id: movie.id,
+    title: movie.Title,
+    image: movie.Poster,
+    director: movie.Director
+  }));
+  setMovies(moviesFromApi);
+})
       .catch((error) => {
         console.error("Error fetching the movie:", error);
       });

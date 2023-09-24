@@ -27181,16 +27181,13 @@ const MainView = ()=>{
             if (!response.ok) throw new Error("Failed to fetch movie");
             return response.json();
         }).then((data)=>{
-            // Assuming data is an object with movie information
-            const movieFromApi = {
-                id: data.id,
-                title: data.Title,
-                image: data.Poster,
-                director: data.Director
-            };
-            setMovies([
-                movieFromApi
-            ]);
+            const moviesFromApi = data.map((movie)=>({
+                    id: movie.id,
+                    title: movie.Title,
+                    image: movie.Poster,
+                    director: movie.Director
+                }));
+            setMovies(moviesFromApi);
         }).catch((error)=>{
             console.error("Error fetching the movie:", error);
         });
@@ -27200,14 +27197,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 33,
+        lineNumber: 32,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 36,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27218,12 +27215,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 43,
+                lineNumber: 42,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 40,
         columnNumber: 5
     }, undefined);
 };
