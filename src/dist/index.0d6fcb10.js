@@ -27177,9 +27177,11 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies").then((response)=>{
-            if (!response.ok) throw new Error("Failed to fetch movie");
-            return response.json();
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies", {
+            method: "GET",
+            headers: {
+                "Origin": "http://localhost:1234" // Replace with an allowed origin
+            }
         }).then((data)=>{
             const moviesFromApi = data.map((movie)=>({
                     id: movie.id,
@@ -27197,14 +27199,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 32,
+        lineNumber: 31,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 35,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27215,12 +27217,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 42,
+                lineNumber: 41,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 39,
         columnNumber: 5
     }, undefined);
 };

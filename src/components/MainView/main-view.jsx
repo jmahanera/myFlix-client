@@ -7,13 +7,12 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch movie");
-        }
-        return response.json();  
-      })
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies", {
+  method: 'GET',
+  headers: {
+    'Origin': 'http://localhost:1234'  // Replace with an allowed origin
+  }
+})
       .then((data) => {
   const moviesFromApi = data.map((movie) => ({
     id: movie.id,
