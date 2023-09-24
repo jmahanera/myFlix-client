@@ -14,7 +14,7 @@ export const MainView = () => {
           return {
             id: movie.id,
             title: movie.title,
-            image: "https://primemovies-39075872fbeb.herokuapp.com/images/" + movie,
+            image: "https://images.primemovies-39075872fbeb.herokuapp.com/b/id/${doc.image_i}-L.jpg",
             director: movie.director,
           };
         });
