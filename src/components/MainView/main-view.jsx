@@ -7,12 +7,22 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=star+wars")
+    fetch("https://primemovies-39075872fbeb.herokuapp.com")
       .then((response) => response.json())
       .then((data) => {
-        console.log("books from api:", data);
+        const moviesFromApi = data.map((movie) => {
+          return {
+            id: movie.id,
+            title: movie.title,
+            image: movie.image,
+            director: movie.director,
+          };
+        });
+
+        setMovies(moviesFromApi);
       });
   }, []);
+
 
   if (selectedMovie) {
     return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
