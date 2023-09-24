@@ -7,22 +7,24 @@ export const MainView = () => {
   
 
   useEffect(() => {
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
-      .then((response) => response.json())
-      .then((data) => {
-        const moviesFromApi = data.map((movie) => {
-          return {
-            imgage: src=movie.image,
-            title: movie.title,
-            description: movie.description,
-            genre: movie.genre,
-            actors: movie.actors,           
-          };
-        });
-
-        setMovies(moviesFromApi);
+  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
+    .then((response) => response.json())
+    .then((data) => {
+      const moviesFromApi = data.map((movie) => {
+        return {
+          image: movie.image,
+          title: movie.title,
+          description: movie.description,
+          genre: movie.genre,
+          director: movie.director, // Assuming the API provides director information
+          // Assuming there is an array of actors, and you want to get the first actor
+          actor: movie.actors.length > 0 ? movie.actors[0] : null,
+        };
       });
-  }, []);
+
+      setMovies(moviesFromApi);
+    });
+}, []);
 
 
   const [selectedMovie, setSelectedMovie] = useState(null);

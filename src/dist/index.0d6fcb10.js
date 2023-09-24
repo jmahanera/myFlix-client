@@ -27179,11 +27179,13 @@ const MainView = ()=>{
         fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
-                    imgage: src = movie.image,
+                    image: movie.image,
                     title: movie.title,
                     description: movie.description,
                     genre: movie.genre,
-                    actors: movie.actors
+                    director: movie.director,
+                    // Assuming there is an array of actors, and you want to get the first actor
+                    actor: movie.actors.length > 0 ? movie.actors[0] : null
                 };
             });
             setMovies(moviesFromApi);
@@ -27195,14 +27197,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 32,
+        lineNumber: 34,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The Movie list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 38,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27211,12 +27213,12 @@ const MainView = ()=>{
                 onMovieClick: (movie)=>setSelectedMovie(movie)
             }, movie._id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 42,
+                lineNumber: 44,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 42,
         columnNumber: 5
     }, undefined);
 };
