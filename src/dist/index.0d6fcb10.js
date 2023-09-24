@@ -27253,8 +27253,8 @@ const MovieCard = ({ movie, onMovieClick })=>{
         },
         children: [
             movie.title,
-            movie.director,
-            movie.genre
+            ",",
+            movie.image
         ]
     }, void 0, true, {
         fileName: "src/components/MovieCard/movie-card.jsx",
