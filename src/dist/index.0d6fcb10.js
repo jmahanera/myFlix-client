@@ -27243,15 +27243,16 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 const MovieCard = ({ movie, onMovieClick })=>{
+    const { title, imageUrl, director, genre } = movie;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: ()=>onMovieClick(movie),
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+            title && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: title
             }, void 0, false, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 8,
-                columnNumber: 7
+                lineNumber: 10,
+                columnNumber: 17
             }, undefined),
             director && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: [
@@ -27260,7 +27261,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 9,
+                lineNumber: 11,
                 columnNumber: 20
             }, undefined),
             imageUrl && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -27268,7 +27269,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                 alt: title
             }, void 0, false, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 10,
+                lineNumber: 12,
                 columnNumber: 20
             }, undefined),
             genre && genre.name && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27278,13 +27279,13 @@ const MovieCard = ({ movie, onMovieClick })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 11,
+                lineNumber: 13,
                 columnNumber: 31
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 7,
+        lineNumber: 9,
         columnNumber: 5
     }, undefined);
 };

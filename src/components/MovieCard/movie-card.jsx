@@ -3,15 +3,18 @@ import PropTypes from "prop-types";
 
 // The MovieCard function component 
 export const MovieCard = ({ movie, onMovieClick }) => {
+  const { title, imageUrl, director, genre } = movie;
+
   return (
     <div onClick={() => onMovieClick(movie)}>
-      <h3>{title}</h3>
+      {title && <h3>{title}</h3>}
       {director && <p>Director: {director}</p>}
       {imageUrl && <img src={imageUrl} alt={title} />}
       {genre && genre.name && <p>Genre: {genre.name}</p>}
     </div>
   );
 };
+
 
 
 
