@@ -22,14 +22,6 @@ export const MainView = () => {
       });
   }, []);
 
-  const handleMovieClick = (movie) => {
-    setSelectedMovie(movie);
-  };
-
-  const handleBackClick = () => {
-    setSelectedMovie(null);
-  };
-
 
   if (selectedMovie) {
     return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
