@@ -14,7 +14,6 @@ export const MainView = () => {
           return {
             id: movie.id,
             title: movie.title,
-            image: "https://images.primemovies-39075872fbeb.herokuapp.com/b/id/${doc.image_i}-L.jpg",
             director: movie.director,
           };
         });
@@ -32,16 +31,15 @@ export const MainView = () => {
     return <div>The Movie list is empty!</div>;
   }
 
-  return (
+   return (
     <div>
       {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={() => {
-            setSelectedMovie(movie);
-          }}
-        />
+        <div key={movie._id} className="movie-card">
+          <h3>{movie.title}</h3>
+          <p>Director: {movie.director}</p>
+          <img src={movie.imageUrl} alt={movie.title} className="movie-image" />
+          <button onClick={() => setSelectedMovie(movie)}>View Details</button>
+        </div>
       ))}
     </div>
   );

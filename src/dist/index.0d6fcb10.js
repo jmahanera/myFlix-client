@@ -27182,7 +27182,6 @@ const MainView = ()=>{
                 return {
                     id: movie.id,
                     title: movie.title,
-                    image: "https://images.primemovies-39075872fbeb.herokuapp.com/b/id/${doc.image_i}-L.jpg",
                     director: movie.director
                 };
             });
@@ -27194,30 +27193,63 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 28,
+        lineNumber: 27,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The Movie list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 32,
+        lineNumber: 31,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
-                onMovieClick: ()=>{
-                    setSelectedMovie(movie);
-                }
-            }, movie.id, false, {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "movie-card",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        children: movie.title
+                    }, void 0, false, {
+                        fileName: "src/components/MainView/main-view.jsx",
+                        lineNumber: 38,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            "Director: ",
+                            movie.director
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MainView/main-view.jsx",
+                        lineNumber: 39,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: movie.imageUrl,
+                        alt: movie.title,
+                        className: "movie-image"
+                    }, void 0, false, {
+                        fileName: "src/components/MainView/main-view.jsx",
+                        lineNumber: 40,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>setSelectedMovie(movie),
+                        children: "View Details"
+                    }, void 0, false, {
+                        fileName: "src/components/MainView/main-view.jsx",
+                        lineNumber: 41,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, movie._id, true, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 38,
+                lineNumber: 37,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 35,
         columnNumber: 5
     }, undefined);
 };
