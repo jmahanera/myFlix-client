@@ -27235,7 +27235,6 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$2506.prelude(module);
 
 try {
-// Here you import the PropTypes 
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
@@ -27243,57 +27242,25 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 const MovieCard = ({ movie, onMovieClick })=>{
-    const { title, imageUrl, director, genre } = movie;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        onClick: ()=>onMovieClick(movie),
-        children: [
-            title && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: title
-            }, void 0, false, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 10,
-                columnNumber: 17
-            }, undefined),
-            director && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: [
-                    "Director: ",
-                    director
-                ]
-            }, void 0, true, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 11,
-                columnNumber: 20
-            }, undefined),
-            imageUrl && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: imageUrl,
-                alt: title
-            }, void 0, false, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 12,
-                columnNumber: 20
-            }, undefined),
-            genre && genre.name && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: [
-                    "Genre: ",
-                    genre.name
-                ]
-            }, void 0, true, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 13,
-                columnNumber: 31
-            }, undefined)
-        ]
-    }, void 0, true, {
+        onClick: ()=>{
+            onMovieClick(movie);
+        },
+        children: movie.title
+    }, void 0, false, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 9,
+        lineNumber: 6,
         columnNumber: 5
     }, undefined);
 };
 _c = MovieCard;
-// Here is where we define all the props constraints for the MovieCard
+// Here is where we define all the props constraints for the BookCard
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string
+        title: (0, _propTypesDefault.default).string.isRequired,
+        image: (0, _propTypesDefault.default).string.isRequired,
+        director: (0, _propTypesDefault.default).string,
+        genre: (0, _propTypesDefault.default).shape({})
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
