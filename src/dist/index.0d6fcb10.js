@@ -27249,8 +27249,24 @@ const MovieCard = ({ movie, onMovieClick })=>{
         onClick: ()=>{
             onMovieClick(movie);
         },
-        children: movie.title
-    }, void 0, false, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: movie.image,
+                alt: movie.title
+            }, void 0, false, {
+                fileName: "src/components/MovieCard/movie-card.jsx",
+                lineNumber: 11,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: movie.title
+            }, void 0, false, {
+                fileName: "src/components/MovieCard/movie-card.jsx",
+                lineNumber: 12,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/MovieCard/movie-card.jsx",
         lineNumber: 6,
         columnNumber: 5

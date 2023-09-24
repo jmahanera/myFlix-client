@@ -8,8 +8,8 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         onMovieClick(movie);
       }}
     >
-      {movie.title}
-      
+      <img src={movie.image} alt={movie.title} />
+      <div>{movie.title}</div>
     </div>
   );
 };
