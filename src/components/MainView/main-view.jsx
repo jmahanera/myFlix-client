@@ -7,23 +7,10 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies", {
-  method: 'GET',
-  headers: {
-    'Origin': 'http://localhost:1234'  // Replace with an allowed origin
-  }
-})
+    fetch("https://openlibrary.org/search.json?q=star+wars")
+      .then((response) => response.json())
       .then((data) => {
-  const moviesFromApi = data.map((movie) => ({
-    id: movie.id,
-    title: movie.Title,
-    image: movie.Poster,
-    director: movie.Director
-  }));
-  setMovies(moviesFromApi);
-})
-      .catch((error) => {
-        console.error("Error fetching the movie:", error);
+        console.log("books from api:", data);
       });
   }, []);
 

@@ -27177,21 +27177,8 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies", {
-            method: "GET",
-            headers: {
-                "Origin": "http://localhost:1234" // Replace with an allowed origin
-            }
-        }).then((data)=>{
-            const moviesFromApi = data.map((movie)=>({
-                    id: movie.id,
-                    title: movie.Title,
-                    image: movie.Poster,
-                    director: movie.Director
-                }));
-            setMovies(moviesFromApi);
-        }).catch((error)=>{
-            console.error("Error fetching the movie:", error);
+        fetch("https://openlibrary.org/search.json?q=star+wars").then((response)=>response.json()).then((data)=>{
+            console.log("books from api:", data);
         });
     }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27199,14 +27186,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 18,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 35,
+        lineNumber: 22,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27217,12 +27204,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 41,
+                lineNumber: 28,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 39,
+        lineNumber: 26,
         columnNumber: 5
     }, undefined);
 };
