@@ -27182,7 +27182,7 @@ const MainView = ()=>{
                 return {
                     id: movie.id,
                     title: movie.title,
-                    image: movie.image,
+                    image: "https://primemovies-39075872fbeb.herokuapp.com/images/" + movie,
                     director: movie.director
                 };
             });
