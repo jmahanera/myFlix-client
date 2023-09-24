@@ -16,8 +16,7 @@ export const MainView = () => {
           title: movie.title,
           description: movie.description,
           genre: movie.genre,
-          director: movie.director, // Assuming the API provides director information
-          // Assuming there is an array of actors, and you want to get the first actor
+          director: movie.director, 
           actor: movie.actors.length > 0 ? movie.actors[0] : null,
         };
       });
