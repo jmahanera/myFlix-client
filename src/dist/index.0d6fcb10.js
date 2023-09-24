@@ -27196,7 +27196,7 @@ const MainView = ()=>{
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                     movie: movie,
                     onMovieClick: ()=>setSelectedMovie(movie)
-                }, movie.title, false, {
+                }, movie.image, false, {
                     fileName: "src/components/MainView/main-view.jsx",
                     lineNumber: 30,
                     columnNumber: 9
