@@ -12,11 +12,10 @@ export const MainView = () => {
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
-            id: movie._id,
             title: movie.title,
-            image: movie.image,
-            director: movie.director,
-            genre: movie.genre,           
+            description: movie.description,
+            genre: movie.genre,
+            actors: movie.actors,           
           };
         });
 
