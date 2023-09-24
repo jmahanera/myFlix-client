@@ -12,7 +12,7 @@ export const MainView = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch movie");
         }
-        return response.json();
+        return response.json();  
       })
       .then((data) => {
         // Assuming data is an object with movie information
