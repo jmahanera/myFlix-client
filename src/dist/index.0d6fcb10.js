@@ -27175,11 +27175,13 @@ var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
+        // Fetch movies and set them to the state
         fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
-                    imgage: src = movie.image,
+                    image: movie.image,
                     title: movie.title,
                     description: movie.description,
                     genre: movie.genre,
@@ -27189,38 +27191,32 @@ const MainView = ()=>{
             setMovies(moviesFromApi);
         });
     }, []);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-        movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
-    }, void 0, false, {
-        fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 32,
-        columnNumber: 12
-    }, undefined);
-    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "The Movie list is empty!"
-    }, void 0, false, {
-        fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 36,
-        columnNumber: 12
-    }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
-                onMovieClick: (movie)=>setSelectedMovie(movie)
-            }, movie._id, false, {
+        children: [
+            movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                    movie: movie,
+                    onMovieClick: ()=>setSelectedMovie(movie)
+                }, movie._id, false, {
+                    fileName: "src/components/MainView/main-view.jsx",
+                    lineNumber: 30,
+                    columnNumber: 9
+                }, undefined)),
+            selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                movie: selectedMovie,
+                onBackClick: ()=>setSelectedMovie(null)
+            }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 42,
+                lineNumber: 34,
                 columnNumber: 9
-            }, undefined))
-    }, void 0, false, {
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 28,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "llzgrUkvR/+OoCNfiqlA1H2LLFI=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 exports.default = MainView;
 var _c;
