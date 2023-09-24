@@ -27246,68 +27246,18 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _s = $RefreshSig$();
 const MovieCard = ({ movie, onMovieClick })=>{
-    _s();
-    const [showDetails, setShowDetails] = (0, _react.useState)(false);
-    const handleMovieClick = ()=>{
-        setShowDetails(!showDetails);
-        onMovieClick(movie);
-    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        onClick: handleMovieClick,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: movie.title
-            }, void 0, false, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 15,
-                columnNumber: 7
-            }, undefined),
-            showDetails && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                        src: movie.image,
-                        alt: movie.title
-                    }, void 0, false, {
-                        fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 18,
-                        columnNumber: 11
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        children: [
-                            "Director: ",
-                            movie.director
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 19,
-                        columnNumber: 11
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        children: [
-                            "Genre: ",
-                            movie.genre
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 20,
-                        columnNumber: 11
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 17,
-                columnNumber: 9
-            }, undefined)
-        ]
-    }, void 0, true, {
+        onClick: ()=>{
+            onMovieClick(movie);
+        },
+        children: movie.title
+    }, void 0, false, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 14,
+        lineNumber: 7,
         columnNumber: 5
     }, undefined);
 };
-_s(MovieCard, "n2rC7YX8Mzz154E9USQBvseY7a0=");
 _c = MovieCard;
 // Here is where we define all the props constraints for the BookCard
 MovieCard.propTypes = {
