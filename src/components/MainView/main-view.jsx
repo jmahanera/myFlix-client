@@ -7,7 +7,7 @@ export const MainView = () => {
   
 
   useEffect(() => {
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/api/movies/")
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies/")
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
