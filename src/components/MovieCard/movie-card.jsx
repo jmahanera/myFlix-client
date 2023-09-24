@@ -9,7 +9,6 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         onMovieClick(movie);
       }}
     >
-        {movie.image} 
         {movie.title}
         {movie.director}
         {movie.genre}

@@ -27252,7 +27252,6 @@ const MovieCard = ({ movie, onMovieClick })=>{
             onMovieClick(movie);
         },
         children: [
-            movie.image,
             movie.title,
             movie.director,
             movie.genre
