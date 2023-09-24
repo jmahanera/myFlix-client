@@ -34,12 +34,11 @@ export const MainView = () => {
    return (
     <div>
       {movies.map((movie) => (
-        <div key={movie._id} className="movie-card">
-          <h3>{movie.title}</h3>
-          <p>Director: {movie.director}</p>
-          <img src={movie.imageUrl} alt={movie.title} className="movie-image" />
-          <button onClick={() => setSelectedMovie(movie)}>View Details</button>
-        </div>
+        <MovieCard
+          key={movie._id}
+          movie={movie}
+          onMovieClick={() => handleMovieClick(movie)}
+        />
       ))}
     </div>
   );
