@@ -7,7 +7,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://primemovies-39075872fbeb.herokuapp.com")
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
