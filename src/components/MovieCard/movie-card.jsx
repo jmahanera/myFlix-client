@@ -10,7 +10,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       }}
     >
       
-      {movie.image}
+      {movie.director}
     
       </div>
     
