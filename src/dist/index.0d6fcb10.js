@@ -27180,9 +27180,10 @@ const MainView = ()=>{
         fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
-                    id: movie.id,
                     title: movie.title,
-                    director: movie.director
+                    image: movie.image,
+                    director: movie.director,
+                    genre: movie.genre
                 };
             });
             setMovies(moviesFromApi);
@@ -27193,14 +27194,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 27,
+        lineNumber: 28,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The Movie list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 32,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27209,12 +27210,12 @@ const MainView = ()=>{
                 onMovieClick: ()=>handleMovieClick(movie)
             }, movie._id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 37,
+                lineNumber: 38,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 35,
+        lineNumber: 36,
         columnNumber: 5
     }, undefined);
 };
