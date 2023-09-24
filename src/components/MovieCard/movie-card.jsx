@@ -9,13 +9,14 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         onMovieClick(movie);
       }}
     >
+      
       <div>
-        <img src={movie.image} alt={movie.title} />
+        {movie.title}
+        {movie.director}
+        {movie.genre}
       </div>
       <div>
-        <h3>Title: {movie.title}</h3>
-        <p>Director: {movie.director}</p>
-        <p>Genre: {movie.genre}</p>
+        <img src={movie.image}  />
       </div>
     </div>
 

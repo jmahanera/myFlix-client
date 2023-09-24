@@ -27253,55 +27253,27 @@ const MovieCard = ({ movie, onMovieClick })=>{
         },
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    movie.title,
+                    movie.director,
+                    movie.genre
+                ]
+            }, void 0, true, {
+                fileName: "src/components/MovieCard/movie-card.jsx",
+                lineNumber: 13,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image,
-                    alt: movie.title
+                    src: movie.image
                 }, void 0, false, {
                     fileName: "src/components/MovieCard/movie-card.jsx",
-                    lineNumber: 13,
+                    lineNumber: 19,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 12,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: [
-                            "Title: ",
-                            movie.title
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 16,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: [
-                            "Director: ",
-                            movie.director
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 17,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: [
-                            "Genre: ",
-                            movie.genre
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 18,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 15,
+                lineNumber: 18,
                 columnNumber: 7
             }, undefined)
         ]
