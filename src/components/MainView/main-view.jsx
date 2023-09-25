@@ -31,8 +31,8 @@ export const MainView = () => {
 }, []);
 
 
-   if (!user) {
-    return <LoginView />;
+  if (!user) {
+    return <LoginView onLoggedIn={(user) => setUser(user)} />;
   }
 
 

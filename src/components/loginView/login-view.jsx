@@ -15,8 +15,13 @@ export const LoginView = () => {
     fetch("https://primemovies-39075872fbeb.herokuapp.com/account/login.json", {
       method: "POST",
       body: JSON.stringify(data)
+    }).then((response) => {
+      if (response.ok) {
+        onLoggedIn(username);
+      } else {
+        alert("Login failed");
+      }
     });
-  };
 
   return (
     <form onSubmit={handleSubmit}>
