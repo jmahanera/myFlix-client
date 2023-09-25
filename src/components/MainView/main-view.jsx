@@ -5,9 +5,6 @@ import { MovieView } from "../MovieView/movie-view";
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
-  
-  
-
   useEffect(() => {
   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
     .then((response) => response.json())
