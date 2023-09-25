@@ -27255,35 +27255,6 @@ const MovieCard = ({ movie, onMovieClick })=>{
         setIsClicked(!isClicked);
         onMovieClick(movie);
     };
-    // Display genre based on whether it's a string or an object
-    let genreDisplay;
-    if (typeof movie.genre === "string") genreDisplay = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-        children: [
-            "Genre: ",
-            movie.genre
-        ]
-    }, void 0, true, {
-        fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 16,
-        columnNumber: 20
-    }, undefined);
-    else if (typeof movie.genre === "object" && movie.genre.name) genreDisplay = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-        children: [
-            "Genre: ",
-            movie.genre.name
-        ]
-    }, void 0, true, {
-        fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 18,
-        columnNumber: 20
-    }, undefined);
-    else genreDisplay = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-        children: "Genre: Unknown"
-    }, void 0, false, {
-        fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 20,
-        columnNumber: 20
-    }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: handleClick,
         style: {
@@ -27294,7 +27265,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                 children: movie.title
             }, void 0, false, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 25,
+                lineNumber: 15,
                 columnNumber: 7
             }, undefined),
             isClicked && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27306,10 +27277,19 @@ const MovieCard = ({ movie, onMovieClick })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 28,
+                        lineNumber: 18,
                         columnNumber: 11
                     }, undefined),
-                    genreDisplay,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            "Genre: ",
+                            movie.genre
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MovieCard/movie-card.jsx",
+                        lineNumber: 19,
+                        columnNumber: 11
+                    }, undefined),
                     movie.actors && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             "Actors: ",
@@ -27317,19 +27297,19 @@ const MovieCard = ({ movie, onMovieClick })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 31,
+                        lineNumber: 21,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 27,
+                lineNumber: 17,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 24,
+        lineNumber: 14,
         columnNumber: 5
     }, undefined);
 };
@@ -27339,12 +27319,7 @@ MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         title: (0, _propTypesDefault.default).string.isRequired,
         description: (0, _propTypesDefault.default).string.isRequired,
-        genre: (0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).string,
-            (0, _propTypesDefault.default).shape({
-                name: (0, _propTypesDefault.default).string
-            })
-        ]),
+        genre: (0, _propTypesDefault.default).string,
         actors: (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).string)
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
