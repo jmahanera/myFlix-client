@@ -27193,26 +27193,30 @@ const MainView = ()=>{
             setMovies(moviesFromApi);
         });
     }, []);
+    const [token, setToken] = (0, _react.useState)(null);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-        onLoggedIn: (user)=>setUser(user)
+        onLoggedIn: (user, token)=>{
+            setUser(user);
+            setToken(token);
+        }
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 35,
-        columnNumber: 12
+        lineNumber: 36,
+        columnNumber: 7
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         book: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 48,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The Movie list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 46,
+        lineNumber: 53,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27221,16 +27225,16 @@ const MainView = ()=>{
                 onMovieClick: (movie)=>setSelectedMovie(movie)
             }, movie._id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 52,
+                lineNumber: 59,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 50,
+        lineNumber: 57,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "AA2Lbd5vppiQn5Rpxq/geFPiCys=");
+_s(MainView, "sUQ5+l5f01eeJ6RDJuY0nGihK44=");
 _c = MainView;
 exports.default = MainView;
 var _c;
