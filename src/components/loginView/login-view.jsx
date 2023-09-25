@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState } from "react";
 
 export const LoginView = () => {
   const [username, setUsername] = useState("");  // Declare state for username
@@ -22,7 +21,8 @@ export const LoginView = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-       <input
+        Username:
+        <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -30,7 +30,11 @@ export const LoginView = () => {
       </label>
       <label>
         Password:
-        <input type="password" />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </label>
       <button type="submit">
         Submit

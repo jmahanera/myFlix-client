@@ -28419,8 +28419,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
 const LoginView = ()=>{
     _s();
-    const [username, setUsername] = useState(""); // Declare state for username
-    const [password, setPassword] = useState(""); // Declare state for password
+    const [username, setUsername] = (0, _react.useState)(""); // Declare state for username
+    const [password, setPassword] = (0, _react.useState)(""); // Declare state for password
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
@@ -28436,25 +28436,30 @@ const LoginView = ()=>{
         onSubmit: handleSubmit,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                    type: "text",
-                    value: username,
-                    onChange: (e)=>setUsername(e.target.value)
-                }, void 0, false, {
-                    fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 25,
-                    columnNumber: 8
-                }, undefined)
-            }, void 0, false, {
+                children: [
+                    "Username:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/components/loginView/login-view.jsx",
+                        lineNumber: 25,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 24,
+                lineNumber: 23,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
                     "Password:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password"
+                        type: "password",
+                        value: password,
+                        onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/loginView/login-view.jsx",
                         lineNumber: 33,
@@ -28471,13 +28476,13 @@ const LoginView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 35,
+                lineNumber: 39,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/loginView/login-view.jsx",
-        lineNumber: 23,
+        lineNumber: 22,
         columnNumber: 5
     }, undefined);
 };
