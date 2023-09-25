@@ -28447,13 +28447,13 @@ const LoginView = ()=>{
                         }, void 0, false, {
                             fileName: "src/components/loginView/login-view.jsx",
                             lineNumber: 30,
-                            columnNumber: 9
+                            columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/loginView/login-view.jsx",
                     lineNumber: 28,
-                    columnNumber: 7
+                    columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     children: [
@@ -28465,13 +28465,13 @@ const LoginView = ()=>{
                         }, void 0, false, {
                             fileName: "src/components/loginView/login-view.jsx",
                             lineNumber: 38,
-                            columnNumber: 9
+                            columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/loginView/login-view.jsx",
                     lineNumber: 36,
-                    columnNumber: 7
+                    columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     type: "submit",
@@ -28479,13 +28479,13 @@ const LoginView = ()=>{
                 }, void 0, false, {
                     fileName: "src/components/loginView/login-view.jsx",
                     lineNumber: 44,
-                    columnNumber: 7
+                    columnNumber: 17
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/loginView/login-view.jsx",
             lineNumber: 27,
-            columnNumber: 5
+            columnNumber: 13
         }, undefined);
     };
 };
