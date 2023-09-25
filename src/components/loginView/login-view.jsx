@@ -12,23 +12,16 @@ export const LoginView = () => {
       secret: password
     };
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Login failed");
-    }
-    console.log("Login successful!");
-  })
-  .catch(error => {
-    console.error("Error during login:", error);
-  });
-};
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/account/login", {
+   method: "POST",
+      body: JSON.stringify(data)
+    }).then((response) => {
+      if (response.ok) {
+        onLoggedIn(username);
+      } else {
+        alert("Login failed");
+      }
+    });
 
   return (
     <form onSubmit={handleSubmit}>
