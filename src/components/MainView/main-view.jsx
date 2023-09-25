@@ -7,10 +7,8 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
+
   
-  if (!user) {
-    return <LoginView />;
-  }
 
   
   useEffect(() => {
@@ -39,7 +37,9 @@ export const MainView = () => {
 
 
   if (selectedMovie) {
-    return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
+    return (
+      <MovieView book={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+    );
   }
 
   if (movies.length === 0) {

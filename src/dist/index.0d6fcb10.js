@@ -27178,11 +27178,6 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(null);
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
-        fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 12,
-        columnNumber: 12
-    }, undefined);
     (0, _react.useEffect)(()=>{
         fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
@@ -27200,16 +27195,16 @@ const MainView = ()=>{
     }, []);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 35,
         columnNumber: 12
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-        movie: selectedMovie,
+        book: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 42,
-        columnNumber: 12
+        lineNumber: 41,
+        columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The Movie list is empty!"
@@ -28424,8 +28419,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
 const LoginView = ()=>{
     _s();
-    const [username, setUsername] = (0, _react.useState)(""); // Declare state for username
-    const [password, setPassword] = (0, _react.useState)(""); // Declare state for password
+    const [username, setUsername] = useState(""); // Declare state for username
+    const [password, setPassword] = useState(""); // Declare state for password
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
