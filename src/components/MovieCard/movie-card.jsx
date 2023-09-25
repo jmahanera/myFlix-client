@@ -10,13 +10,23 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     onMovieClick(movie);
   };
 
+  // Display genre based on whether it's a string or an object
+  let genreDisplay;
+  if (typeof movie.genre === 'string') {
+    genreDisplay = <p>Genre: {movie.genre}</p>;
+  } else if (typeof movie.genre === 'object' && movie.genre.name) {
+    genreDisplay = <p>Genre: {movie.genre.name}</p>;
+  } else {
+    genreDisplay = <p>Genre: Unknown</p>;
+  }
+
   return (
     <div onClick={handleClick} style={{ cursor: 'pointer' }}>
       <p>{movie.title}</p>
       {isClicked && (
         <div>
           <p>Description: {movie.description}</p>
-          <p>Genre: {"movie.genre"}</p>
+          {genreDisplay}
           {movie.actors && (
             <p>Actors: {movie.actors.join(", ")}</p>
           )}
@@ -30,7 +40,10 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    genre: PropTypes.string,
+    genre: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({ name: PropTypes.string })
+    ]),
     actors: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,
