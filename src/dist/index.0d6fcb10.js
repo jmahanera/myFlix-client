@@ -28416,6 +28416,7 @@ parcelHelpers.export(exports, "LoginView", ()=>LoginView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+const [username, setUsername] = useState("");
 const LoginView = ()=>{
     const handleSubmit = (event)=>{
         // this prevents the default behavior of the form which is to reload the entire page
@@ -28433,19 +28434,18 @@ const LoginView = ()=>{
         onSubmit: handleSubmit,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Username:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text"
-                    }, void 0, false, {
-                        fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 23,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "text",
+                    value: username,
+                    onChange: (e)=>setUsername(e.target.value)
+                }, void 0, false, {
+                    fileName: "src/components/loginView/login-view.jsx",
+                    lineNumber: 23,
+                    columnNumber: 8
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 21,
+                lineNumber: 22,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28455,13 +28455,13 @@ const LoginView = ()=>{
                         type: "password"
                     }, void 0, false, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 27,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 25,
+                lineNumber: 29,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28469,13 +28469,13 @@ const LoginView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 29,
+                lineNumber: 33,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/loginView/login-view.jsx",
-        lineNumber: 20,
+        lineNumber: 21,
         columnNumber: 5
     }, undefined);
 };

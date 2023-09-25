@@ -1,4 +1,5 @@
 import React from "react";
+const [username, setUsername] = useState("");
 
 export const LoginView = () => {
   const handleSubmit = (event) => {
@@ -19,8 +20,11 @@ export const LoginView = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Username:
-        <input type="text" />
+       <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
       </label>
       <label>
         Password:
