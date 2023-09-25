@@ -14,8 +14,3 @@ export const LoginView = () => {
   );
 };
 
-const [user, setUser] = useState(null);
-
-  if (!user) {
-    return <LoginView />;
-  }

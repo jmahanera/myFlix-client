@@ -28465,12 +28465,6 @@ const LoginView = ()=>{
     }, undefined);
 };
 _c = LoginView;
-const [user, setUser] = useState(null);
-if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(LoginView, {}, void 0, false, {
-    fileName: "src/components/loginView/login-view.jsx",
-    lineNumber: 20,
-    columnNumber: 12
-}, undefined);
 var _c;
 $RefreshReg$(_c, "LoginView");
 
