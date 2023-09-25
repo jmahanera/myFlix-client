@@ -28427,7 +28427,7 @@ const LoginView = ()=>{
             access: username,
             secret: password
         };
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/account/login", {
+        fetch("https://openlibrary.org/account/login.json", {
             method: "POST",
             body: JSON.stringify(data)
         }).then((response)=>{
@@ -28443,7 +28443,8 @@ const LoginView = ()=>{
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                             type: "text",
                             value: username,
-                            onChange: (e)=>setUsername(e.target.value)
+                            onChange: (e)=>setUsername(e.target.value),
+                            required: true
                         }, void 0, false, {
                             fileName: "src/components/loginView/login-view.jsx",
                             lineNumber: 30,
@@ -28461,16 +28462,17 @@ const LoginView = ()=>{
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                             type: "password",
                             value: password,
-                            onChange: (e)=>setPassword(e.target.value)
+                            onChange: (e)=>setPassword(e.target.value),
+                            required: true
                         }, void 0, false, {
                             fileName: "src/components/loginView/login-view.jsx",
-                            lineNumber: 38,
+                            lineNumber: 39,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 36,
+                    lineNumber: 37,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28478,7 +28480,7 @@ const LoginView = ()=>{
                     children: "Submit"
                 }, void 0, false, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 44,
+                    lineNumber: 46,
                     columnNumber: 17
                 }, undefined)
             ]
@@ -28499,6 +28501,6 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"dLz1S","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"88yB5","react":"21dqq"}],"lJZlQ":[function() {},{}]},["9JgL0","hjBvO","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"dLz1S","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"88yB5","react":"21dqq"}],"lJZlQ":[function() {},{}]},["9JgL0","hjBvO","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.0d6fcb10.js.map

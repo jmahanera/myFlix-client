@@ -12,7 +12,7 @@ export const LoginView = () => {
             secret: password
         };
 
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/account/login", {
+        fetch("https://openlibrary.org/account/login.json", {
             method: "POST",
             body: JSON.stringify(data)
         }).then((response) => {
@@ -31,6 +31,7 @@ export const LoginView = () => {
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                     />
                 </label>
                 <label>
@@ -39,11 +40,10 @@ export const LoginView = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                 </label>
-                <button type="submit">
-                    Submit
-                </button>
+                <button type="submit">Submit</button>
             </form>
         );
     }
