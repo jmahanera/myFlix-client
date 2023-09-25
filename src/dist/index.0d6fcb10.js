@@ -28429,12 +28429,18 @@ const LoginView = ()=>{
             access: username,
             secret: password
         };
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/account/login.json", {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com//login", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
-        }).then((response)=>{
-            if (response.ok) onLoggedIn(username);
-            else alert("Login failed");
+        }).then((response)=>response.json()).then((data)=>{
+            console.log("Login response: ", data);
+            if (data.user) onLoggedIn(data.user, data.token);
+            else alert("No such user");
+        }).catch((e)=>{
+            alert("Something went wrong");
         });
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
             onSubmit: handleSubmit,
@@ -28448,13 +28454,13 @@ const LoginView = ()=>{
                             onChange: (e)=>setUsername(e.target.value)
                         }, void 0, false, {
                             fileName: "src/components/loginView/login-view.jsx",
-                            lineNumber: 30,
+                            lineNumber: 39,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 28,
+                    lineNumber: 37,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28466,13 +28472,13 @@ const LoginView = ()=>{
                             onChange: (e)=>setPassword(e.target.value)
                         }, void 0, false, {
                             fileName: "src/components/loginView/login-view.jsx",
-                            lineNumber: 38,
+                            lineNumber: 47,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 36,
+                    lineNumber: 45,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28480,13 +28486,13 @@ const LoginView = ()=>{
                     children: "Submit"
                 }, void 0, false, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 44,
+                    lineNumber: 53,
                     columnNumber: 7
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/loginView/login-view.jsx",
-            lineNumber: 27,
+            lineNumber: 36,
             columnNumber: 5
         }, undefined);
     };
