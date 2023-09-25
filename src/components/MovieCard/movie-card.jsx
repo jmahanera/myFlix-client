@@ -2,28 +2,36 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // The BookCard function component 
-export const MovieView = ({ movie, onBackClick }) => {
-  const { title, description, genre, director, actor } = movie;
+export const MovieCard = ({ movie, onMovieClick }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+    onMovieClick(movie);
+  };
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <p>Description: {description}</p>
-      <p>Genre: {genre}</p>
-      <p>Director: {director}</p>
-      <p>Actor: {actor}</p>
-      <button onClick={onBackClick}>Back to Movie List</button>
+    <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+      <p>{movie.title}</p>
+      {isClicked && (
+        <div>
+          <p>Description: {movie.description}</p>
+          <p>Genre: {movie.genre}</p>
+          {movie.actors && (
+            <p>Actors: {movie.actors.join(", ")}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
 
-MovieView.propTypes = {
+MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     genre: PropTypes.string,
-    director: PropTypes.string,
-    actor: PropTypes.string,
+    actors: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
+  onMovieClick: PropTypes.func.isRequired,
 };
