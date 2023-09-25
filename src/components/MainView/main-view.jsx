@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
-import { LoginView } from "../loginView/login-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [user, setUser] = useState(null);
-  
 
   
+  
+
   useEffect(() => {
   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
     .then((response) => response.json())
@@ -30,9 +28,7 @@ export const MainView = () => {
 }, []);
 
 
-   if (!user) {
-    return <LoginView />;
-  }
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
 
   if (selectedMovie) {
