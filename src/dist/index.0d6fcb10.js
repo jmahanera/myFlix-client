@@ -28427,7 +28427,7 @@ const LoginView = ()=>{
             access: username,
             secret: password
         };
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/login.json", {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/account/login.json", {
             method: "POST",
             body: JSON.stringify(data)
         });
