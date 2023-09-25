@@ -7,14 +7,10 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
-
   
 
   
- useEffect(() => {
-    if (!token) {
-      return;
-    }
+  useEffect(() => {
   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
@@ -33,23 +29,14 @@ export const MainView = () => {
     });
 }, []);
 
-  const [token, setToken] = useState(null);
-  if (!user) {
-    return (
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
-    );
+
+   if (!user) {
+    return <LoginView />;
   }
 
 
   if (selectedMovie) {
-    return (
-      <MovieView book={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-    );
+    return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
   }
 
   if (movies.length === 0) {
