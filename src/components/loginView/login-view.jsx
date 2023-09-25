@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { jsx as _jsx } from 'react/jsx-runtime';
 
 export const LoginView = () => {
     const [username, setUsername] = useState("");  // Declare state for username
