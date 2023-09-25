@@ -28419,8 +28419,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
 const LoginView = ()=>{
     _s();
-    const [username, setUsername] = useState(""); // Declare state for username
-    const [password, setPassword] = useState(""); // Declare state for password
+    const [username, setUsername] = (0, _react.useState)(""); // Declare state for username
+    const [password, setPassword] = (0, _react.useState)(""); // Declare state for password
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
