@@ -31,10 +31,10 @@ export const LoginView = () => {
       <label>
         Password:
         <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+  type="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
       </label>
       <button type="submit">
         Submit
