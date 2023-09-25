@@ -11,7 +11,10 @@ export const MainView = () => {
   
 
   
-  useEffect(() => {
+ useEffect(() => {
+    if (!token) {
+      return;
+    }
   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
