@@ -27260,24 +27260,15 @@ const MovieCard = ({ movie, onMovieClick })=>{
         style: {
             cursor: "pointer"
         },
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: movie.title
-            }, void 0, false, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 15,
-                columnNumber: 10
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: movie.imageUrl,
-                alt: movie.title
-            }, void 0, false, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 16,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+            src: movie.imageUrl,
+            alt: movie.title
+        }, void 0, false, {
+            fileName: "src/components/MovieCard/movie-card.jsx",
+            lineNumber: 15,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
         fileName: "src/components/MovieCard/movie-card.jsx",
         lineNumber: 14,
         columnNumber: 5

@@ -12,7 +12,6 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
   return (
     <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-         <p>{movie.title}</p>
       <img src={movie.imageUrl} alt={movie.title} />
     </div>
   );
