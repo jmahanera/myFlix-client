@@ -11,7 +11,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
   };
 
   return (
-    <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+    <div onClick={handleClick} style={{ cursor: 'pointer' }} >
       <p>{movie.title}</p>
       {isClicked && (
         <div>
