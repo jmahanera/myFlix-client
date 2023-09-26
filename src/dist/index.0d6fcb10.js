@@ -27308,6 +27308,8 @@ const MovieCard = ({ movie, onMovieClick })=>{
                         lineNumber: 21,
                         columnNumber: 11
                     }, undefined),
+                    " ",
+                    ",",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             "director: ",
