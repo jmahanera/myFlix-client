@@ -3,14 +3,26 @@ import PropTypes from "prop-types";
 
 // The BookCard function component 
 export const MovieCard = ({ movie, onMovieClick }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
   const handleClick = () => {
-    onMovieClick(movie);
+    setIsClicked(!isClicked);
+    onMovieClick(movie.imageUrl);
   };
 
   return (
     <div onClick={handleClick} style={{ cursor: 'pointer' }}>
       <p>{movie.title}</p>
-      <img src={movie.imageUrl} alt={movie.title} />
+      <p>{movie.image}</p>
+      {isClicked && (
+        <div>
+          <p>imageUrl: {movie.image}</p>
+          <p>Genre: {movie.genre}</p>
+          {movie.actors && (
+            <p>Actors: {movie.actors.join(", ")}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
