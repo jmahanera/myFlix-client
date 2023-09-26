@@ -7,7 +7,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
   const handleClick = () => {
     setIsClicked(!isClicked);
-    onMovieClick(movie.imageUrl);
+    onMovieClick(movie);
   };
 
   return (
