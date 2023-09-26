@@ -36,10 +36,6 @@ export const MainView = () => {
     return <div>The Movie list is empty!</div>;
   }
 
-    const handleMovieClick = (movie) => {
-    setSelectedMovie(movie);
-  };
-
    return (
     <div>
       {movies.map((movie) => (
