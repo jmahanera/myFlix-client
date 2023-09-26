@@ -27179,7 +27179,7 @@ const MainView = ()=>{
         fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
-                    imageUrl: movie.imageUrl,
+                    imageUrl: movie.image,
                     title: movie.title,
                     description: movie.description,
                     genre: movie.genre,
@@ -27280,7 +27280,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             "imageUrl: ",
-                            movie.imageUrl
+                            movie.image
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",

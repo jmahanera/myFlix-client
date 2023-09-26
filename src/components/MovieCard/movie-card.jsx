@@ -16,7 +16,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       <p>{movie.image}</p>
       {isClicked && (
         <div>
-          <p>imageUrl: {movie.imageUrl}</p>
+          <p>imageUrl: {movie.image}</p>
           <p>Genre: {movie.genre}</p>
           {movie.actors && (
             <p>Actors: {movie.actors.join(", ")}</p>
