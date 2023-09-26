@@ -27191,44 +27191,34 @@ const MainView = ()=>{
         });
     }, []);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    const handleMovieClick = (movie)=>{
-        setSelectedMovie(movie);
-    };
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 34,
+        lineNumber: 32,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The Movie list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 38,
+        lineNumber: 36,
         columnNumber: 12
     }, undefined);
+    const handleMovieClick = (movie)=>{
+        setSelectedMovie(movie);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                    movie: movie,
-                    onMovieClick: handleMovieClick
-                }, movie._id, false, {
-                    fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 46,
-                    columnNumber: 9
-                }, undefined)),
-            selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-                movie: selectedMovie,
-                onBackClick: ()=>setSelectedMovie(null)
-            }, void 0, false, {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (movie)=>setSelectedMovie(movie)
+            }, movie._id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 48,
-                columnNumber: 25
-            }, undefined)
-        ]
-    }, void 0, true, {
+                lineNumber: 46,
+                columnNumber: 9
+            }, undefined))
+    }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
         lineNumber: 44,
         columnNumber: 5
@@ -27236,6 +27226,7 @@ const MainView = ()=>{
 };
 _s(MainView, "llzgrUkvR/+OoCNfiqlA1H2LLFI=");
 _c = MainView;
+exports.default = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
 
