@@ -10,22 +10,24 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     onMovieClick(movie);
   };
 
-
   return (
-    <div>
-      <h2>{movie.title}</h2>
-      <p><strong>Description:</strong> {movie.description}</p>
-      <p><strong>Genre:</strong> {movie.genre.name}</p>
-      <p>
-        <strong>Director:</strong> {movie.director.name} (Born: {movie.director.birthyear})
-      </p>
-      <p><strong>Actors:</strong> {movie.actors.join(', ')}</p>
-      <img src={movie.imageUrl} alt={movie.title} />
+    <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+      <p>{movie.title}</p>
+      {isClicked && (
+        <div>
+          <p>title: {movie.title}</p>
+          <p>description: {movie.description}</p>
+          <p>img src: {movie.imageUrl}</p>
+          <p>Genre: {movie.genre}</p>
+          <p>director: {movie.director}</p>
+          {movie.actors && (
+            <p>Actors: {movie.actors.join(", ")}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
-
-
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
