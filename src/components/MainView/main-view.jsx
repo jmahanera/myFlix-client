@@ -33,10 +33,17 @@ export const MainView = () => {
     return <div>The Movie list is empty!</div>;
   }
 
-   return (
+  return (
     <div>
       {movies.map((movie) => (
-        <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => setSelectedMovie(movie)} />
+        <MovieCard
+          key={movie._id}
+          movie={{
+            ...movie,
+            genre: typeof movie.genre === 'object' ? movie.genre.join(', ') : movie.genre
+          }}
+          onMovieClick={() => setSelectedMovie(movie)}
+        />
       ))}
     </div>
   );
