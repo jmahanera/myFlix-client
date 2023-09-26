@@ -35,12 +35,13 @@ export const MainView = () => {
 
    return (
     <div>
-       {movies.map(movie => (
-    <MovieCard key={movie.id} genre={movie.genre} />
-  ))}
+      {movies.map((movie) => (
+        <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => setSelectedMovie(movie)} />
+      ))}
     </div>
   );
 };
+
 
 
 

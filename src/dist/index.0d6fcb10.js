@@ -27208,11 +27208,12 @@ const MainView = ()=>{
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                genre: movie.genre
-            }, movie.id, false, {
+                movie: movie,
+                onMovieClick: (movie)=>setSelectedMovie(movie)
+            }, movie._id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
                 lineNumber: 39,
-                columnNumber: 5
+                columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
