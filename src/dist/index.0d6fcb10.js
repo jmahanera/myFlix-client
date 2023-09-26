@@ -27269,7 +27269,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: movie.imageUrl
+                children: movie.image
             }, void 0, false, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
                 lineNumber: 16,

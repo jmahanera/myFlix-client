@@ -13,7 +13,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
   return (
     <div onClick={handleClick} style={{ cursor: 'pointer' }}>
       <p>{movie.title}</p>
-      <p>{movie.imageUrl}</p>
+      <p>{movie.image}</p>
       {isClicked && (
         <div>
           <p>imageUrl: {movie.imageUrl}</p>
