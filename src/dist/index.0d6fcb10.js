@@ -27301,15 +27301,14 @@ const MovieCard = ({ movie, onMovieClick })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             "Genre: ",
-                            movie.genre
+                            movie.genre,
+                            ","
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
                         lineNumber: 21,
                         columnNumber: 11
                     }, undefined),
-                    " ",
-                    ",",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             "director: ",
