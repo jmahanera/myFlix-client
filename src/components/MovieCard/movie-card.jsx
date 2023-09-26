@@ -12,20 +12,8 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
   return (
     <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-      <p>{movie.title}</p>
-      <p>{movie.image}</p>
-      {isClicked && (
-        <div>
-          <p>title: {movie.title}</p>
-          <p>description: {movie.description}</p>
-          <p>imageUrl: {movie.image}</p>
-          <p>Genre: {movie.genre}</p>
-          <p>director: {movie.director}</p>
-          {movie.actors && (
-            <p>Actors: {movie.actors.join(", ")}</p>
-          )}
-        </div>
-      )}
+         <p>{movie.title}</p>
+      <img src={movie.imageUrl} alt={movie.title} />
     </div>
   );
 };
