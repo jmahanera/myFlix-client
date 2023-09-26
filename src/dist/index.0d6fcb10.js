@@ -27179,9 +27179,9 @@ const MainView = ()=>{
         fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
-                    imageUrl: movie.image,
                     title: movie.title,
                     description: movie.description,
+                    imageUrl: movie.image,
                     genre: movie.genre,
                     director: movie.director,
                     actor: movie.actors.length > 0 ? movie.actors[0] : null
@@ -27277,6 +27277,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
             }, undefined),
             isClicked && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
+                    "title: movie.title,",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             "imageUrl: ",
@@ -27284,7 +27285,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 19,
+                        lineNumber: 20,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27294,7 +27295,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 20,
+                        lineNumber: 21,
                         columnNumber: 11
                     }, undefined),
                     movie.actors && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27304,7 +27305,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 22,
+                        lineNumber: 23,
                         columnNumber: 13
                     }, undefined)
                 ]
