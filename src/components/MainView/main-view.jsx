@@ -4,6 +4,7 @@ import { MovieView } from "../MovieView/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
@@ -22,31 +23,39 @@ export const MainView = () => {
 
       setMovies(moviesFromApi);
     });
-}, []);
+  }, []);
+  
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
 
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
-
-  if (selectedMovie) {
-    return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
-  }
-
-  if (movies.length === 0) {
-    return <div>The Movie list is empty!</div>;
-  }
-
-   return (
+  return (
     <div>
-      {movies.map((movie) => (
-        <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => setSelectedMovie(movie)} />
-      ))}
+      {movies.length === 0 ? (
+        <div>The Movie list is empty!</div>
+      ) : (
+        <div>
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie._id}
+              movie={movie}
+              onMovieClick={handleMovieClick}
+            />
+          ))}
+        </div>
+      )}
+
+      {selectedMovie && (
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
+      )}
     </div>
   );
 };
-
-export default MainView;
-
 
 
 
