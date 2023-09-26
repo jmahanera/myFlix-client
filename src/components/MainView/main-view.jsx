@@ -27,7 +27,9 @@ export const MainView = () => {
 
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-
+   const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
   if (selectedMovie) {
     return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
   }
@@ -36,16 +38,17 @@ export const MainView = () => {
     return <div>The Movie list is empty!</div>;
   }
 
+ 
+
    return (
     <div>
       {movies.map((movie) => (
-        <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => setSelectedMovie(movie)} />
+        <MovieCard key={movie._id} movie={movie} onMovieClick={handleMovieClick} />
       ))}
+      {selectedMovie && <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />}
     </div>
   );
 };
-
-export default MainView;
 
 
 
