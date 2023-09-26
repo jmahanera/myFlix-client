@@ -27196,14 +27196,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 29,
+        lineNumber: 32,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The Movie list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 33,
+        lineNumber: 36,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27212,12 +27212,12 @@ const MainView = ()=>{
                 onMovieClick: (movie)=>setSelectedMovie(movie)
             }, movie._id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 39,
+                lineNumber: 42,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 40,
         columnNumber: 5
     }, undefined);
 };
@@ -27253,7 +27253,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
     const [isClicked, setIsClicked] = (0, _react.useState)(false);
     const handleClick = ()=>{
         setIsClicked(!isClicked);
-        onMovieClick(movie);
+        onMovieClick(movie.image);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: handleClick,
