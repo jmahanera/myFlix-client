@@ -27253,7 +27253,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
     const [isClicked, setIsClicked] = (0, _react.useState)(false);
     const handleClick = ()=>{
         setIsClicked(!isClicked);
-        onMovieClick(movie.image);
+        onMovieClick(movie.imageUrl);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: handleClick,
