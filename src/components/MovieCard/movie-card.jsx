@@ -3,10 +3,13 @@ import PropTypes from "prop-types";
 
 // The BookCard function component 
 export const MovieCard = ({ movie, onMovieClick }) => {
+   const [count, setCount] = useState(null); 
+
   return (
     <div
       onClick={() => {
         onMovieClick(movie);
+        setCount(count + 1);
       }}
     >
       {movie.title}
@@ -15,11 +18,13 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
+  book: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    genre: PropTypes.string,
-    actors: PropTypes.arrayOf(PropTypes.string),
+    image: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    genre: PropTypes.shape({
+      name: PropTypes.any.isRequired
+    })
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
+  onBookClick: PropTypes.func.isRequired
 };
