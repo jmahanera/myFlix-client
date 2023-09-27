@@ -39,13 +39,13 @@ export const MainView = () => {
    return (
     <div>
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} onMovieClick={(movie) => setSelectedMovie(movie)} />
+        <MovieCard key={movie.title} movie={movie} onMovieClick={(movie) => setSelectedMovie(movie)} />
       ))}
     </div>
   );
 };
 
-export default MainView;
+
 
 
 
