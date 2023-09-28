@@ -10,7 +10,7 @@ export const MainView = () => {
   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
-      const moviesFromApi = data.map((movie) => {
+      const moviesFromApi = movies.map((movie) => {
         return {
           title: movie.title,
           description: movie.description,

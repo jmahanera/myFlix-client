@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // The BookCard function component 
+// The MovieCard function component
 export const MovieCard = ({ movie, onMovieClick }) => {
-   const [count, setCount] = useState(null); 
+  const [count, setCount] = useState(null);
 
   return (
     <div
@@ -18,13 +19,10 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 };
 
 MovieCard.propTypes = {
-  book: PropTypes.shape({
+  movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    author: PropTypes.string,
-    genre: PropTypes.shape({
-      name: PropTypes.any.isRequired
-    })
+    imageUrl: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
   }).isRequired,
-  onBookClick: PropTypes.func.isRequired
+  onMovieClick: PropTypes.func.isRequired,
 };
