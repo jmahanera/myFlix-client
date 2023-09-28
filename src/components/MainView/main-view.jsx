@@ -8,31 +8,15 @@ export const MainView = () => {
   };
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+ 
   useEffect(() => {
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const moviesFromApi = data.map((movie) => {
-        return {
-          title: movie.title,
-          description: movie.description,
-          imageUrl: movie.image,
-          genre: movie.genre,
-          director: movie.director,
-          actor: movie.actors.length > 0 ? movie.actors[0] : null,
-        }
-         .catch((error) => console.error("Error fetching movies:", error));
-      });
-      
-      setMovies(moviesFromApi);
-    });
-    
-}, []);
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(data);  // Assuming the response is an array of movie objects
+      })
+      .catch((error) => console.error("Error fetching movies:", error));
+  }, []);
   
 
 
