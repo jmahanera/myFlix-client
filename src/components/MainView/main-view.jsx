@@ -10,7 +10,12 @@ export const MainView = () => {
 
 
   useEffect(() => {
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/")
+    if (!token) {
+      return;
+    }
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies"{
+      headers: { Authorization: `Bearer ${token}` }
+    })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
