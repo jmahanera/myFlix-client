@@ -21,12 +21,11 @@ export const MainView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
-    };
+    const signupData = {
+  username: "your_username",
+  password: "your_password",
+  email: "your_email@example.com",
+};
 
     fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
       method: "POST",

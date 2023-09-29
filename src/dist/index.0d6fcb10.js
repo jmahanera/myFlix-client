@@ -27190,11 +27190,10 @@ const MainView = ()=>{
     const [birthday, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
-        const data = {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
+        const signupData = {
+            username: "your_username",
+            password: "your_password",
+            email: "your_email@example.com"
         };
         fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
             method: "POST",
@@ -27238,7 +27237,7 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 76,
+                lineNumber: 75,
                 columnNumber: 9
             }, undefined),
             "or",
@@ -27250,7 +27249,7 @@ const MainView = ()=>{
                 setBirthday: setBirthday
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 81,
+                lineNumber: 80,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27259,7 +27258,7 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 93,
+        lineNumber: 92,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27273,7 +27272,7 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 98,
+                lineNumber: 97,
                 columnNumber: 7
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27281,13 +27280,13 @@ const MainView = ()=>{
                     onMovieClick: ()=>handleMovieClick(movie)
                 }, movie.id, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 100,
+                    lineNumber: 99,
                     columnNumber: 9
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 97,
+        lineNumber: 96,
         columnNumber: 5
     }, undefined);
 };
