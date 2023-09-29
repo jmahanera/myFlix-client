@@ -27201,19 +27201,18 @@ const MainView = ()=>{
         lineNumber: 39,
         columnNumber: 12
     }, undefined);
-    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-        movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
+    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+        onLoggedIn: (user)=>setUser(user)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 44,
-        columnNumber: 7
+        lineNumber: 43,
+        columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 49,
+        lineNumber: 47,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27224,12 +27223,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 55,
+                lineNumber: 53,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 53,
+        lineNumber: 51,
         columnNumber: 5
     }, undefined);
 };
@@ -28345,7 +28344,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
-const LoginView = ()=>{
+const LoginView = ({ onLoggedIn })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -28362,9 +28361,12 @@ const LoginView = ()=>{
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        }).then((response)=>response.json()).then((responseData)=>{
-            if (responseData.user) setLoginMessage("Login successful!");
-            else setLoginMessage(`Login failed: ${responseData.message}`);
+        }).then((response)=>response.json()).then((data)=>{
+            console.log("Login response: ", data);
+            if (data.user) onLoggedIn(data.user, data.token);
+            else alert("No such user");
+        }).catch((e)=>{
+            alert("Something went wrong");
         }).catch((error)=>{
             console.error("Error:", error);
             setLoginMessage("An error occurred during login.");
@@ -28381,17 +28383,18 @@ const LoginView = ()=>{
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
                                 value: username,
-                                onChange: (e)=>setUsername(e.target.value)
+                                onChange: (e)=>setUsername(e.target.value),
+                                required: true
                             }, void 0, false, {
                                 fileName: "src/components/loginView/login-view.jsx",
-                                lineNumber: 43,
-                                columnNumber: 11
+                                lineNumber: 46,
+                                columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 41,
-                        columnNumber: 9
+                        lineNumber: 44,
+                        columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                         children: [
@@ -28399,43 +28402,44 @@ const LoginView = ()=>{
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "password",
                                 value: password,
-                                onChange: (e)=>setPassword(e.target.value)
+                                onChange: (e)=>setPassword(e.target.value),
+                                required: true
                             }, void 0, false, {
                                 fileName: "src/components/loginView/login-view.jsx",
-                                lineNumber: 51,
-                                columnNumber: 11
+                                lineNumber: 55,
+                                columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 49,
-                        columnNumber: 9
+                        lineNumber: 53,
+                        columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         type: "submit",
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 57,
-                        columnNumber: 9
+                        lineNumber: 62,
+                        columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 40,
+                lineNumber: 43,
                 columnNumber: 7
             }, undefined),
             loginMessage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: loginMessage
             }, void 0, false, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 62,
+                lineNumber: 65,
                 columnNumber: 24
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/loginView/login-view.jsx",
-        lineNumber: 39,
+        lineNumber: 42,
         columnNumber: 5
     }, undefined);
 };

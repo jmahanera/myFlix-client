@@ -20,13 +20,18 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data)
     })
-   .then((response) => {
-      if (response.ok) {
-        onLoggedIn(username);
-      } else {
-        alert("Login failed");
-      }
-    })
+   .then((response) => response.json())
+      .then((data) => {
+        console.log("Login response: ", data);
+        if (data.user) {
+          onLoggedIn(data.user, data.token);
+        } else {
+          alert("No such user");
+        }
+      })
+      .catch((e) => {
+        alert("Something went wrong");
+      })
     .catch(error => {
       console.error("Error:", error);
       setLoginMessage("An error occurred during login.");
