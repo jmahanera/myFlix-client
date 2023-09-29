@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
+import { LoginView } from "../loginView/login-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-  const onMovieClick = (movie) => {
-    setSelectedMovie(movie);
-  };
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
+
 
   useEffect(() => {
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
+  fetch("https://primemovies-39075872fbeb.herokuapp.com/")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -35,18 +35,28 @@ export const MainView = () => {
     
 }, []);
   
-  if (selectedMovie) {
-    return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
+  if (!user) {
+    return <LoginView />;
+  }
+
+  if (!user) {
+    return <LoginView onLoggedIn={(user) => setUser(user)} />;
   }
 
   if (movies.length === 0) {
-    return <div>The Movie list is empty!</div>;
+    return <div>The list is empty!</div>;
   }
 
-   return (
+  return (
     <div>
       {movies.map((movie) => (
-       <MovieCard key={movie.title} movie={movie} onMovieClick={() => onMovieClick(movie)} />
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
+          }}
+        />
       ))}
     </div>
   );
