@@ -27196,7 +27196,7 @@ const MainView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("SIGNUP_URL", {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
