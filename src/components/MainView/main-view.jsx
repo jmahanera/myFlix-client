@@ -12,6 +12,42 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  // State variables for signup form fields
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [birthday, setBirthday] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    };
+
+    fetch("SIGNUP_URL", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful");
+          window.location.reload();
+        } else {
+          alert("Signup failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error signing up:", error);
+      });
+  };
+
   useEffect(() => {
     if (token) {
       fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
@@ -26,7 +62,6 @@ export const MainView = () => {
   }, [token]);
 
   const handleMovieClick = (movie) => {
-    // Handle movie click logic
     setSelectedMovie(movie);
   };
 
@@ -43,7 +78,13 @@ export const MainView = () => {
           setToken(token);
         }} />
         or
-        <SignupView />
+        <SignupView
+          handleSubmit={handleSubmit}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          setEmail={setEmail}
+          setBirthday={setBirthday}
+        />
       </>
     );
   }
