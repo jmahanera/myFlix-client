@@ -28,7 +28,7 @@ export const MainView = () => {
       Birthday: birthday
     };
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
