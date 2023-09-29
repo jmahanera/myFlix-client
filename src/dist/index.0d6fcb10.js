@@ -27169,39 +27169,38 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _movieCard = require("../MovieCard/movie-card");
 var _movieView = require("../MovieView/movie-view");
 var _loginView = require("../loginView/login-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    const [user, setUser] = (0, _react.useState)(storedUser || null);
+    const [token, setToken] = (0, _react.useState)(storedToken || null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    const [user, setUser] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        if (!token) return;
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+        if (token) fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((response)=>{
-            if (!response.ok) throw new Error("Network response was not ok");
-            return response.json();
-        }).then((data)=>{
-            const moviesFromApi = data.map((movie)=>{
-                return ({
-                    title: movie.title,
-                    description: movie.description,
-                    imageUrl: movie.image,
-                    genre: movie.genre,
-                    director: movie.director,
-                    actor: movie.actors.length > 0 ? movie.actors[0] : null
-                }).catch((error)=>console.error("Error fetching movies:", error));
-            });
-            setMovies(moviesFromApi);
-        });
-    }, []);
-    const [token, setToken] = (0, _react.useState)(null);
+        }).then((response)=>response.json()).then((movies)=>{
+            setMovies(movies);
+        }).catch((error)=>console.error("Error fetching movies:", error));
+    }, [
+        token
+    ]);
+    const handleMovieClick = (movie)=>{
+        // Handle movie click logic
+        setSelectedMovie(movie);
+    };
+    const handleLogout = ()=>{
+        setUser(null);
+        setToken(null);
+    };
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
         onLoggedIn: (user, token)=>{
             setUser(user);
@@ -27209,21 +27208,14 @@ const MainView = ()=>{
         }
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 47,
-        columnNumber: 7
-    }, undefined);
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-        onLoggedIn: (user)=>setUser(user)
-    }, void 0, false, {
-        fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 57,
+        lineNumber: 38,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 61,
+        lineNumber: 45,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27232,31 +27224,30 @@ const MainView = ()=>{
                 onClick: ()=>{
                     setUser(null);
                     setToken(null);
+                    localStorage.clear();
                 },
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 66,
+                lineNumber: 50,
                 columnNumber: 7
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                     movie: movie,
-                    onMovieClick: (newSelectedMovie)=>{
-                        setSelectedMovie(newSelectedMovie);
-                    }
+                    onMovieClick: ()=>handleMovieClick(movie)
                 }, movie.id, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 68,
+                    lineNumber: 52,
                     columnNumber: 9
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 65,
+        lineNumber: 49,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "sUQ5+l5f01eeJ6RDJuY0nGihK44=");
+_s(MainView, "j410z2XArPl2ne0esG0fGC2C2Ig=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

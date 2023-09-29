@@ -1,60 +1,44 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser || null);
+  const [token, setToken] = useState(storedToken || null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [user, setUser] = useState(null);
-
 
   useEffect(() => {
-    if (!token) {
-      return;
+    if (token) {
+      fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((response) => response.json())
+        .then((movies) => {
+          setMovies(movies);
+        })
+        .catch((error) => console.error("Error fetching movies:", error));
     }
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies",{
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const moviesFromApi = data.map((movie) => {
-        return {
-          title: movie.title,
-          description: movie.description,
-          imageUrl: movie.image,
-          genre: movie.genre,
-          director: movie.director,
-          actor: movie.actors.length > 0 ? movie.actors[0] : null,
-        }
-         .catch((error) => console.error("Error fetching movies:", error));
-      });
-      
-      setMovies(moviesFromApi);
-    });
-    
-  }, []);
-  
-  const [token, setToken] = useState(null);
-  
-  if (!user) {
-    return (
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
-    );
-  }
+  }, [token]);
+
+  const handleMovieClick = (movie) => {
+    // Handle movie click logic
+    setSelectedMovie(movie);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setToken(null);
+  };
 
   if (!user) {
-    return <LoginView onLoggedIn={(user) => setUser(user)} />;
+    return <LoginView onLoggedIn={(user, token) => {
+      setUser(user);
+      setToken(token);
+    }} />;
   }
 
   if (movies.length === 0) {
@@ -63,24 +47,14 @@ export const MainView = () => {
 
   return (
     <div>
-      <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
+      <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
           movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
+          onMovieClick={() => handleMovieClick(movie)}
         />
       ))}
     </div>
   );
 };
-
-
-
-
-
-
-
-
