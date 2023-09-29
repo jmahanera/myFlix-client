@@ -27180,7 +27180,11 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/").then((response)=>{
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
             if (!response.ok) throw new Error("Network response was not ok");
             return response.json();
         }).then((data)=>{
@@ -27205,21 +27209,21 @@ const MainView = ()=>{
         }
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 46,
+        lineNumber: 47,
         columnNumber: 7
     }, undefined);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
         onLoggedIn: (user)=>setUser(user)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 56,
+        lineNumber: 57,
         columnNumber: 12
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 60,
+        lineNumber: 61,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27230,12 +27234,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 66,
+                lineNumber: 67,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 64,
+        lineNumber: 65,
         columnNumber: 5
     }, undefined);
 };

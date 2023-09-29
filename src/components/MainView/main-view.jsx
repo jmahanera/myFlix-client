@@ -13,7 +13,7 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies"{
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies",{
       headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
