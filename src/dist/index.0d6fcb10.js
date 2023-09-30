@@ -27187,18 +27187,18 @@ const MainView = ()=>{
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
-    const [birthday, setBirthday] = (0, _react.useState)("");
+    const [birthDate, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
         const signupData = {
-            username: "your_username",
-            password: "your_password",
-            email: "your_email@example.com",
-            birthDate: "your_birthDate"
+            username: username,
+            password: password,
+            email: email,
+            birthDate: birthDate
         };
         fetch("https://primemovies-39075872fbeb.herokuapp.com", {
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify(signupData),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -27291,7 +27291,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "gwXrcOFkRRHsSgYc+rBXB5ArqGU=");
+_s(MainView, "GYPDns8t+si3oE2l/pVLRycm54I=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -28603,12 +28603,15 @@ const SignupView = ()=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "date",
                         value: birthDate,
-                        onChange: (e)=>setBirthDate(e.target.value),
+                        onChange: (e)=>{
+                            const formattedDate = e.target.value;
+                            setBirthDate(formattedDate);
+                        },
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signupView/signup-view.jsx",
                         lineNumber: 43,
-                        columnNumber: 9
+                        columnNumber: 3
                     }, undefined)
                 ]
             }, void 0, true, {
@@ -28621,7 +28624,7 @@ const SignupView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signupView/signup-view.jsx",
-                lineNumber: 50,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined)
         ]

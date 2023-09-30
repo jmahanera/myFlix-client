@@ -39,14 +39,17 @@ export const SignupView = () => {
         />
       </label>
       <label>
-        BirthDate:
-        <input
-          type="date"
-          value={birthDate}
-          onChange={(e) => setBirthDate(e.target.value)}
-          required
-        />
-      </label>
+  BirthDate:
+  <input
+    type="date"
+    value={birthDate}
+    onChange={(e) => {
+      const formattedDate = e.target.value; 
+      setBirthDate(formattedDate);
+    }}
+    required
+  />
+</label>
       <button type="submit">Submit</button>
     </form>
   );

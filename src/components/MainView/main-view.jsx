@@ -16,37 +16,37 @@ export const MainView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [birthDate, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const signupData = {
-  username: "your_username",
-  password: "your_password",
-      email: "your_email@example.com",
-  birthDate: "your_birthDate"
-};
-
-    fetch("https://primemovies-39075872fbeb.herokuapp.com", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then((response) => {
-        if (response.ok) {
-          alert("Signup successful");
-          window.location.reload();
-        } else {
-          alert("Signup failed");
-        }
-      })
-      .catch((error) => {
-        console.error("Error signing up:", error);
-      });
+  event.preventDefault();
+  
+  const signupData = {
+    username: username,
+    password: password,
+    email: email,
+    birthDate: birthDate
   };
+
+  fetch("https://primemovies-39075872fbeb.herokuapp.com", {
+    method: "POST",
+    body: JSON.stringify(signupData), 
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then((response) => {
+    if (response.ok) {
+      alert("Signup successful");
+      window.location.reload();
+    } else {
+      alert("Signup failed");
+    }
+  })
+  .catch((error) => {
+    console.error("Error signing up:", error);
+  });
+};
 
   useEffect(() => {
     if (token) {
