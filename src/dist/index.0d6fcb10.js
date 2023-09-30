@@ -27187,6 +27187,7 @@ const MainView = ()=>{
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
+    const [birthday, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
         const signupData = {
@@ -27194,7 +27195,7 @@ const MainView = ()=>{
             password: "your_password",
             email: "your_email@example.com"
         };
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -27289,7 +27290,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "USQL/g2cVAgSweN0/5dDovXdxog=");
+_s(MainView, "gwXrcOFkRRHsSgYc+rBXB5ArqGU=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

@@ -16,7 +16,7 @@ export const MainView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  
+  const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ export const MainView = () => {
   email: "your_email@example.com",
 };
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
+    fetch("https://primemovies-39075872fbeb.herokuapp.com", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
