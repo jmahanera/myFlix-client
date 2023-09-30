@@ -27196,7 +27196,7 @@ const MainView = ()=>{
             email: email,
             birthDate: birthDate
         };
-        fetch("https://primemovies-39075872fbeb.herokuapp.com", {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(signupData),
             headers: {
@@ -27212,7 +27212,7 @@ const MainView = ()=>{
         });
     };
     (0, _react.useEffect)(()=>{
-        if (token) fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+        if (token) fetch("https://primemovies-39075872fbeb.herokuapp.com/", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -27247,7 +27247,11 @@ const MainView = ()=>{
                 setUsername: setUsername,
                 setPassword: setPassword,
                 setEmail: setEmail,
-                setBirthday: setBirthday
+                setBirthday: setBirthday,
+                username: username,
+                password: password,
+                email: email,
+                birthDate: birthDate
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
                 lineNumber: 81,
@@ -27259,7 +27263,7 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 93,
+        lineNumber: 97,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27273,7 +27277,7 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 98,
+                lineNumber: 102,
                 columnNumber: 7
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27281,13 +27285,13 @@ const MainView = ()=>{
                     onMovieClick: ()=>handleMovieClick(movie)
                 }, movie.id, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 100,
+                    lineNumber: 104,
                     columnNumber: 9
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 97,
+        lineNumber: 101,
         columnNumber: 5
     }, undefined);
 };
@@ -28535,7 +28539,7 @@ const SignupView = ()=>{
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const [birthDate, setBirthDate] = (0, _react.useState)("");
-    const handleSubmit = (event)=>{};
+    const handleSubmit = ()=>{};
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
         onSubmit: handleSubmit,
         children: [
@@ -28544,58 +28548,53 @@ const SignupView = ()=>{
                     "Username:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value),
-                        required: true,
-                        minLength: "3"
+                        placeholder: "Username",
+                        value: props.username,
+                        onChange: (e)=>props.setUsername(e.target.value),
+                        required: true
                     }, void 0, false, {
                         fileName: "src/components/signupView/signup-view.jsx",
                         lineNumber: 15,
-                        columnNumber: 9
+                        columnNumber: 3
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "password",
+                        placeholder: "Password",
+                        value: props.password,
+                        onChange: (e)=>props.setPassword(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/signupView/signup-view.jsx",
+                        lineNumber: 23,
+                        columnNumber: 1
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "email",
+                        placeholder: "Email",
+                        value: props.email,
+                        onChange: (e)=>props.setEmail(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/signupView/signup-view.jsx",
+                        lineNumber: 31,
+                        columnNumber: 1
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        placeholder: "Birth Date",
+                        value: props.birthDate,
+                        onChange: (e)=>props.setBirthday(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/signupView/signup-view.jsx",
+                        lineNumber: 39,
+                        columnNumber: 1
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signupView/signup-view.jsx",
                 lineNumber: 13,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Password:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signupView/signup-view.jsx",
-                        lineNumber: 25,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signupView/signup-view.jsx",
-                lineNumber: 23,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Email:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "email",
-                        value: email,
-                        onChange: (e)=>setEmail(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signupView/signup-view.jsx",
-                        lineNumber: 34,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signupView/signup-view.jsx",
-                lineNumber: 32,
-                columnNumber: 7
+                columnNumber: 3
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
@@ -28610,13 +28609,13 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signupView/signup-view.jsx",
-                        lineNumber: 43,
+                        lineNumber: 49,
                         columnNumber: 3
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signupView/signup-view.jsx",
-                lineNumber: 41,
+                lineNumber: 47,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28624,14 +28623,14 @@ const SignupView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signupView/signup-view.jsx",
-                lineNumber: 53,
+                lineNumber: 59,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signupView/signup-view.jsx",
         lineNumber: 12,
-        columnNumber: 5
+        columnNumber: 3
     }, undefined);
 };
 _s(SignupView, "dAOkCMVGFSCaXJuRasO3rVoYYG8=");

@@ -6,37 +6,43 @@ export const SignupView = () => {
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = () => {};
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength="3"
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Email:
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+  <form onSubmit={handleSubmit}>
+  <label>
+  Username:
+  <input
+  type="text"
+  placeholder="Username"
+  value={props.username}
+  onChange={(e) => props.setUsername(e.target.value)}
+  required
+/>
+
+<input
+  type="password"
+  placeholder="Password"
+  value={props.password}
+  onChange={(e) => props.setPassword(e.target.value)}
+  required
+/>
+
+<input
+  type="email"
+  placeholder="Email"
+  value={props.email}
+  onChange={(e) => props.setEmail(e.target.value)}
+  required
+/>
+
+<input
+  type="text"
+  placeholder="Birth Date"
+  value={props.birthDate}
+  onChange={(e) => props.setBirthday(e.target.value)}
+  required
+/>
       </label>
       <label>
   BirthDate:
