@@ -4,7 +4,7 @@ export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [birthdate, setBirthdate] = useState("");
 
   const handleSubmit = (event) => {};
 
@@ -42,8 +42,8 @@ export const SignupView = () => {
         Birthday:
         <input
           type="date"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
+          value={birthdate}
+          onChange={(e) => setBirthdate(e.target.value)}
           required
         />
       </label>
