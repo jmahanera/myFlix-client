@@ -31,9 +31,10 @@ export const LoginView = ({ onLoggedIn }) => {
           alert("No such user");
         }
       })
-      .catch((e) => {
-        alert("Something went wrong");
-      })
+      .catch(error => {
+   console.error("Error:", error);
+   setLoginMessage("An error occurred during login. Check console for details.");
+})
     .catch(error => {
       console.error("Error:", error);
       setLoginMessage("An error occurred during login.");
