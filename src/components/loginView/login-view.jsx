@@ -13,6 +13,8 @@ export const LoginView = ({ onLoggedIn }) => {
       secret: password
     };
 
+    console.log("Login request data: ", data);
+
     fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/login", {
       method: "POST",
       headers: {
@@ -23,6 +25,7 @@ export const LoginView = ({ onLoggedIn }) => {
    .then((response) => response.json())
       .then((data) => {
         console.log("Login response: ", data);
+
          if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
@@ -31,13 +34,10 @@ export const LoginView = ({ onLoggedIn }) => {
           alert("No such user");
         }
       })
-      .catch((e) => {
-        alert("Something went wrong");
-      })
-    .catch(error => {
-      console.error("Error:", error);
-      setLoginMessage("An error occurred during login.");
-    });
+          .catch((error) => {
+        console.error("Error during login:", error);
+        setLoginMessage("An error occurred during login. Check console for details.");
+      });
   };
 
   return (
