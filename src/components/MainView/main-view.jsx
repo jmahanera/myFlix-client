@@ -28,7 +28,7 @@ export const MainView = () => {
     birthDate: birthDate
   };
 
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
+  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
     method: "POST",
     body: JSON.stringify(signupData), 
     headers: {
@@ -50,7 +50,7 @@ export const MainView = () => {
 
   useEffect(() => {
     if (token) {
-      fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
+      fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => response.json())
@@ -78,17 +78,7 @@ export const MainView = () => {
           setToken(token);
         }} />
         or
-        <SignupView
-  handleSubmit={handleSubmit}
-  setUsername={setUsername}
-  setPassword={setPassword}
-  setEmail={setEmail}
-  setBirthday={setBirthday}
-  username={username}
-  password={password}
-  email={email}
-  birthDate={birthDate}
-/>
+        <SignupView />
       </>
     );
   }
