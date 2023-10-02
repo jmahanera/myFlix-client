@@ -27183,20 +27183,15 @@ const MainView = ()=>{
     const [token, setToken] = (0, _react.useState)(storedToken || null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    // State variables for signup form fields
-    const [username, setUsername] = (0, _react.useState)("");
-    const [password, setPassword] = (0, _react.useState)("");
-    const [email, setEmail] = (0, _react.useState)("");
-    const [birthDate, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
         const signupData = {
             username: username,
             password: password,
             email: email,
-            birthDate: birthDate
+            birthdate: birthdate
         };
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/", {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/signup", {
             method: "POST",
             body: JSON.stringify(signupData),
             headers: {
@@ -27238,61 +27233,61 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 76,
+                lineNumber: 73,
                 columnNumber: 9
             }, undefined),
             "or",
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpView.SignupView), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpView.SignupView), {
+                handleSubmit: handleSubmit
+            }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 81,
+                lineNumber: 78,
                 columnNumber: 9
-            }, undefined)
+            }, undefined),
+            " "
         ]
     }, void 0, true);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 87,
+        lineNumber: 84,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>{
-                    setUser(null);
-                    setToken(null);
-                    localStorage.clear();
-                },
+                onClick: handleLogout,
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 92,
+                lineNumber: 89,
                 columnNumber: 7
             }, undefined),
+            " ",
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                     movie: movie,
                     onMovieClick: ()=>handleMovieClick(movie)
                 }, movie.id, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 94,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, undefined)),
             selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
                 movie: selectedMovie
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 102,
+                lineNumber: 99,
                 columnNumber: 25
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 91,
+        lineNumber: 88,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "GYPDns8t+si3oE2l/pVLRycm54I=");
+_s(MainView, "j410z2XArPl2ne0esG0fGC2C2Ig=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -28415,7 +28410,7 @@ const LoginView = ({ onLoggedIn })=>{
             access: username,
             secret: password
         };
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28535,7 +28530,15 @@ const SignupView = ()=>{
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const [birthdate, setBirthdate] = (0, _react.useState)("");
-    const handleSubmit = (event)=>{};
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        console.log("Form submitted with the following data:", {
+            username,
+            password,
+            email,
+            birthdate
+        });
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
         onSubmit: handleSubmit,
         children: [
@@ -28550,13 +28553,13 @@ const SignupView = ()=>{
                         minLength: "3"
                     }, void 0, false, {
                         fileName: "src/components/signupView/sign-up-view.jsx",
-                        lineNumber: 15,
+                        lineNumber: 24,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signupView/sign-up-view.jsx",
-                lineNumber: 13,
+                lineNumber: 22,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28566,25 +28569,6 @@ const SignupView = ()=>{
                         type: "password",
                         value: password,
                         onChange: (e)=>setPassword(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signupView/sign-up-view.jsx",
-                        lineNumber: 25,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signupView/sign-up-view.jsx",
-                lineNumber: 23,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Email:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "email",
-                        value: email,
-                        onChange: (e)=>setEmail(e.target.value),
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signupView/sign-up-view.jsx",
@@ -28599,11 +28583,11 @@ const SignupView = ()=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
-                    "Birthday:",
+                    "Email:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "date",
-                        value: birthdate,
-                        onChange: (e)=>setBirthdate(e.target.value),
+                        type: "email",
+                        value: email,
+                        onChange: (e)=>setEmail(e.target.value),
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signupView/sign-up-view.jsx",
@@ -28616,18 +28600,37 @@ const SignupView = ()=>{
                 lineNumber: 41,
                 columnNumber: 7
             }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Birthday:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "date",
+                        value: birthdate,
+                        onChange: (e)=>setBirthdate(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/signupView/sign-up-view.jsx",
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signupView/sign-up-view.jsx",
+                lineNumber: 50,
+                columnNumber: 7
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 type: "submit",
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signupView/sign-up-view.jsx",
-                lineNumber: 50,
+                lineNumber: 59,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signupView/sign-up-view.jsx",
-        lineNumber: 12,
+        lineNumber: 21,
         columnNumber: 5
     }, undefined);
 };

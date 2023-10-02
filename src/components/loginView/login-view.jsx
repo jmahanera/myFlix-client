@@ -13,7 +13,7 @@ export const LoginView = ({ onLoggedIn }) => {
       secret: password
     };
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

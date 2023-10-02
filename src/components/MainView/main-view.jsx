@@ -12,11 +12,7 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  // State variables for signup form fields
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthDate, setBirthday] = useState("");
+
 
   const handleSubmit = (event) => {
   event.preventDefault();
@@ -25,10 +21,11 @@ export const MainView = () => {
     username: username,
     password: password,
     email: email,
-    birthDate: birthDate
+    birthdate: birthdate
+
   };
 
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/", {
+  fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/signup", {
     method: "POST",
     body: JSON.stringify(signupData), 
     headers: {
@@ -78,7 +75,7 @@ export const MainView = () => {
           setToken(token);
         }} />
         or
-        <SignupView />
+        <SignupView handleSubmit={handleSubmit} /> {/* Added handleSubmit prop */}
       </>
     );
   }
@@ -87,9 +84,9 @@ export const MainView = () => {
     return <div>The list is empty!</div>;
   }
 
-  return (
+   return (
     <div>
-      <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+      <button onClick={handleLogout}>Logout</button> {/* Use handleLogout here */}
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
@@ -103,3 +100,4 @@ export const MainView = () => {
     </div>
   );
 };
+
