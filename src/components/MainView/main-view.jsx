@@ -50,7 +50,7 @@ export const MainView = () => {
 
   useEffect(() => {
     if (token) {
-      fetch("https://primemovies-39075872fbeb.herokuapp.com/", {
+      fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => response.json())
