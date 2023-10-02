@@ -33,7 +33,7 @@ export const LoginView = ({ onLoggedIn }) => {
       })
       .catch(error => {
    console.error("Error:", error);
-   setLoginMessage("An error occurred during login. Check console for details.");
+   setLoginMessage("An error occurred during login. Check console");
 })
     .catch(error => {
       console.error("Error:", error);
