@@ -27287,7 +27287,14 @@ const MainView = ()=>{
                     fileName: "src/components/MainView/main-view.jsx",
                     lineNumber: 104,
                     columnNumber: 9
-                }, undefined))
+                }, undefined)),
+            selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                movie: selectedMovie
+            }, void 0, false, {
+                fileName: "src/components/MainView/main-view.jsx",
+                lineNumber: 112,
+                columnNumber: 25
+            }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",

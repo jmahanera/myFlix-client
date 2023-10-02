@@ -107,6 +107,9 @@ export const MainView = () => {
           onMovieClick={() => handleMovieClick(movie)}
         />
       ))}
+
+      {/* Display MovieView when a movie is selected */}
+      {selectedMovie && <MovieView movie={selectedMovie} />}
     </div>
   );
 };
