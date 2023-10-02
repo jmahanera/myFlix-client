@@ -17,7 +17,7 @@ export const SignupView = () => {
           birthdate: birthdate
    };
    
-   fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/signup", {
+   fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
     method: "POST",
     body: JSON.stringify(data), 
     headers: {

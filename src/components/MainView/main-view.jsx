@@ -4,6 +4,16 @@ import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
 
+const handleLogout = () => {
+      setUser(null);
+      setToken(null);
+  };
+  
+  // Define handleMovieClick outside MainView
+const handleMovieClick = (movie) => {
+  setSelectedMovie(movie);
+};
+
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -12,41 +22,26 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-
-
-  const handleSubmit = (event) => {
+   const handleSubmit = (event) => {
     event.preventDefault();
-  
-    const signupData = {
-      username: username,
-      password: password,
-      email: email,
-      birthdate: birthdate
-
-    };
 
   
     useEffect(() => {
-      if (token) {
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-          .then((response) => response.json())
-          .then((movies) => {
-            setMovies(movies);
-          })
-          .catch((error) => console.error("Error fetching movies:", error));
-      }
-    }, [token]);
+   if (!token) return;
 
-    const handleMovieClick = (movie) => {
-      setSelectedMovie(movie);
-    };
+   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+     headers: { Authorization: `Bearer ${token}` },
+   })
+     .then((response) => response.json())
+     .then((movies) => {
+       setMovies(movies);
 
-    const handleLogout = () => {
-      setUser(null);
-      setToken(null);
-    };
+     });
+ }, [token])
+      .catch((error) => console.error("Error fetching movies:", error));
+ 
+
+    
 
     if (!user) {
       return (
@@ -79,6 +74,6 @@ export const MainView = () => {
         {/* Display MovieView when a movie is selected */}
         {selectedMovie && <MovieView movie={selectedMovie} />}
       </div>
-    );
+    )
   };
-}
+};

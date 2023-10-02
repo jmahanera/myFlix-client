@@ -1,9 +1,14 @@
-import React, { useState } from "react";
 
-export const LoginView = ({ onLoggedIn }) => {
+import React, { useState } from "react";
+import { useDispatch } from "react-dom";
+
+export const LoginView = ({ }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginMessage, setLoginMessage] = useState("");
+  
+
+const dispatch = useDispatch();
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
