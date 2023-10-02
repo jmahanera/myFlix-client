@@ -27212,7 +27212,7 @@ const MainView = ()=>{
         });
     };
     (0, _react.useEffect)(()=>{
-        if (token) fetch("https://primemovies-39075872fbeb.herokuapp.com/", {
+        if (token) fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -28548,53 +28548,58 @@ const SignupView = ()=>{
                     "Username:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "text",
-                        placeholder: "Username",
-                        value: props.username,
-                        onChange: (e)=>props.setUsername(e.target.value),
-                        required: true
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value),
+                        required: true,
+                        minLength: "3"
                     }, void 0, false, {
                         fileName: "src/components/signupView/signup-view.jsx",
                         lineNumber: 15,
-                        columnNumber: 3
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password",
-                        placeholder: "Password",
-                        value: props.password,
-                        onChange: (e)=>props.setPassword(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signupView/signup-view.jsx",
-                        lineNumber: 23,
-                        columnNumber: 1
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "email",
-                        placeholder: "Email",
-                        value: props.email,
-                        onChange: (e)=>props.setEmail(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signupView/signup-view.jsx",
-                        lineNumber: 31,
-                        columnNumber: 1
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
-                        placeholder: "Birth Date",
-                        value: props.birthDate,
-                        onChange: (e)=>props.setBirthday(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signupView/signup-view.jsx",
-                        lineNumber: 39,
-                        columnNumber: 1
+                        columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signupView/signup-view.jsx",
                 lineNumber: 13,
-                columnNumber: 3
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Password:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "password",
+                        value: password,
+                        onChange: (e)=>setPassword(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/signupView/signup-view.jsx",
+                        lineNumber: 25,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signupView/signup-view.jsx",
+                lineNumber: 23,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Email:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "email",
+                        value: email,
+                        onChange: (e)=>setEmail(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/signupView/signup-view.jsx",
+                        lineNumber: 34,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signupView/signup-view.jsx",
+                lineNumber: 32,
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
@@ -28609,13 +28614,13 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signupView/signup-view.jsx",
-                        lineNumber: 49,
+                        lineNumber: 43,
                         columnNumber: 3
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signupView/signup-view.jsx",
-                lineNumber: 47,
+                lineNumber: 41,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28623,14 +28628,14 @@ const SignupView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signupView/signup-view.jsx",
-                lineNumber: 59,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signupView/signup-view.jsx",
         lineNumber: 12,
-        columnNumber: 3
+        columnNumber: 5
     }, undefined);
 };
 _s(SignupView, "dAOkCMVGFSCaXJuRasO3rVoYYG8=");
