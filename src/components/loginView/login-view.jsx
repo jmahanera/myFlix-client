@@ -1,13 +1,10 @@
 
 import React, { useState } from "react";
-import { useDispatch } from "react-dom";
+
 
 export const LoginView = ({ }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
-
-const dispatch = useDispatch();
   
 
   const handleSubmit = (event) => {
