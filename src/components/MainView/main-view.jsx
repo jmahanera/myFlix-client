@@ -75,7 +75,7 @@ export const MainView = () => {
           />
         ))}
 
-        {/* Display MovieView when a movie is selected */}
+        // Display MovieView when a movie is selected 
         {selectedMovie && <MovieView movie={selectedMovie} />}
       </div>
     )
