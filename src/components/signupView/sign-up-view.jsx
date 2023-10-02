@@ -9,13 +9,34 @@ export const SignupView = () => {
  const handleSubmit = (event) => {
    event.preventDefault();
    
-   console.log("Form submitted with the following data:", {
-      username,
-      password,
-      email,
-      birthdate,
-    });
-  };
+   //data to place in
+        const data = {
+          username: username,
+          password: password,
+          email: email,
+          birthdate: birthdate
+   };
+   
+   fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/signup", {
+    method: "POST",
+    body: JSON.stringify(data), 
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then((response) => {
+    if (response.ok) {
+      alert("Signup successful");
+      window.location.reload();
+    } else {
+      alert("Signup failed");
+    }
+  })
+  .catch((error) => {
+    console.error("Error signing up:", error);
+  });
+};
+
 
   return (
     <form onSubmit={handleSubmit}>

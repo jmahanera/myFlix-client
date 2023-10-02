@@ -15,28 +15,25 @@ export const LoginView = ({ onLoggedIn }) => {
 
     console.log("Login request data: ", data);
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/login", {
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
     })
-   .then((response) => response.json())
+    .then((response) => response.json()) //changes response to a json object so it can extract the jwt
       .then((data) => {
-        console.log("Login response: ", data);
-
-         if (data.user) {
+        if (data.user) {
+          dispatch(setUser({ user: data.user, token: data.token }));
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
         } else {
-          alert("No such user");
+          alert("Incorrect username and/or password, or user doesn't exist");
         }
       })
-          .catch((error) => {
-        console.error("Error during login:", error);
-        setLoginMessage("An error occurred during login. Check console for details.");
+      .catch((e) => {
+        alert("Something went wrong with login");
       });
   };
 

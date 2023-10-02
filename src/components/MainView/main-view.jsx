@@ -15,89 +15,70 @@ export const MainView = () => {
 
 
   const handleSubmit = (event) => {
-  event.preventDefault();
+    event.preventDefault();
   
-  const signupData = {
-    username: username,
-    password: password,
-    email: email,
-    birthdate: birthdate
+    const signupData = {
+      username: username,
+      password: password,
+      email: email,
+      birthdate: birthdate
 
-  };
+    };
 
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/auth/signup", {
-    method: "POST",
-    body: JSON.stringify(signupData), 
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then((response) => {
-    if (response.ok) {
-      alert("Signup successful");
-      window.location.reload();
-    } else {
-      alert("Signup failed");
-    }
-  })
-  .catch((error) => {
-    console.error("Error signing up:", error);
-  });
-};
-
-  useEffect(() => {
-    if (token) {
-      fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((response) => response.json())
-        .then((movies) => {
-          setMovies(movies);
+  
+    useEffect(() => {
+      if (token) {
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+          headers: { Authorization: `Bearer ${token}` },
         })
-        .catch((error) => console.error("Error fetching movies:", error));
+          .then((response) => response.json())
+          .then((movies) => {
+            setMovies(movies);
+          })
+          .catch((error) => console.error("Error fetching movies:", error));
+      }
+    }, [token]);
+
+    const handleMovieClick = (movie) => {
+      setSelectedMovie(movie);
+    };
+
+    const handleLogout = () => {
+      setUser(null);
+      setToken(null);
+    };
+
+    if (!user) {
+      return (
+        <>
+          <LoginView onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }} />
+          or
+          <SignupView handleSubmit={handleSubmit} /> {/* Added handleSubmit prop */}
+        </>
+      );
     }
-  }, [token]);
 
-  const handleMovieClick = (movie) => {
-    setSelectedMovie(movie);
-  };
+    if (movies.length === 0) {
+      return <div>The list is empty!</div>;
+    }
 
-  const handleLogout = () => {
-    setUser(null);
-    setToken(null);
-  };
-
-  if (!user) {
     return (
-      <>
-        <LoginView onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }} />
-        or
-        <SignupView handleSubmit={handleSubmit} /> {/* Added handleSubmit prop */}
-      </>
+      <div>
+        <button onClick={handleLogout}>Logout</button> {/* Use handleLogout here */}
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onMovieClick={() => handleMovieClick(movie)}
+          />
+        ))}
+
+        {/* Display MovieView when a movie is selected */}
+        {selectedMovie && <MovieView movie={selectedMovie} />}
+      </div>
     );
-  }
-
-  if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-  }
-
-   return (
-    <div>
-      <button onClick={handleLogout}>Logout</button> {/* Use handleLogout here */}
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={() => handleMovieClick(movie)}
-        />
-      ))}
-
-      {/* Display MovieView when a movie is selected */}
-      {selectedMovie && <MovieView movie={selectedMovie} />}
-    </div>
-  );
-};
-
+  };
+}
