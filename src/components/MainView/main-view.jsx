@@ -10,7 +10,7 @@ const handleLogout = () => {
   };
   
   // Define handleMovieClick outside MainView
-const handleMovieClick = (movie) => {
+const onMovieClick = (movie) => {
   setSelectedMovie(movie);
 };
 
@@ -22,39 +22,43 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-   const handleSubmit = (event) => {
-    event.preventDefault();
-
   
     useEffect(() => {
-   if (!token) return;
+  if (!token) return;
 
-   fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
-     headers: { Authorization: `Bearer ${token}` },
-   })
-     .then((response) => response.json())
+  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+   .then((response) => response.json())
      .then((movies) => {
        setMovies(movies);
 
      });
- }, [token])
-      .catch((error) => console.error("Error fetching movies:", error));
- 
+ }, [token]);
 
+      
+ const handleSubmit = (event) => {
+    event.preventDefault();
     
 
     if (!user) {
       return (
         <>
-          <LoginView onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }} />
+          <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />
+
           or
-          <SignupView handleSubmit={handleSubmit} /> {/* Added handleSubmit prop */}
+         <SignupView handleSubmit={handleSubmit} />
         </>
       );
-    }
+   }
+   
+   return (
+    <div>
+      <button onClick={handleLogout}>Logout</button>
+      {/* Rest of the code */}
+    </div>
+  );
+};
 
     if (movies.length === 0) {
       return <div>The list is empty!</div>;
@@ -62,12 +66,12 @@ export const MainView = () => {
 
     return (
       <div>
-        <button onClick={handleLogout}>Logout</button> {/* Use handleLogout here */}
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
         {movies.map((movie) => (
           <MovieCard
             key={movie.id}
             movie={movie}
-            onMovieClick={() => handleMovieClick(movie)}
+            onMovieClick={() => onMovieClick(movie)}
           />
         ))}
 
@@ -76,4 +80,4 @@ export const MainView = () => {
       </div>
     )
   };
-};
+

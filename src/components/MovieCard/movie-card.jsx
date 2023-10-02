@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 
 // The MovieCard function component
 export const MovieCard = ({ movie, onMovieClick }) => {
-  const [count, setCount] = useState(0);
+  const { title, director, genre } = movie;
 
-  return (
-    <div onClick={() => onMovieClick(movie)}>
-  {movie.title}
-</div>
+ return (
+    <div onClick={() => onMovieClick()}>
+      <h2>Title: {title}</h2>
+      <p>Director: {director}</p>
+      <p>Genre: {genre}</p>
+      
+    </div>
   );
 };
 
