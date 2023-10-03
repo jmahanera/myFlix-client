@@ -5,38 +5,46 @@ export const LoginView = ({ onLoggedIn }) => {
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
 
-  // Rest of the component logic
-
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const data = {
-      access: username,
-      secret: password
-    };
-  
+  const data = {
+    access: username,
+    secret: password
+  };
 
-    console.log("Login request data: ", data);
+  console.log("Login request data: ", data);
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+  fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
     })
-      .then((response) => response.json()) // Changes response to a JSON object
-      .then((data) => {
-        if (data.user) {
-          onLoggedIn(data.user, data.token);
-          localStorage.setItem('user', JSON.stringify(data.user));
-          localStorage.setItem('token', data.token);
-        } else {
-          alert("Incorrect username and/or password, or user doesn't exist");
-        }
-      })
-  }
+    .then((data) => {
+      if (data.user) {
+        onLoggedIn(data.user, data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('token', data.token);
+        setLoginMessage('Login successful!');
+      } else {
+        setLoginMessage('Incorrect username and/or password, or user doesn\'t exist');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      setLoginMessage('Login error. Please try again.');
+    });
+};
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

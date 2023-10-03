@@ -4,78 +4,69 @@ import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
 
-const handleLogout = () => {
-      setUser(null);
-      setToken(null);
-  };
-  
-  // Define handleMovieClick outside MainView
-const onMovieClick = (movie) => {
-  setSelectedMovie(movie);
-};
-
-export const MainView = () => { }
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser || null);
-  const [token, setToken] = useState(storedToken || null);
+export const MainView = () => {
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  
-    useEffect(() => {
-  if (!token) return;
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
 
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-   .then((response) => response.json())
-     .then((movies) => {
-       setMovies(movies);
+    if (storedUser && storedToken) {
+      setUser(storedUser);
+      setToken(storedToken);
+    }
+  }, []);
 
-     });
- }, [token]);
+  useEffect(() => {
+    if (!token) return;
 
-      
- const handleSubmit = (event) => {
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => response.json())
+      .then((movies) => {
+        setMovies(movies);
+      });
+  }, [token]);
+
+  const handleLogout = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
+
+  const onMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    
+    // Handle submit logic
+  };
 
-    if (!user) {
-      return (
-  <>
-    <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />
-    <SignupView handleSubmit={handleSubmit} />
-  </>
-);
+  if (!user) {
+    return (
+      <>
+        <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />
+        <SignupView handleSubmit={handleSubmit} />
+      </>
+    );
+  }
 
-   
-   return (
+  if (movies.length === 0) {
+    return <div>The list is empty!</div>;
+  }
+
+  return (
     <div>
       <button onClick={handleLogout}>Logout</button>
-      {/* Rest of the code */}
+      {movies.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} onMovieClick={() => onMovieClick(movie)} />
+      ))}
+      {selectedMovie && <MovieView movie={selectedMovie} />}
     </div>
   );
 };
-
-    if (movies.length === 0) {
-      return <div>The list is empty!</div>;
-    }
-
-    return (
-      <div>
-        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onMovieClick={() => onMovieClick(movie)}
-          />
-        ))}
-
-        // Display MovieView when a movie is selected 
-        {selectedMovie && <MovieView movie={selectedMovie} />}
-      </div>
-    )
-  };
-
