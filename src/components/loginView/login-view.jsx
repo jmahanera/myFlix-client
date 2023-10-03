@@ -24,20 +24,12 @@ export const LoginView = ({ onLoggedIn }) => {
     body: JSON.stringify(data)
   })
     .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+      console.log("Response status: ", response.status);
       return response.json();
     })
     .then((data) => {
-      if (data.user) {
-        onLoggedIn(data.user, data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        localStorage.setItem('token', data.token);
-        setLoginMessage('Login successful!');
-      } else {
-        setLoginMessage('Incorrect username and/or password, or user doesn\'t exist');
-      }
+      console.log("Response data: ", data);
+      // Rest of your code for handling the response
     })
     .catch((error) => {
       console.error('Error:', error);
