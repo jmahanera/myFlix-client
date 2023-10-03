@@ -1,3 +1,4 @@
+// login-view.jsx
 import React, { useState } from "react";
 
 export const LoginView = ({ onLoggedIn }) => {
@@ -15,7 +16,6 @@ export const LoginView = ({ onLoggedIn }) => {
 
     console.log("Data to be sent to server: ", data);
 
-    
     fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
       method: "POST",
       headers: {
@@ -25,22 +25,20 @@ export const LoginView = ({ onLoggedIn }) => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Login failed. Please check your credentials.");
         }
-        return response.json();
+        return res.json();
       })
       .then((data) => {
         console.log("Response data: ", data);
 
-        // Handle the response from the server based on the application's logic
-        // For example, update UI, store tokens, etc.
-
-        // Call onLoggedIn when needed
-        onLoggedIn();
+        // Update UI or store tokens as needed
+        const { user, token } = data;
+        onLoggedIn(user, token);
       })
       .catch((error) => {
-        console.error('Error:', error);
-        setLoginMessage('Login error. Please try again.');
+        console.error("Error:", error.message);
+        setLoginMessage("Login error. Please try again.");
       });
   };
 

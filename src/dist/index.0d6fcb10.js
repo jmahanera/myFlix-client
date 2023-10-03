@@ -6923,6 +6923,7 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$0e21.prelude(module);
 
 try {
+// login-view.jsx
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LoginView", ()=>LoginView);
@@ -6949,16 +6950,15 @@ const LoginView = ({ onLoggedIn })=>{
             },
             body: JSON.stringify(data)
         }).then((res)=>{
-            if (!res.ok) throw new Error("Network response was not ok");
-            return response.json();
+            if (!res.ok) throw new Error("Login failed. Please check your credentials.");
+            return res.json();
         }).then((data)=>{
             console.log("Response data: ", data);
-            // Handle the response from the server based on the application's logic
-            // For example, update UI, store tokens, etc.
-            // Call onLoggedIn when needed
-            onLoggedIn();
+            // Update UI or store tokens as needed
+            const { user, token } = data;
+            onLoggedIn(user, token);
         }).catch((error)=>{
-            console.error("Error:", error);
+            console.error("Error:", error.message);
             setLoginMessage("Login error. Please try again.");
         });
     };
@@ -6978,13 +6978,13 @@ const LoginView = ({ onLoggedIn })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/loginView/login-view.jsx",
-                                lineNumber: 54,
+                                lineNumber: 52,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 52,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -6997,13 +6997,13 @@ const LoginView = ({ onLoggedIn })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/loginView/login-view.jsx",
-                                lineNumber: 63,
+                                lineNumber: 61,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 61,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -7011,26 +7011,26 @@ const LoginView = ({ onLoggedIn })=>{
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 70,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 51,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined),
             loginMessage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: loginMessage
             }, void 0, false, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 73,
+                lineNumber: 71,
                 columnNumber: 24
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/loginView/login-view.jsx",
-        lineNumber: 50,
+        lineNumber: 48,
         columnNumber: 5
     }, undefined);
 };
