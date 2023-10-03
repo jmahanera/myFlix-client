@@ -6942,15 +6942,14 @@ const LoginView = ({ onLoggedIn })=>{
             secret: password
         };
         console.log("Data to be sent to server: ", data);
-        // Make a POST request to the server to log in
         fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        }).then((response)=>{
-            if (!response.ok) throw new Error("Network response was not ok");
+        }).then((res)=>{
+            if (!res.ok) throw new Error("Network response was not ok");
             return response.json();
         }).then((data)=>{
             console.log("Response data: ", data);

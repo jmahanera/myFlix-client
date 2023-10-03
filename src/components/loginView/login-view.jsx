@@ -15,7 +15,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
     console.log("Data to be sent to server: ", data);
 
-    // Make a POST request to the server to log in
+    
     fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
       method: "POST",
       headers: {
@@ -23,8 +23,8 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data)
     })
-      .then((response) => {
-        if (!response.ok) {
+      .then((res) => {
+        if (!res.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
