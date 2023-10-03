@@ -14,7 +14,7 @@ const onMovieClick = (movie) => {
   setSelectedMovie(movie);
 };
 
-export const MainView = () => {
+export const MainView = () => { }
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser || null);
@@ -43,14 +43,12 @@ export const MainView = () => {
 
     if (!user) {
       return (
-        <>
-          <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />
+  <>
+    <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />
+    <SignupView handleSubmit={handleSubmit} />
+  </>
+);
 
-          or
-         <SignupView handleSubmit={handleSubmit} />
-        </>
-      );
-   }
    
    return (
     <div>
