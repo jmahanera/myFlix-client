@@ -5,18 +5,18 @@ export const LoginView = ({ onLoggedIn }) => {
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
 
-
   const handleSubmit = (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const data = {
-    access: username,
-    secret: password
-  };
+    const data = {
+      access: username,
+      secret: password
+    };
 
-  //console.log("Login request data: ", data);
+    console.log("Data to be sent to server: ", data);
 
-   fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
+    // Make a POST request to the server to log in
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -24,13 +24,17 @@ export const LoginView = ({ onLoggedIn }) => {
       body: JSON.stringify(data)
     })
       .then((response) => {
-        console.log("Response status: ", response.status);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         return response.json();
       })
       .then((data) => {
         console.log("Response data: ", data);
-        // Rest of code for handling the respons
-        
+
+        // Handle the response from the server based on the application's logic
+        // For example, update UI, store tokens, etc.
+
         // Call onLoggedIn when needed
         onLoggedIn();
       })
@@ -40,6 +44,7 @@ export const LoginView = ({ onLoggedIn }) => {
       });
   };
 
+  console.log("Rendering login view...");
 
   return (
     <div>
