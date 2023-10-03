@@ -6953,7 +6953,7 @@ const LoginView = ({ onLoggedIn })=>{
             return response.json();
         }).then((data)=>{
             console.log("Response data: ", data);
-        // Rest of your code for handling the response
+        // Rest of code for handling the response
         }).catch((error)=>{
             console.error("Error:", error);
             setLoginMessage("Login error. Please try again.");
@@ -6974,13 +6974,13 @@ const LoginView = ({ onLoggedIn })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/loginView/login-view.jsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 43,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -6993,13 +6993,13 @@ const LoginView = ({ onLoggedIn })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/loginView/login-view.jsx",
-                                lineNumber: 54,
+                                lineNumber: 55,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 52,
+                        lineNumber: 53,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -7007,26 +7007,26 @@ const LoginView = ({ onLoggedIn })=>{
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 61,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 42,
+                lineNumber: 43,
                 columnNumber: 7
             }, undefined),
             loginMessage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: loginMessage
             }, void 0, false, {
                 fileName: "src/components/loginView/login-view.jsx",
-                lineNumber: 64,
+                lineNumber: 65,
                 columnNumber: 24
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/loginView/login-view.jsx",
-        lineNumber: 41,
+        lineNumber: 42,
         columnNumber: 5
     }, undefined);
 };

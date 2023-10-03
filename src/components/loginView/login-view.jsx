@@ -29,13 +29,14 @@ export const LoginView = ({ onLoggedIn }) => {
     })
     .then((data) => {
       console.log("Response data: ", data);
-      // Rest of your code for handling the response
+      // Rest of code for handling the response
     })
     .catch((error) => {
       console.error('Error:', error);
       setLoginMessage('Login error. Please try again.');
     });
 };
+
 
   return (
     <div>
