@@ -6941,7 +6941,7 @@ const LoginView = ({ onLoggedIn })=>{
             access: username,
             secret: password
         };
-        console.log("Login request data: ", data);
+        //console.log("Login request data: ", data);
         fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
             method: "POST",
             headers: {
