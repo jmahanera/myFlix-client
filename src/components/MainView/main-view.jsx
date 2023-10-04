@@ -28,6 +28,7 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((movies) => {
+        console.log("movies from Api", movies)
         setMovies(movies);
       });
   }, [token]);
@@ -60,13 +61,23 @@ export const MainView = () => {
     return <div>The list is empty!</div>;
   }
 
+  // MainView Component
+  // ...
   return (
     <div>
       <button onClick={handleLogout}>Logout</button>
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} onMovieClick={() => onMovieClick(movie)} />
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={() => onMovieClick(movie)}
+        />
       ))}
-      {selectedMovie && <MovieView movie={selectedMovie} />}
+      {selectedMovie && (
+        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+      )}
     </div>
   );
-};
+}
+// ...
+

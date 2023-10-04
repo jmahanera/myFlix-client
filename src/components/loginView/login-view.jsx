@@ -10,8 +10,8 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password
+      username: username,
+      password: password
     };
 
     console.log("Data to be sent to server: ", data);
@@ -23,14 +23,14 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data)
     })
-      .then((res) => {
+      .then((res) => { console.log ("response", res)
         if (!res.ok) {
           throw new Error("Login failed. Please check your credentials.");
         }
         return res.json();
       })
       .then((data) => {
-        console.log("Response data: ", data);
+        console.log("response data: ", data);
 
         // Update UI or store tokens as needed
         const { user, token } = data;
@@ -38,7 +38,7 @@ export const LoginView = ({ onLoggedIn }) => {
       })
       .catch((error) => {
         console.error("Error:", error.message);
-        setLoginMessage("Login error. Please try again.");
+        setLoginMessage();
       });
   };
 

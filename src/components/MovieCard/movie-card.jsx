@@ -1,15 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types";  // Import PropTypes from the correct location
 
-// The MovieCard function component
+// MovieCard Component
 export const MovieCard = ({ movie, onMovieClick }) => {
-  const { title, director, genre } = movie;
+  const { title, description, genre } = movie;
 
   return (
     <div onClick={() => onMovieClick()}>
       <h2>Title: {title}</h2>
-      <p>Director: {director}</p>
-      <p>Genre: {genre}</p>
+      <p>Description: {description}</p>
+      <p>Genre: {genre.name}</p> {/* Extract genre name */}
     </div>
   );
 };
@@ -17,7 +17,10 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
+    genre: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,
 };
