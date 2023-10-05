@@ -27180,6 +27180,8 @@ const MainView = ()=>{
     const [token, setToken] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const movieListRef = (0, _react.useRef)(null);
+    const movieViewRef = (0, _react.useRef)(null);
     (0, _react.useEffect)(()=>{
         const storedUser = JSON.parse(localStorage.getItem("user"));
         const storedToken = localStorage.getItem("token");
@@ -27208,6 +27210,17 @@ const MainView = ()=>{
     };
     const onMovieClick = (movie)=>{
         setSelectedMovie(movie);
+        // Scroll to the selected movie title
+        const selectedMovieElement = document.getElementById(`movie-${movie.id}`);
+        if (selectedMovieElement) selectedMovieElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+        // Scroll to the top of the movie view
+        if (movieViewRef.current) movieViewRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     };
     const handleSubmit = (event)=>{
         event.preventDefault();
@@ -27222,27 +27235,25 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 55,
+                lineNumber: 69,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpView.SignupView), {
                 handleSubmit: handleSubmit
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 56,
+                lineNumber: 70,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "The list is empty!"
+        children: "API is not Rendering Response"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 62,
+        lineNumber: 76,
         columnNumber: 12
     }, undefined);
-    // MainView Component
-    // ...
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27250,34 +27261,48 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 69,
+                lineNumber: 81,
                 columnNumber: 7
             }, undefined),
-            movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                    movie: movie,
-                    onMovieClick: ()=>onMovieClick(movie)
-                }, movie.id, false, {
-                    fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 71,
-                    columnNumber: 9
-                }, undefined)),
-            selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-                movie: selectedMovie,
-                onBackClick: ()=>setSelectedMovie(null)
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                ref: movieListRef,
+                children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                        movie: movie,
+                        onMovieClick: ()=>onMovieClick(movie),
+                        id: `movie.image-${movie.id}`
+                    }, movie.id, false, {
+                        fileName: "src/components/MainView/main-view.jsx",
+                        lineNumber: 84,
+                        columnNumber: 11
+                    }, undefined))
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 78,
+                lineNumber: 82,
+                columnNumber: 7
+            }, undefined),
+            selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                    movie: selectedMovie,
+                    onBackClick: ()=>setSelectedMovie(null),
+                    movieViewRef: movieViewRef
+                }, void 0, false, {
+                    fileName: "src/components/MainView/main-view.jsx",
+                    lineNumber: 94,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/MainView/main-view.jsx",
+                lineNumber: 93,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 68,
+        lineNumber: 80,
         columnNumber: 5
     }, undefined);
-} // ...
-;
-_s(MainView, "NAvwIhqtRQbZ7xvjrNbRyWNk8Zg=");
+};
+_s(MainView, "GVkqwkxErur987PzU54sE3yHmmg=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27313,12 +27338,12 @@ const MovieCard = ({ movie, onMovieClick })=>{
             ]
         }, void 0, true, {
             fileName: "src/components/MovieCard/movie-card.jsx",
-            lineNumber: 10,
+            lineNumber: 12,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 9,
+        lineNumber: 11,
         columnNumber: 5
     }, undefined);
 };
@@ -28263,13 +28288,26 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$5d84.prelude(module);
 
 try {
-// MovieView Component
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieView", ()=>MovieView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const MovieView = ({ movie, onBackClick })=>{
+var _react = require("react"); // Ensure useEffect is imported from React
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$();
+const MovieView = ({ movie, onBackClick, movieViewRef })=>{
+    _s();
+    (0, _react.useEffect)(()=>{
+        // Scroll to the top of the movie view
+        if (movieViewRef.current) movieViewRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, [
+        movieViewRef
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        ref: movieViewRef,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
@@ -28279,12 +28317,12 @@ const MovieView = ({ movie, onBackClick })=>{
                             alt: movie.title
                         }, void 0, false, {
                             fileName: "src/components/MovieView/movie-view.jsx",
-                            lineNumber: 7,
+                            lineNumber: 16,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 6,
+                        lineNumber: 15,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28293,20 +28331,20 @@ const MovieView = ({ movie, onBackClick })=>{
                                 children: "Title: "
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 10,
+                                lineNumber: 19,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: movie.title
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 11,
+                                lineNumber: 20,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 9,
+                        lineNumber: 18,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28315,20 +28353,20 @@ const MovieView = ({ movie, onBackClick })=>{
                                 children: "Description: "
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 14,
+                                lineNumber: 23,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: movie.description
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 15,
+                                lineNumber: 24,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 13,
+                        lineNumber: 22,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28337,21 +28375,20 @@ const MovieView = ({ movie, onBackClick })=>{
                                 children: "Genre: "
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 18,
+                                lineNumber: 27,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: movie.genre.name
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 19,
+                                lineNumber: 28,
                                 columnNumber: 11
-                            }, undefined),
-                            " "
+                            }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 17,
+                        lineNumber: 26,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28360,27 +28397,26 @@ const MovieView = ({ movie, onBackClick })=>{
                                 children: "Actors: "
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 22,
+                                lineNumber: 31,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: movie.actors
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 23,
+                                lineNumber: 32,
                                 columnNumber: 11
-                            }, undefined),
-                            " "
+                            }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 21,
-                        columnNumber: 10
+                        lineNumber: 30,
+                        columnNumber: 9
                     }, undefined)
                 ]
             }, movie.id, true, {
                 fileName: "src/components/MovieView/movie-view.jsx",
-                lineNumber: 5,
+                lineNumber: 14,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28388,16 +28424,17 @@ const MovieView = ({ movie, onBackClick })=>{
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/MovieView/movie-view.jsx",
-                lineNumber: 27,
+                lineNumber: 36,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MovieView/movie-view.jsx",
-        lineNumber: 4,
+        lineNumber: 13,
         columnNumber: 5
     }, undefined);
 };
+_s(MovieView, "OD7bBpZva5O2jO+Puf00hKivP7c=");
 _c = MovieView;
 var _c;
 $RefreshReg$(_c, "MovieView");
@@ -28407,7 +28444,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1SeRs":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"1SeRs":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0e21 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

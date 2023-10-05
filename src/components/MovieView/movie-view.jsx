@@ -1,7 +1,16 @@
-// MovieView Component
-export const MovieView = ({ movie, onBackClick }) => {
+import React, { useEffect } from "react";  // Ensure useEffect is imported from React
+
+// MovieView component
+export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
+  useEffect(() => {
+    // Scroll to the top of the movie view
+    if (movieViewRef.current) {
+      movieViewRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [movieViewRef]);
+
   return (
-    <div>
+    <div ref={movieViewRef}>
       <div key={movie.id}>
         <div>
           <img src={movie.imageUrl} alt={movie.title} />
@@ -16,11 +25,11 @@ export const MovieView = ({ movie, onBackClick }) => {
         </div>
         <div>
           <span>Genre: </span>
-          <span>{movie.genre.name}</span> {/* Extract genre name */}
+          <span>{movie.genre.name}</span>
         </div>
-         <div>
+        <div>
           <span>Actors: </span>
-          <span>{movie.actors}</span> {/* Extract Actor names */}
+          <span>{movie.actors}</span>
         </div>
         {/* Add other movie details you want to display */}
       </div>

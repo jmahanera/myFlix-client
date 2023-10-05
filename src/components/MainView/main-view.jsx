@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
-
 
 export const MainView = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const movieListRef = useRef(null);
+  const movieViewRef = useRef(null);
+  
+
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -29,7 +32,7 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((movies) => {
-        console.log("movies from Api", movies)
+        console.log("movies from Api", movies);
         setMovies(movies);
       });
   }, [token]);
@@ -42,6 +45,17 @@ export const MainView = () => {
 
   const onMovieClick = (movie) => {
     setSelectedMovie(movie);
+
+    // Scroll to the selected movie title
+    const selectedMovieElement = document.getElementById(`movie-${movie.id}`);
+    if (selectedMovieElement) {
+      selectedMovieElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Scroll to the top of the movie view
+    if (movieViewRef.current) {
+      movieViewRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const handleSubmit = (event) => {
@@ -59,26 +73,31 @@ export const MainView = () => {
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return <div>API is not Rendering Response</div>;
   }
 
-  // MainView Component
-  // ...
-  return (
+ return (
     <div>
       <button onClick={handleLogout}>Logout</button>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={() => onMovieClick(movie)}
-        />
-      ))}
+      <div ref={movieListRef}>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onMovieClick={() => onMovieClick(movie)}
+            id={`movie.image-${movie.id}`}
+          />
+        ))}
+      </div>
       {selectedMovie && (
-        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        <div>
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={() => setSelectedMovie(null)}
+            movieViewRef={movieViewRef}  // Pass movieViewRef to MovieView
+          />
+        </div>
       )}
     </div>
   );
-}
-// ...
-
+};

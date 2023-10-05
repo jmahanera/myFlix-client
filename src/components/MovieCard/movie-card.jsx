@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";  // Import PropTypes from the correct location
 
+
 // MovieCard Component
 export const MovieCard = ({ movie, onMovieClick }) => {
   const { title } = movie;
+  
 
   return (
     <div onClick={() => onMovieClick()}>

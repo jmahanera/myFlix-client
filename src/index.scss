@@ -3,3 +3,15 @@ $color: steelblue;
 .my-flix {
   color: $color;
 }
+
+/* MovieCard.css */
+
+.movie-card {
+  width: 100%; /* Adjust the width as needed */
+}
+
+.movie-image {
+  width: 100%; /* Make the image take the full width of the parent element */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: cover; /* Ensure the image covers the entire area, preserving aspect ratio */
+}
