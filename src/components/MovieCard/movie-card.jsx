@@ -3,13 +3,11 @@ import PropTypes from "prop-types";  // Import PropTypes from the correct locati
 
 // MovieCard Component
 export const MovieCard = ({ movie, onMovieClick }) => {
-  const { title, description, genre } = movie;
+  const { title } = movie;
 
   return (
     <div onClick={() => onMovieClick()}>
       <h2>Title: {title}</h2>
-      <p>Description: {description}</p>
-      <p>Genre: {genre.name}</p> {/* Extract genre name */}
     </div>
   );
 };
