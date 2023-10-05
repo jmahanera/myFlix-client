@@ -5,15 +5,17 @@ import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
 
 export const MainView = () => {
+  // State for user information
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  // Refs for storing references to DOM elements
   const movieListRef = useRef(null);
   const movieViewRef = useRef(null);
   
-
-
+  // Effect to run when the component mounts to retrieve stored user information
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
@@ -24,6 +26,7 @@ export const MainView = () => {
     }
   }, []);
 
+  // Effect to fetch movies from the API when the token changes
   useEffect(() => {
     if (!token) return;
 
@@ -37,12 +40,14 @@ export const MainView = () => {
       });
   }, [token]);
 
+  // Function to handle user logout
   const handleLogout = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
   };
 
+  // Function to handle when a movie is clicked
   const onMovieClick = (movie) => {
     setSelectedMovie(movie);
 
@@ -58,11 +63,13 @@ export const MainView = () => {
     }
   };
 
+  // Function to handle form submission (currently empty)
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle submit logic
   };
 
+  // Render LoginView and SignupView if user is not logged in
   if (!user) {
     return (
       <>
@@ -72,11 +79,13 @@ export const MainView = () => {
     );
   }
 
+  // Render a message if no movies are available
   if (movies.length === 0) {
     return <div>API is not Rendering Response</div>;
   }
 
- return (
+  // Render the main view with movie cards and MovieView for the selected movie
+  return (
     <div>
       <button onClick={handleLogout}>Logout</button>
       <div ref={movieListRef}>
@@ -85,7 +94,7 @@ export const MainView = () => {
             key={movie.id}
             movie={movie}
             onMovieClick={() => onMovieClick(movie)}
-            id={`movie.image-${movie.id}`}
+            id={`movie.image-${movie.id}`} // ID should be `movie-${movie.id}` for consistency
           />
         ))}
       </div>
@@ -94,7 +103,7 @@ export const MainView = () => {
           <MovieView
             movie={selectedMovie}
             onBackClick={() => setSelectedMovie(null)}
-            movieViewRef={movieViewRef}  // Pass movieViewRef to MovieView
+            movieViewRef={movieViewRef} // Pass movieViewRef to MovieView
           />
         </div>
       )}
