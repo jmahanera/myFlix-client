@@ -27338,6 +27338,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types"); // Import PropTypes from the correct location
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 const MovieCard = ({ movie, onMovieClick })=>{
+    // Destructure the 'movie' object to get the 'title' property
     const { title } = movie;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: ()=>onMovieClick(),
@@ -27353,12 +27354,14 @@ const MovieCard = ({ movie, onMovieClick })=>{
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 11,
+        lineNumber: 10,
         columnNumber: 5
     }, undefined);
 };
 _c = MovieCard;
+// Define the prop types for MovieCard component
 MovieCard.propTypes = {
+    // movie prop should be an object with specific properties
     movie: (0, _propTypesDefault.default).shape({
         title: (0, _propTypesDefault.default).string.isRequired,
         genre: (0, _propTypesDefault.default).shape({
@@ -27366,6 +27369,7 @@ MovieCard.propTypes = {
             name: (0, _propTypesDefault.default).string.isRequired
         }).isRequired
     }).isRequired,
+    // onMovieClick prop should be a function and is required
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
 var _c;
