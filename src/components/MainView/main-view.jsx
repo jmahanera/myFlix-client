@@ -4,6 +4,7 @@ import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
 
+
 export const MainView = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);

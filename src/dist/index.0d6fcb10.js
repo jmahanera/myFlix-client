@@ -5880,14 +5880,14 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 54,
+                lineNumber: 55,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpView.SignupView), {
                 handleSubmit: handleSubmit
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 55,
+                lineNumber: 56,
                 columnNumber: 9
             }, undefined)
         ]
@@ -5896,7 +5896,7 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 61,
+        lineNumber: 62,
         columnNumber: 12
     }, undefined);
     // MainView Component
@@ -5908,7 +5908,7 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 68,
+                lineNumber: 69,
                 columnNumber: 7
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -5916,7 +5916,7 @@ const MainView = ()=>{
                     onMovieClick: ()=>onMovieClick(movie)
                 }, movie.id, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 70,
+                    lineNumber: 71,
                     columnNumber: 9
                 }, undefined)),
             selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -5924,13 +5924,13 @@ const MainView = ()=>{
                 onBackClick: ()=>setSelectedMovie(null)
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 77,
+                lineNumber: 78,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 67,
+        lineNumber: 68,
         columnNumber: 5
     }, undefined);
 } // ...
