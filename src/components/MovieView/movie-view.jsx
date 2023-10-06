@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";  // Ensure useEffect is imported from React
 
+import './movie-view.scss';
+
 // MovieView component
 export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
   useEffect(() => {
@@ -45,7 +47,12 @@ export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
         </div>
         {/* Add other movie details you want to display */}
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <button
+  onClick={onBackClick}
+  className="back-button"
+  style={{ cursor: "pointer" }}>
+  Back
+</button>
     </div>
   );
 };
