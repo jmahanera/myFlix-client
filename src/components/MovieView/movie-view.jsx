@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";  // Ensure useEffect is imported from React
-
+import React, { useEffect } from "react";
 import './movie-view.scss';
 
-// MovieView component
 export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
   useEffect(() => {
     // Scroll to the top of the movie view
@@ -18,41 +16,41 @@ export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
           <img src={movie.imageUrl} alt={movie.title} />
         </div>
         <div>
-          <span>Title: </span>
+          <span className="movie-title">Title: </span>
           <span>{movie.title}</span>
         </div>
         <div>
-          <span>Description: </span>
+          <span className="movie-description">Description: </span>
           <span>{movie.description}</span>
         </div>
         <div>
-          <span>Genre: </span>
+          <span className="movie-genre">Genre: </span>
           <span>{movie.genre.name}</span>
         </div>
         <div>
-          <span>Director: </span>
+          <span className="movie-director">Director: </span>
           <span>{movie.director.name}</span>
         </div>
         <div>
-          <span>Biography: </span>
+          <span className="movie-biography">Biography: </span>
           <span>{movie.director.director_bio}</span>
         </div>
         <div>
-          <span>Birthyear: </span>
+          <span className="movie-birthyear">Birthyear: </span>
           <span>{movie.director.birthyear}</span>
         </div>
         <div>
-          <span>Actors: </span>
+          <span className="movie-actors">Actors: </span>
           <span>{movie.actors}</span>
         </div>
         {/* Add other movie details you want to display */}
       </div>
       <button
-  onClick={onBackClick}
-  className="back-button"
-  style={{ cursor: "pointer" }}>
-  Back
-</button>
+        onClick={onBackClick}
+        className="back-button"
+        style={{ cursor: "pointer" }}>
+        Back
+      </button>
     </div>
   );
 };

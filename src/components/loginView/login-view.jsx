@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
 // LoginView component for rendering the login form
 export const LoginView = ({ onLoggedIn }) => {
   // State to manage the username, password, and login message
@@ -50,32 +53,30 @@ export const LoginView = ({ onLoggedIn }) => {
   console.log("Rendering login view...");
 
   return (
-    <div>
-      {/* Login form */}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          minLength="3" 
+        />
+      </Form.Group>
 
-      {/* Display login message if available */}
-      {loginMessage && <p>{loginMessage}</p>}
-    </div>
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
   );
 };

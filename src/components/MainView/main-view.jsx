@@ -3,6 +3,7 @@ import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
+import Row from "react-bootstrap/Row";
 
 export const MainView = () => {
   // State for user information
@@ -69,44 +70,46 @@ export const MainView = () => {
     // Handle submit logic
   };
 
-  // Render LoginView and SignupView if user is not logged in
-  if (!user) {
-    return (
-      <>
-        <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />
-        <SignupView handleSubmit={handleSubmit} />
-      </>
-    );
-  }
-
-  // Render a message if no movies are available
-  if (movies.length === 0) {
-    return <div>API is not Rendering Response</div>;
-  }
-
-  // Render the main view with movie cards and MovieView for the selected movie
   return (
-    <div>
-      <button onClick={handleLogout}>Logout</button>
-      <div ref={movieListRef}>
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onMovieClick={() => onMovieClick(movie)}
-            id={`movie.image-${movie.id}`} // ID should be `movie-${movie.id}` for consistency
-          />
-        ))}
-      </div>
-      {selectedMovie && (
+    <Row>
+      {user ? (
         <div>
-          <MovieView
-            movie={selectedMovie}
-            onBackClick={() => setSelectedMovie(null)}
-            movieViewRef={movieViewRef} // Pass movieViewRef to MovieView
-          />
+          <button onClick={handleLogout}>Logout</button>
+          <div ref={movieListRef}>
+            {movies.length === 0 ? (
+              <div>API is not Rendering Response</div>
+            ) : (
+              movies.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                  onMovieClick={() => onMovieClick(movie)}
+                  id={`movie.image-${movie.id}`}
+                />
+              ))
+            )}
+          </div>
+          {selectedMovie && (
+            <div>
+              <MovieView
+                movie={selectedMovie}
+                onBackClick={() => setSelectedMovie(null)}
+                movieViewRef={movieViewRef}
+              />
+            </div>
+          )}
         </div>
+      ) : (
+        <>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          <SignupView handleSubmit={handleSubmit} />
+        </>
       )}
-    </div>
+    </Row>
   );
 };
