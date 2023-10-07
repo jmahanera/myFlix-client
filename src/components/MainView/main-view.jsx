@@ -102,7 +102,7 @@ export const MainView = () => {
           )}
         </div>
       ) : (
-        <Col md={5}>
+        <Col md={5} className="login-signup-col">
           <h1>The Movie Database</h1>
           <h3>Login</h3>
           <LoginView
