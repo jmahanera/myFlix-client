@@ -25,23 +25,23 @@ export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
         </div>
         <div>
           <span className="movie-genre">Genre: </span>
-          <span>{movie.genre.name}</span>
+          <span>{movie.genre && movie.genre.name}</span>
         </div>
         <div>
           <span className="movie-director">Director: </span>
-          <span>{movie.director.name}</span>
+          <span>{movie.director && movie.director.name}</span>
         </div>
         <div>
           <span className="movie-biography">Biography: </span>
-          <span>{movie.director.director_bio}</span>
+          <span>{movie.director && movie.director.director_bio}</span>
         </div>
         <div>
           <span className="movie-birthyear">Birthyear: </span>
-          <span>{movie.director.birthyear}</span>
+          <span>{movie.director && movie.director.birthyear}</span>
         </div>
         <div>
           <span className="movie-actors">Actors: </span>
-          <span>{movie.actors}</span>
+          <span>{movie.actors && movie.actors.join(', ')}</span>
         </div>
         {/* Add other movie details you want to display */}
       </div>
@@ -51,7 +51,6 @@ export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
         style={{ cursor: "pointer" }}>
         Back
       </button>
-      
     </div>
   );
 };

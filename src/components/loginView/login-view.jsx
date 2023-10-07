@@ -8,6 +8,8 @@ export const LoginView = ({ onLoggedIn }) => {
   const [loginMessage, setLoginMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSubmitting(true);
