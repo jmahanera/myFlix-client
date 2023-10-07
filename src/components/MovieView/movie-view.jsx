@@ -13,7 +13,7 @@ export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
     <div ref={movieViewRef}>
       <div key={movie.id}>
         <div>
-          <img src={movie.imageUrl} alt={movie.title} />
+          <img className="w-100" src={movie.imageUrl} alt={movie.title} />
         </div>
         <div>
           <span className="movie-title">Title: </span>
@@ -51,6 +51,7 @@ export const MovieView = ({ movie, onBackClick, movieViewRef }) => {
         style={{ cursor: "pointer" }}>
         Back
       </button>
+      
     </div>
   );
 };

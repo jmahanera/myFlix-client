@@ -7,17 +7,12 @@ import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 
 export const MainView = () => {
-  // State for user information
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-
-  // Refs for storing references to DOM elements
-  const movieListRef = useRef(null);
   const movieViewRef = useRef(null);
-  
-  // Effect to run when the component mounts to retrieve stored user information
+
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
@@ -28,7 +23,6 @@ export const MainView = () => {
     }
   }, []);
 
-  // Effect to fetch movies from the API when the token changes
   useEffect(() => {
     if (!token) return;
 
@@ -42,51 +36,44 @@ export const MainView = () => {
       });
   }, [token]);
 
-  // Function to handle user logout
   const handleLogout = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
   };
 
-  // Function to handle when a movie is clicked
   const onMovieClick = (movie) => {
     setSelectedMovie(movie);
 
-    // Scroll to the selected movie title
     const selectedMovieElement = document.getElementById(`movie-${movie.id}`);
     if (selectedMovieElement) {
       selectedMovieElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Scroll to the top of the movie view
     if (movieViewRef.current) {
       movieViewRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
-  // Function to handle form submission (currently empty)
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle submit logic
   };
 
- return (
-    <Row className="justify-content-md-center">
+  return (
+    <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
       {user ? (
-       <div>
-         <h1>Movies Hot List</h1>
-         <h1>************************Jula's List***********************</h1>
+        <div>
+          <h1>Movies Hot List</h1>
+          <h1>************************Jula's List***********************</h1>
           <div style={{ paddingBottom: "20px" }}>
-  <button
-    onClick={handleLogout}
-    className="logout-button"
-    style={{ cursor: "pointer" }}
-  >
-    Logout
-  </button>
-</div>
-
+            <button
+              onClick={handleLogout}
+              className="logout-button"
+              style={{ cursor: "pointer" }}
+            >
+              Logout
+            </button>
+          </div>
           <Row>
             {movies.length === 0 ? (
               <div>API is not Rendering Response</div>
@@ -115,21 +102,21 @@ export const MainView = () => {
           )}
         </div>
       ) : (
-        <Row>
-          <Col md={5}>
-            <h1>The Movie Database</h1>
-            <h3>Login</h3>
-            <LoginView
-              onLoggedIn={(user, token) => {
-                setUser(user);
-                setToken(token);
-              }}
-            />
-            <h3>Signup (New User)</h3>
-            <SignupView handleSubmit={handleSubmit} />
-          </Col>
-        </Row>
+        <Col md={5}>
+          <h1>The Movie Database</h1>
+          <h3>Login</h3>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          <h3>Signup (New User)</h3>
+          <SignupView handleSubmit={handleSubmit} />
+        </Col>
       )}
     </Row>
   );
 };
+
+// Rest of the code for LoginView and SignupView components remain unchanged
