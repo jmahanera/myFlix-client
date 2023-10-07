@@ -8,39 +8,37 @@ export const SignupView = () => {
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
 
- const handleSubmit = (event) => {
-   event.preventDefault();
-   
-   //data to place in
-        const data = {
-          username: username,
-          password: password,
-          email: email,
-          birthdate: birthdate
-   };
-   
-   fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
-    method: "POST",
-    body: JSON.stringify(data), 
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then((response) => {
-    if (response.ok) {
-      alert("Signup successful");
-      window.location.reload();
-    } else {
-      alert("Signup failed");
-    }
-  })
-  .catch((error) => {
-    console.error("Error signing up:", error);
-  });
-};
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
+    const data = {
+      username: username,
+      password: password,
+      email: email,
+      birthdate: birthdate
+    };
 
- return (
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful");
+          window.location.reload();
+        } else {
+          alert("Signup failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error signing up:", error);
+      });
+  };
+
+  return (
     <form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
@@ -49,7 +47,7 @@ export const SignupView = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength="3"
+          minLength={3}  // Corrected minLength attribute
         />
       </Form.Group>
 
@@ -62,6 +60,7 @@ export const SignupView = () => {
           required
         />
       </Form.Group>
+
       <Form.Group controlId="formEmail">
         <Form.Label>Email:</Form.Label>
         <Form.Control
@@ -71,18 +70,18 @@ export const SignupView = () => {
           required
         />
       </Form.Group>
+
       <Form.Group controlId="formBirthdate">
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
-          type="birthdate"
+          type="date"  // Corrected type attribute
           value={birthdate}
           onChange={(e) => setBirthdate(e.target.value)}
           required
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+
+      <button type="submit">Submit</button>
     </form>
   );
 };

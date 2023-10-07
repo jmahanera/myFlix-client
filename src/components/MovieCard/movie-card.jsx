@@ -6,8 +6,8 @@ export const MovieCard = ({ movie, onMovieClick }) => {
   const { title, imageUrl, description } = movie;
 
   return (
-    <Card className="h-100"> {/* Added className */}
-      <Card.Img variant="top" src={movie.imageUrl} />
+    <Card className="h-100">
+      <Card.Img variant="top" src={imageUrl} /> {/* Use imageUrl here */}
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>
@@ -22,7 +22,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired, // Corrected prop name to 'imageUrl'
     description: PropTypes.string.isRequired,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,

@@ -78,14 +78,13 @@ export const MainView = () => {
             {movies.length === 0 ? (
               <div>API is not Rendering Response</div>
             ) : (
-              movies.map((movie) => (
-                <Col className="mb-5" key={movie.id} md={3}>
-                  <MovieCard
-                    key={movie.id}
-                    movie={movie}
-                    onMovieClick={() => onMovieClick(movie)}
-                  />
-                </Col>
+             movies.map((movie) => (
+  <Col className="mb-5" key={movie.id} md={3}>
+    <MovieCard
+      movie={movie}
+      onMovieClick={() => onMovieClick(movie)}
+    />
+  </Col>
               ))
             )}
           </Row>
@@ -119,4 +118,4 @@ export const MainView = () => {
   );
 };
 
-// Rest of the code for LoginView and SignupView components remain unchanged
+
