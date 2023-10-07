@@ -2954,7 +2954,7 @@ var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
 const App = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
         style: {
-            border: "1px solid red"
+            border: ""
         },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
             fileName: "src/index.jsx",
@@ -27269,6 +27269,10 @@ const MainView = ()=>{
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     onClick: handleLogout,
+                    className: "logout-button",
+                    style: {
+                        cursor: "pointer"
+                    },
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/MainView/main-view.jsx",
@@ -27280,7 +27284,7 @@ const MainView = ()=>{
                         children: "API is not Rendering Response"
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 83,
+                        lineNumber: 88,
                         columnNumber: 15
                     }, undefined) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                             className: "mb-5",
@@ -27290,17 +27294,17 @@ const MainView = ()=>{
                                 onMovieClick: ()=>onMovieClick(movie)
                             }, movie.id, false, {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 87,
+                                lineNumber: 92,
                                 columnNumber: 19
                             }, undefined)
                         }, movie.id, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 86,
+                            lineNumber: 91,
                             columnNumber: 17
                         }, undefined))
                 }, void 0, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 81,
+                    lineNumber: 86,
                     columnNumber: 11
                 }, undefined),
                 selectedMovie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27313,17 +27317,17 @@ const MainView = ()=>{
                             movieViewRef: movieViewRef
                         }, void 0, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 99,
+                            lineNumber: 104,
                             columnNumber: 17
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 98,
+                        lineNumber: 103,
                         columnNumber: 15
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 97,
+                    lineNumber: 102,
                     columnNumber: 13
                 }, undefined)
             ]
@@ -27339,14 +27343,14 @@ const MainView = ()=>{
                         children: "The Movie Database"
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 111,
+                        lineNumber: 116,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         children: "Login"
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 112,
+                        lineNumber: 117,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
@@ -27356,32 +27360,32 @@ const MainView = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 113,
+                        lineNumber: 118,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         children: "Signup (New User)"
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 119,
+                        lineNumber: 124,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpView.SignupView), {
                         handleSubmit: handleSubmit
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 120,
+                        lineNumber: 125,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 110,
+                lineNumber: 115,
                 columnNumber: 11
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/MainView/main-view.jsx",
-            lineNumber: 109,
+            lineNumber: 114,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {

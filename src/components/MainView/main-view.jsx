@@ -77,7 +77,12 @@ export const MainView = () => {
        <div>
          <h1>Movies Hot List</h1>
          <h1>************************Jula's List***********************</h1>
-          <button onClick={handleLogout}>Logout</button>
+          <button
+        onClick={handleLogout}
+        className="logout-button"
+        style={{ cursor: "pointer" }}>
+        Logout
+      </button>
           <Row>
             {movies.length === 0 ? (
               <div>API is not Rendering Response</div>

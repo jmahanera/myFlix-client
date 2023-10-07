@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
-    <Container style={{border: "1px solid red"}}>
+    <Container style={{border: ""}}>
     <MainView />
   </Container>
   );
