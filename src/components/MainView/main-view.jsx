@@ -4,6 +4,7 @@ import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
 import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
 
 export const MainView = () => {
   // State for user information
@@ -70,45 +71,55 @@ export const MainView = () => {
     // Handle submit logic
   };
 
-  return (
-    <Row>
+ return (
+    <Row className="justify-content-md-center">
       {user ? (
-        <div>
+       <div>
+         <h1>Movies Hot List</h1>
+         <h1>************************Jula's List***********************</h1>
           <button onClick={handleLogout}>Logout</button>
-          <div ref={movieListRef}>
+          <Row>
             {movies.length === 0 ? (
               <div>API is not Rendering Response</div>
             ) : (
               movies.map((movie) => (
-                <MovieCard
-                  key={movie.id}
-                  movie={movie}
-                  onMovieClick={() => onMovieClick(movie)}
-                  id={`movie.image-${movie.id}`}
-                />
+                <Col className="mb-5" key={movie.id} md={3}>
+                  <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    onMovieClick={() => onMovieClick(movie)}
+                  />
+                </Col>
               ))
             )}
-          </div>
+          </Row>
           {selectedMovie && (
-            <div>
-              <MovieView
-                movie={selectedMovie}
-                onBackClick={() => setSelectedMovie(null)}
-                movieViewRef={movieViewRef}
-              />
-            </div>
+            <Row>
+              <Col md={8} className="mx-auto">
+                <MovieView
+                  movie={selectedMovie}
+                  onBackClick={() => setSelectedMovie(null)}
+                  movieViewRef={movieViewRef}
+                />
+              </Col>
+            </Row>
           )}
         </div>
       ) : (
-        <>
-          <LoginView
-            onLoggedIn={(user, token) => {
-              setUser(user);
-              setToken(token);
-            }}
-          />
-          <SignupView handleSubmit={handleSubmit} />
-        </>
+        <Row>
+          <Col md={5}>
+            <h1>The Movie Database</h1>
+            <h3>Login</h3>
+            <LoginView
+              onLoggedIn={(user, token) => {
+                setUser(user);
+                setToken(token);
+              }}
+            />
+            <h3>Signup (New User)</h3>
+            <SignupView handleSubmit={handleSubmit} />
+          </Col>
+        </Row>
       )}
     </Row>
   );
