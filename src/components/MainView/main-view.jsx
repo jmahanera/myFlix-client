@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import { NavigationBar } from "../Navigation-bar/navigation-bar"; // Update the import path
+import React, { useState, useEffect } from "react";
 import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../loginView/login-view";
@@ -11,27 +12,24 @@ export const MainView = () => {
   const [user, setUser] = useState(null);
   const [movies, setMovies] = useState([]);
   
-
   useEffect(() => {
     fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
-    .then((response) => response.json())
+      .then((response) => response.json())
       .then((data) => {
         console.log("API response:", data);
-        const moviesFromApi = data.movies.map((movie) => {
-          return {
-            id: movie.key,
-            title: movie.title,
-            image: movie.imageUrl,
-            description: movie.description?.[0]
-          };
-        });
-
+        const moviesFromApi = data.movies.map((movie) => ({
+          id: movie.key,
+          title: movie.title,
+          image: movie.imageUrl,
+          description: movie.description?.[0]
+        }));
         setMovies(moviesFromApi);
       });
   }, []);
 
   return (
     <BrowserRouter>
+      <NavigationBar user={user} onLoggedOut={() => setUser(null)} /> {/* Step 5 */}
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -46,7 +44,6 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-
             }
           />
           <Route
@@ -61,7 +58,6 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-
             }
           />
           <Route
@@ -105,5 +101,3 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
-    
-
