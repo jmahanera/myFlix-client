@@ -6,6 +6,10 @@ import "./movie-view.scss";
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
 
+  if (!movieId) {
+  return <div>No movie ID provided.</div>;
+}
+
   // Find the specific movie by movieId
   const movie = movies.find((m) => m.id === movieId);
 
@@ -16,7 +20,7 @@ export const MovieView = ({ movies }) => {
   return (
     <div>
       <div>
-        <img className="w-100" src={movie.imageUrl} alt={movie.title} />
+        <img className="w-100" src={movie.imageUrl} />
       </div>
       <div>
         <span>Title: </span>

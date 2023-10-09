@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-
 export const MovieCard = ({ movie }) => {
   return (
     <Card>
-      <Card.Img variant="top" src={movie.imageUrl} />
+      <Card.Img variant="top" src={movie.image} />
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.description}</Card.Text>
@@ -22,7 +21,7 @@ export const MovieCard = ({ movie }) => {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired
   }).isRequired
 };

@@ -21,7 +21,7 @@ export const MainView = () => {
           return {
             id: movie.key,
             title: movie.title,
-            imageUrl: movie.imageUrl,
+            image: movie.imageUrl,
             description: movie.description?.[0]
           };
         });
