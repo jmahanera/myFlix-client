@@ -13,7 +13,7 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   
   useEffect(() => {
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies/:movieId")
       .then((response) => response.json())
       .then((data) => {
         console.log("API response:", data);

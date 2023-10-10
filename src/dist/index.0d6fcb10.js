@@ -28219,7 +28219,7 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies/:movieId").then((response)=>response.json()).then((data)=>{
             console.log("API response:", data);
             const moviesFromApi = data.movies.map((movie)=>({
                     id: movie.key,
@@ -28370,7 +28370,7 @@ const MovieCard = ({ movie })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                 variant: "top",
-                src: movie.image
+                src: movie.imageUrl
             }, void 0, false, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
                 lineNumber: 9,
@@ -28390,7 +28390,7 @@ const MovieCard = ({ movie })=>{
                     }, void 0, false, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
                         lineNumber: 12,
-                        columnNumber: 9
+                        columnNumber: 8
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: `/movies/${encodeURIComponent(movie.id)}`,
