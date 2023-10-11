@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import PropTypes from "prop-types";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -8,23 +9,21 @@ export const LoginView = ({ onLoggedIn }) => {
   const [loginMessage, setLoginMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  
-
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSubmitting(true);
 
     const data = {
       username: username,
-      password: password
+      password: password,
     };
 
     fetch("https://primemovies-39075872fbeb.herokuapp.com/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
       .then((res) => {
         if (!res.ok) {
@@ -44,6 +43,8 @@ export const LoginView = ({ onLoggedIn }) => {
         setIsSubmitting(false);
       });
   };
+  // Added this to display login error message
+  console.warn(loginMessage);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -73,4 +74,8 @@ export const LoginView = ({ onLoggedIn }) => {
       </Button>
     </Form>
   );
+};
+// Adde PropTypes for onLoggedIn function
+LoginView.propTypes = {
+  onLoggedIn: PropTypes.func.isRequired,
 };
