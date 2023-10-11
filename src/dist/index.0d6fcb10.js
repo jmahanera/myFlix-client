@@ -47839,7 +47839,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                     as: (0, _reactRouterDom.Link),
                     to: "/",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        children: "Movie App"
+                        children: "Movies Info App"
                     }, void 0, false, {
                         fileName: "src/components/Navigation-bar/navigation-bar.jsx",
                         lineNumber: 9,
