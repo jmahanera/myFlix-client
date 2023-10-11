@@ -28219,7 +28219,7 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies/:movieId").then((response)=>response.json()).then((data)=>{
+        fetch("https://primemovies-39075872fbeb.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             console.log("API response:", data);
             const moviesFromApi = data.movies.map((movie)=>({
                     id: movie.key,
