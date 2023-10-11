@@ -6,16 +6,23 @@ import "./movie-view.scss";
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
 
+  console.log("Received movies prop:", movies);
+  console.log("Received movieId:", movieId);
+
   if (!movieId) {
-  return <div>No movie ID provided.</div>;
-}
+    console.log("No movie ID provided.");
+    return <div>No movie ID provided.</div>;
+  }
 
   // Find the specific movie by movieId
   const movie = movies.find((m) => m.id === movieId);
 
   if (!movie) {
+    console.log("No movie found with ID:", movieId);
     return <div>No movie found.</div>;
   }
+
+  console.log("Selected movie:", movie);
 
   return (
     <div>

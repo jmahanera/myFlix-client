@@ -58,26 +58,26 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <LoginView
-                      onLoggedIn={(user, token) => { // Added token as an argument to onLoggedIn
-                        setUser(user); // Set the user state to the user object received
-                        setToken(token); //  Set the token state to the token received
-                        localStorage.setItem("token", token); // Store the token in localStorage on login
-                        localStorage.setItem("user", JSON.stringify(user)); // Store the user in localStorage on login
-                      }}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
+  path="/"
+  element={
+    <>
+      {!user ? (
+        <Navigate to="/login" replace />
+      ) : movies.length === 0 ? (
+        <Col>The list is empty!</Col>
+      ) : (
+        <>
+          {movies.map((movie) => (
+            <Col className="mb-4" key={movie.id} md={3}>
+              <MovieCard movie={movie} cardClassName="movie-card" />
+            </Col>
+          ))}
+        </>
+      )}
+    </>
+  }
+/>
+
           <Route
             path="/movies"
             element={
