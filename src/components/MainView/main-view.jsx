@@ -12,12 +12,6 @@ export const MainView = () => {
   const [user, setUser] = useState(null);
   const [movies, setMovies] = useState([]);
 
-  const getToken = () => {
-  // Logic to retrieve the token from a secure source, such as local storage
-  return localStorage.getItem('token'); // Assuming you've stored the token in local storage
-};
-
-  
   useEffect(() => {
     fetch("https://primemovies-39075872fbeb.herokuapp.com/movies")
       .then((response) => response.json())
