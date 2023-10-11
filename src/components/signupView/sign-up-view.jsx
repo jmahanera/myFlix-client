@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 
 export const SignupView = () => {
@@ -15,15 +14,15 @@ export const SignupView = () => {
       username: username,
       password: password,
       email: email,
-      birthdate: birthdate
+      birthdate: birthdate,
     };
 
     fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
       .then((response) => {
         if (response.ok) {
@@ -47,7 +46,7 @@ export const SignupView = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength={3}  // Corrected minLength attribute
+          minLength={3} // Corrected minLength attribute
         />
       </Form.Group>
 
@@ -74,7 +73,7 @@ export const SignupView = () => {
       <Form.Group controlId="formBirthdate">
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
-          type="date"  // Corrected type attribute
+          type="date" // Corrected type attribute
           value={birthdate}
           onChange={(e) => setBirthdate(e.target.value)}
           required
