@@ -4,16 +4,16 @@ import "./movie-view.scss";
 
 
 export const MovieView = ({ movies }) => {
-  console.log("Movies:", movies);  // Add this line to log the movies array
-  
-
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie.id === movieId);
 
   if (!movie) {
     return <div>Loading...</div>;  // or display an error message
   }
-  
+
+  const directorName = movie.director ? movie.director.name : "Unknown";
+  const genreName = movie.genre ? movie.genre.name : "Unknown";
+  const actorsList = movie.actors && movie.actors.length > 0 ? movie.actors.join(", ") : "No actors listed";
 
   return (
     <div>
@@ -30,19 +30,15 @@ export const MovieView = ({ movies }) => {
       </div>
       <div>
         <span>Director: </span>
-        <span>{movie.director ? movie.director.name : "Unknown"}</span>
+        <span>{directorName}</span>
       </div>
       <div>
         <span>Genre: </span>
-        <span>{movie.genre ? movie.genre.name : "Unknown"}</span>
+        <span>{genreName}</span>
       </div>
       <div>
         <span>Actors: </span>
-        {movie.actors && movie.actors.length > 0 ? (
-          <span>{movie.actors.join(", ")}</span>
-        ) : (
-          <span>No actors listed</span>
-        )}
+        <span>{actorsList}</span>
       </div>
 
       {/* Navigate back to the home page */}

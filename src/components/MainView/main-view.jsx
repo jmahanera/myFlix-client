@@ -16,22 +16,31 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    if (!token) return;
+  if (!token) return;
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}` },
+  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((response) => {
+      console.log('API Response:', response);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
     })
-      .then((response) => response.json())
-      .then((movies) => {
-        const moviesFromApi = movies?.map((movie) => ({
-          id: movie._id,
-          title: movie.title,
-          imageUrl: movie.imageUrl,
-          description: movie.description,
-        }));
-        setMovies(moviesFromApi);
-      });
-  }, [token]);
+    .then((movies) => {
+      console.log('Movies from API:', movies);
+      const moviesFromApi = movies?.map((movie) => ({
+        id: movie._id,
+        title: movie.title,
+        imageUrl: movie.imageUrl,
+        description: movie.description,
+      }));
+      setMovies(moviesFromApi);
+    })
+    .catch((error) => console.error('Error fetching movies:', error));
+}, [token]);
+
 
   return (
     <BrowserRouter>
