@@ -99,7 +99,7 @@ export const MainView = () => {
           <Route
   path="/movies/:movieId"
   element={<MovieView movies={movies} />}
-/>
+/>s
           <Route
             path="/"
             element={

@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import "../MovieView/movie-view";
-
+import "../MovieView/movie-view";v
 
 export const MovieCard = ({ movie, cardClassName }) => {
   return (
