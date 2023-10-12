@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import "../MovieView/movie-view"; // Import a CSS file for custom styling
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import "../MovieView/movie-view";
 
 export const MovieCard = ({ movie, cardClassName }) => {
   return (
@@ -11,9 +11,11 @@ export const MovieCard = ({ movie, cardClassName }) => {
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.description}</Card.Text>
-        <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
+        {/* Add Link to navigate to movie details page */}
+        <Link to={`/movies/${movie.id}`}>
           Click for more Info
         </Link>
+
       </Card.Body>
     </Card>
   );
@@ -21,7 +23,7 @@ export const MovieCard = ({ movie, cardClassName }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
