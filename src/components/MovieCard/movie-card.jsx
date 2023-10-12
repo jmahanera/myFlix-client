@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "../MovieView/movie-view";
 
+
 export const MovieCard = ({ movie, cardClassName }) => {
   return (
     <Card className={`movie-card ${cardClassName}`}>
