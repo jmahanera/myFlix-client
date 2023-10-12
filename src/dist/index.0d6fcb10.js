@@ -28375,7 +28375,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../MovieCard/movie-card":"dg3Ls","../loginView/login-view":"1SeRs","../signupView/sign-up-view":"4EFIq","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"dLz1S","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"88yB5","../Navigation-bar/navigation-bar":"dewgN","../MovieView/movie-view":"9Uua1"}],"dg3Ls":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../MovieCard/movie-card":"dg3Ls","../MovieView/movie-view":"9Uua1","../loginView/login-view":"1SeRs","../signupView/sign-up-view":"4EFIq","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"dLz1S","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"88yB5","../Navigation-bar/navigation-bar":"dewgN"}],"dg3Ls":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2506 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -47412,76 +47412,148 @@ var _movieViewScss = require("./movie-view.scss");
 var _s = $RefreshSig$();
 const MovieView = ({ movies })=>{
     _s();
+    console.log("Movies:", movies); // Add this line to log the movies array
     const { movieId } = (0, _reactRouterDom.useParams)();
     const movie = movies.find((movie)=>movie.id === movieId);
+    if (!movie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "Loading..."
+    }, void 0, false, {
+        fileName: "src/components/MovieView/movie-view.jsx",
+        lineNumber: 14,
+        columnNumber: 12
+    }, undefined); // or display an error message
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
-            movie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    className: "w-100",
+                    src: movie.imageUrl,
+                    alt: movie.title
+                }, void 0, false, {
+                    fileName: "src/components/MovieView/movie-view.jsx",
+                    lineNumber: 21,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/MovieView/movie-view.jsx",
+                lineNumber: 20,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                            className: "w-100",
-                            src: movie.imageUrl,
-                            alt: movie.title
-                        }, void 0, false, {
-                            fileName: "src/components/MovieView/movie-view.jsx",
-                            lineNumber: 14,
-                            columnNumber: 13
-                        }, undefined)
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Title: "
                     }, void 0, false, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 13,
-                        columnNumber: 11
+                        lineNumber: 24,
+                        columnNumber: 9
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: "Title: "
-                            }, void 0, false, {
-                                fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 17,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: movie.title
-                            }, void 0, false, {
-                                fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 18,
-                                columnNumber: 13
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.title
+                    }, void 0, false, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 16,
-                        columnNumber: 11
+                        lineNumber: 25,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/MovieView/movie-view.jsx",
+                lineNumber: 23,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Description: "
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 28,
+                        columnNumber: 9
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: "Description: "
-                            }, void 0, false, {
-                                fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 21,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: movie.description
-                            }, void 0, false, {
-                                fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 22,
-                                columnNumber: 13
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.description
+                    }, void 0, false, {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 20,
+                        lineNumber: 29,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/MovieView/movie-view.jsx",
+                lineNumber: 27,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Director: "
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 32,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.director ? movie.director.name : "Unknown"
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 33,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/MovieView/movie-view.jsx",
+                lineNumber: 31,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Genre: "
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 36,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.genre ? movie.genre.name : "Unknown"
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/MovieView/movie-view.jsx",
+                lineNumber: 35,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Actors: "
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 40,
+                        columnNumber: 9
+                    }, undefined),
+                    movie.actors && movie.actors.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.actors.join(", ")
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 42,
+                        columnNumber: 11
+                    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "No actors listed"
+                    }, void 0, false, {
+                        fileName: "src/components/MovieView/movie-view.jsx",
+                        lineNumber: 44,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/MovieView/movie-view.jsx",
-                lineNumber: 12,
-                columnNumber: 9
+                lineNumber: 39,
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                 to: "/",
@@ -47493,18 +47565,18 @@ const MovieView = ({ movies })=>{
                     children: "Back"
                 }, void 0, false, {
                     fileName: "src/components/MovieView/movie-view.jsx",
-                    lineNumber: 29,
-                    columnNumber: 3
+                    lineNumber: 50,
+                    columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/MovieView/movie-view.jsx",
-                lineNumber: 28,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MovieView/movie-view.jsx",
-        lineNumber: 10,
+        lineNumber: 19,
         columnNumber: 5
     }, undefined);
 };
@@ -47847,7 +47919,7 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"dLz1S","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"88yB5","react-bootstrap/Button":"aPzUt"}],"dewgN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"dLz1S","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"88yB5"}],"dewgN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$42c2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
