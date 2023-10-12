@@ -1,21 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import "../MovieView/movie-view";v
+import { Link } from "react-router-dom";
+import "../MovieView/movie-view";
 
 export const MovieCard = ({ movie, cardClassName }) => {
   return (
-    <Card className={`movie-card ${cardClassName}`}>
+    <Card className={`movie-card ${cardClassName} h-100`}>
       <Card.Img variant="top" src={movie.imageUrl} />
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.description}</Card.Text>
-        {/* Add Link to navigate to movie details page */}
-        <Link to={`/movies/${movie.id}`}>
-          Click for more Info
-        </Link>
-
+        <Link to={`/movies/${movie.id}`}>Click for more Info</Link>
       </Card.Body>
     </Card>
   );

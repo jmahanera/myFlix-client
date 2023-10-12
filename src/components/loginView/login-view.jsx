@@ -43,9 +43,7 @@ export const LoginView = ({ onLoggedIn }) => {
         setIsSubmitting(false);
       });
   };
-  // Added this to display login error message
-  console.warn(loginMessage);
-
+  
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">

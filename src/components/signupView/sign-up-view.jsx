@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button"; // Import Button from react-bootstrap
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
 
     const data = {
       username: username,
@@ -25,6 +28,7 @@ export const SignupView = () => {
       },
     })
       .then((response) => {
+        setIsSubmitting(false);
         if (response.ok) {
           alert("Signup successful");
           window.location.reload();
@@ -33,6 +37,7 @@ export const SignupView = () => {
         }
       })
       .catch((error) => {
+        setIsSubmitting(false);
         console.error("Error signing up:", error);
       });
   };
@@ -46,7 +51,7 @@ export const SignupView = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength={3} // Corrected minLength attribute
+          minLength={3}
         />
       </Form.Group>
 
@@ -73,14 +78,17 @@ export const SignupView = () => {
       <Form.Group controlId="formBirthdate">
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
-          type="date" // Corrected type attribute
+          type="date"
           value={birthdate}
           onChange={(e) => setBirthdate(e.target.value)}
           required
         />
       </Form.Group>
 
-      <button type="submit">Submit</button>
+      {/* Use Button component from react-bootstrap */}
+      <Button variant="primary" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Submitting..." : "Submit"}
+      </Button>
     </form>
   );
 };
