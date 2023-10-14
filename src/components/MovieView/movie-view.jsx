@@ -40,12 +40,11 @@ export const MovieView = ({ movies }) => {
         <span>{actorsList}</span> 
       </div>
 
-      {/* Navigate back to the home page */}
       <Link to="/">
         <button className="btn btn-primary" style={{ cursor: "pointer" }}>
           Back
         </button>
-      </Link>
+      </Link>   
     </div>
   );
 };
