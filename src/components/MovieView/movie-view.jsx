@@ -2,7 +2,6 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import "./movie-view.scss";
 
-
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie.id === movieId);
@@ -30,15 +29,15 @@ export const MovieView = ({ movies }) => {
       </div>
       <div>
         <span>Director: </span>
-        <span>{directorName}</span>
+        <span>{directorName}</span> 
       </div>
       <div>
         <span>Genre: </span>
-        <span>{genreName}</span>
+        <span>{genreName}</span> 
       </div>
       <div>
         <span>Actors: </span>
-        <span>{actorsList}</span>
+        <span>{actorsList}</span> 
       </div>
 
       {/* Navigate back to the home page */}
