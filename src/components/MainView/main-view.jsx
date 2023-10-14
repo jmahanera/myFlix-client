@@ -1,12 +1,13 @@
+// Import necessary modules and components
 import React, { useState, useEffect } from "react";
-import { MovieCard } from "../MovieCard/movie-card";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 import { NavigationBar } from "../Navigation-bar/navigation-bar";
 import { LoginView } from "../loginView/login-view";
 import { SignupView } from "../signupView/sign-up-view";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { MovieView } from "../MovieView/movie-view";
+import { MovieCard } from "../MovieCard/movie-card";
+import { ProfileView } from "../ProfileView/profile-view";
 
 export const MainView = () => {
   const storedToken = localStorage.getItem("token");
@@ -16,34 +17,33 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-  if (!token) return;
+    if (!token) return;
 
-  fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-    .then((response) => {
-      console.log('API Response:', response);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` },
     })
-    .then((movies) => {
-      console.log('Movies from API:', movies);
-      const moviesFromApi = movies?.map((movie) => ({
-        id: movie._id,
-        title: movie.title,
-        imageUrl: movie.imageUrl,
-        description: movie.description,
-        genre: movie.genre,
-        director: movie.director,
-        actors: movie.actors,
-      }));
-      setMovies(moviesFromApi);
-    })
-    .catch((error) => console.error('Error fetching movies:', error));
-}, [token]);
-
+      .then((response) => {
+        console.log("API Response:", response);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((movies) => {
+        console.log("Movies from API:", movies);
+        const moviesFromApi = movies?.map((movie) => ({
+          id: movie._id,
+          title: movie.title,
+          imageUrl: movie.imageUrl,
+          description: movie.description,
+          genre: movie.genre,
+          director: movie.director,
+          actors: movie.actors,
+        }));
+        setMovies(moviesFromApi);
+      })
+      .catch((error) => console.error("Error fetching movies:", error));
+  }, [token]);
 
   return (
     <BrowserRouter>
@@ -108,10 +108,33 @@ export const MainView = () => {
               </>
             }
           />
+          <Route path="/movies/:movieId" element={<MovieView movies={movies} />} />
           <Route
-  path="/movies/:movieId"
-  element={<MovieView movies={movies} />}
-/>
+            path="/profile"
+            element={
+              <>
+                {user ? (
+                  <Col md={8}>
+                    <ProfileView
+                      user={user}
+                      favoriteMovies={movies} // Assuming favoriteMovies is the movie list
+                      onUpdateProfile={(name, birthday) => {
+                        // Implement update profile functionality here
+                      }}
+                      onDeleteAccount={() => {
+                        // Implement delete account functionality here
+                      }}
+                      onRemoveFavorite={(movieId) => {
+                        // Implement remove favorite movie functionality here
+                      }}
+                    />
+                  </Col>
+                ) : (
+                  <Navigate to="/login" replace />
+                )}
+              </>
+            }
+          />
           <Route
             path="/"
             element={

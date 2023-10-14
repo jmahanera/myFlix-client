@@ -24,7 +24,10 @@ MovieCard.propTypes = {
     genre: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.array,
+    actors: PropTypes.arrayOf(PropTypes.string),
     imageUrl: PropTypes.string.isRequired,
   }).isRequired,
+  cardClassName: PropTypes.string,  // Adding PropTypes validation for cardClassName
 };
+
+

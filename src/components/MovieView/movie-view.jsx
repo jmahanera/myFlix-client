@@ -1,18 +1,20 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import "./movie-view.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useParams, Link } from 'react-router-dom';
+import './movie-view.scss';
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie.id === movieId);
 
   if (!movie) {
-    return <div>Loading...</div>;  // or display an error message
+    return <div>Loading...</div>;  // or display an error message    
   }
 
-  const directorName = movie.director ? movie.director.name : "Unknown";
-  const genreName = movie.genre ? movie.genre.name : "Unknown";
-  const actorsList = movie.actors && movie.actors.length > 0 ? movie.actors.join(", ") : "No actors listed";
+  const directorName = movie.director ? movie.director.name : 'Unknown';
+  const genreName = movie.genre ? movie.genre.name : 'Unknown';
+  const actorsList =
+    movie.actors && movie.actors.length > 0 ? movie.actors.join(', ') : 'No actors listed';
 
   return (
     <div>
@@ -29,22 +31,40 @@ export const MovieView = ({ movies }) => {
       </div>
       <div>
         <span>Director: </span>
-        <span>{directorName}</span> 
+        <span>{directorName}</span>
       </div>
       <div>
         <span>Genre: </span>
-        <span>{genreName}</span> 
+        <span>{genreName}</span>
       </div>
       <div>
         <span>Actors: </span>
-        <span>{actorsList}</span> 
+        <span>{actorsList}</span>
       </div>
 
       <Link to="/">
-        <button className="btn btn-primary" style={{ cursor: "pointer" }}>
+        <button className="btn btn-primary" style={{ cursor: 'pointer' }}>
           Back
         </button>
-      </Link>   
+      </Link>
     </div>
   );
+};
+
+MovieView.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      director: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }),
+      genre: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }),
+      actors: PropTypes.arrayOf(PropTypes.string),
+      imageUrl: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
