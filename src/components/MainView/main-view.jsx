@@ -1,17 +1,17 @@
-// Import necessary modules and components
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
-import { NavigationBar } from "../Navigation-bar/navigation-bar";
-import { LoginView } from "../loginView/login-view";
-import { SignupView } from "../signupView/sign-up-view";
-import { MovieView } from "../MovieView/movie-view";
-import { MovieCard } from "../MovieCard/movie-card";
-import { ProfileView } from "../ProfileView/profile-view";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+import { NavigationBar } from '../Navigation-bar/navigation-bar';
+import { LoginView } from '../loginView/login-view';
+import { SignupView } from '../signupView/sign-up-view';
+import { MovieView } from '../MovieView/movie-view';
+import { MovieCard } from '../MovieCard/movie-card';
+import ProfileView from '../ProfileView/profile-view';
+
 
 export const MainView = () => {
-  const storedToken = localStorage.getItem("token");
-  const storedUser = localStorage.getItem("user");
+  const storedToken = localStorage.getItem('token');
+  const storedUser = localStorage.getItem('user');
   const [token, setToken] = useState(storedToken || null);
   const [user, setUser] = useState(JSON.parse(storedUser) || null);
   const [movies, setMovies] = useState([]);
@@ -19,18 +19,18 @@ export const MainView = () => {
   useEffect(() => {
     if (!token) return;
 
-    fetch("https://primemovies-39075872fbeb.herokuapp.com/movies", {
+    fetch('https://primemovies-39075872fbeb.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        console.log("API Response:", response);
+        console.log('API Response:', response);
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         return response.json();
       })
       .then((movies) => {
-        console.log("Movies from API:", movies);
+        console.log('Movies from API:', movies);
         const moviesFromApi = movies?.map((movie) => ({
           id: movie._id,
           title: movie.title,
@@ -42,7 +42,7 @@ export const MainView = () => {
         }));
         setMovies(moviesFromApi);
       })
-      .catch((error) => console.error("Error fetching movies:", error));
+      .catch((error) => console.error('Error fetching movies:', error));
   }, [token]);
 
   return (
@@ -83,8 +83,8 @@ export const MainView = () => {
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
-                        localStorage.setItem("token", token);
-                        localStorage.setItem("user", JSON.stringify(user));
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('user', JSON.stringify(user));
                       }}
                     />
                   </Col>
@@ -117,10 +117,7 @@ export const MainView = () => {
                   <Col md={8}>
                     <ProfileView
                       user={user}
-                      favoriteMovies={movies} // Assuming favoriteMovies is the movie list
-                      onUpdateProfile={(name, birthday) => {
-                        // Implement update profile functionality here
-                      }}
+                      favoriteMovies={movies}
                       onDeleteAccount={() => {
                         // Implement delete account functionality here
                       }}

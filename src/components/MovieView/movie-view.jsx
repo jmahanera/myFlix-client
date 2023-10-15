@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
-export const MovieView = ({ movies }) => {
-  const { movieId } = useParams();
-  const movie = movies.find((movie) => movie.id === movieId);
-
+const MovieView = ({ movie }) => {
   if (!movie) {
-    return <div>Loading...</div>;  // or display an error message    
+    return <div>Loading...</div>;
   }
 
   const directorName = movie.director ? movie.director.name : 'Unknown';
   const genreName = movie.genre ? movie.genre.name : 'Unknown';
-  const actorsList =
-    movie.actors && movie.actors.length > 0 ? movie.actors.join(', ') : 'No actors listed';
+  const actorsList = movie.actors && movie.actors.length > 0 ? movie.actors.join(', ') : 'No actors listed';
 
   return (
     <div>
@@ -52,19 +48,19 @@ export const MovieView = ({ movies }) => {
 };
 
 MovieView.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      director: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }),
-      genre: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }),
-      actors: PropTypes.arrayOf(PropTypes.string),
-      imageUrl: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
+    genre: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
+    actors: PropTypes.arrayOf(PropTypes.string),
+    imageUrl: PropTypes.string.isRequired,
+  }),
 };
+
+export default MovieView;
