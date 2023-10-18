@@ -22,7 +22,7 @@ const App = () => {
 
 
 
-export const MainView = ({ token }) => {
+export const MainView = () => {
   const storedToken = localStorage.getItem('token');
   const storedUser = localStorage.getItem('user');
   const [token, setToken] = useState(storedToken || null);
