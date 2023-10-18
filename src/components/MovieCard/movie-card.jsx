@@ -19,7 +19,7 @@ export const MovieCard = ({ movie, cardClassName }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     title: PropTypes.string.isRequired,
     genre: PropTypes.oneOfType([
       PropTypes.string,

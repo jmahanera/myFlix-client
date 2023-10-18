@@ -3,13 +3,26 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { NavigationBar } from '../Navigation-bar/navigation-bar';
 import { LoginView } from '../loginView/login-view';
+import Container from 'react-bootstrap/Container';
 import { SignupView } from '../signupView/sign-up-view';
 import { MovieView } from '../MovieView/movie-view';
 import { MovieCard } from '../MovieCard/movie-card';
 import ProfileView from '../ProfileView/profile-view';
+import '../../index.scss';
+
+const rootContainer = document.getElementById('root');
+
+const App = () => {
+  return (
+    <Container className="">
+      <MainView />
+    </Container>
+  );
+};
 
 
-export const MainView = () => {
+
+export const MainView = ({ token }) => {
   const storedToken = localStorage.getItem('token');
   const storedUser = localStorage.getItem('user');
   const [token, setToken] = useState(storedToken || null);
@@ -109,27 +122,23 @@ export const MainView = () => {
             }
           />
           <Route path="/movies/:movieId" element={<MovieView movies={movies} />} />
-          <Route
-            path="/profile"
-            element={
-              <>
-                {user ? (
-                  <Col md={8}>
-                    <ProfileView
-                      user={user}
-                      favoriteMovies={movies}
-                      onDeleteAccount={() => {
-                        // Implement delete account functionality here
-                      }}
-                      onRemoveFavorite={(movieId) => {
-                        // Implement remove favorite movie functionality here
-                      }}
-                    />
-                  </Col>
-                ) : (
-                  <Navigate to="/login" replace />
-                )}
-              </>
+         <Route
+        path="/profile"
+        element={
+          <>
+            {user ? (
+              <Col md={8}>
+                <ProfileView
+                  user={user}
+                  token={token}  // Pass token as a prop
+                  movies={movies}
+                  setUser={setUser}
+                />
+              </Col>
+            ) : (
+              <Navigate to="/login" replace />
+            )}
+          </>
             }
           />
           <Route
@@ -157,3 +166,5 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
+
+export default App;

@@ -1,108 +1,207 @@
-import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Button, Card, CardGroup, Col, Container, Form, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import MovieCard from '../MovieCard/movie-card';
 
-const ProfileView = ({ user, favoriteMovies, onDeleteAccount, onRemoveFavoriteMovie }) => {
-  const [newProfileData, setNewProfileData] = useState({
-    name: '',
-    birthdate: '',
-  });
-  const [isUpdating, setIsUpdating] = useState(false);
+const ProfileView = ({ user, token, movies, setUser }) => {
+  const [username, setUsername] = useState(user.username || '');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(user.email || '');
+  const [birthdate, setBirthdate] = useState('');
+  const [favoriteMovies, setFavoriteMovies] = useState(user.favoriteMovies || []);
 
-  const handleUpdateProfile = (event) => {
+  // Filter movies based on favoriteMovies
+  let result = [];
+  if (user.favoriteMovies) {
+    result = movies.filter((m) => user.favoriteMovies.includes(m._id));
+  }
+
+
+  const handleUpdate = (event) => {
     event.preventDefault();
-    setIsUpdating(true);
 
     const data = {
-      name: newProfileData.name,
-      birthdate: newProfileData.birthdate,
+      username,
+      password,
+      email,
+      birthdate,
+      favoriteMovies,
     };
 
-    // Assume you have the correct API endpoint to update the profile
-    fetch(`https://primemovies-39075872fbeb.herokuapp.com/users`, {
+    
+    //DEBUG
+    console.log(JSON.stringify(data));
+    console.log(username);
+
+    fetch(`https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}`, {
       method: 'PUT',
-      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
+       .then(async (response) => {
+        console.log("response:", response);
+        if (response.ok) {
+          alert("update successful");
+          const data = await response.json();
+          localStorage.setItem("user", JSON.stringify(data));
+          window.location.reload();
+        } else {
+          const errorText = await response.text();
+          // Read the response body as text
+          console.log("Error response body:", errorText);
+          alert("update failed");
+        }
+      })
+      .catch((err) => console.log("error", err));
+  };
+
+  const deleteAccount = () => {
+    fetch(`https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => {
-        setIsUpdating(false);
         if (response.ok) {
-          alert('Profile updated successfully!');
+          setUser(null);
+          localStorage.clear();
+          alert('Your account has been deleted');
+          window.location.replace('/login');
         } else {
-          response.json().then((errorData) => {
-            alert(`Failed to update profile: ${errorData.message}`);
-          });
-        }
-      })
-      .catch((error) => {
-        setIsUpdating(false);
-        console.error('Error updating profile:', error);
-        alert('An error occurred while updating the profile.');
-        console.log(typeof yourOnRemoveFavoriteMovieFunction);
+          alert('Could not delete account');
+          console.log('Result:', result);
 
+        }
       });
   };
 
-  const handleRemoveFavoriteMovie = (movieId) => {
-  onRemoveFavoriteMovie(movieId);
-};
+  const deleteFavoriteMovie = (movie_id) => {
+    const updatedFavorites = favoriteMovies.filter((id) => id !== movieId);
+    setFavoriteMovies(updatedFavorites);
+  };
 
 
   return (
-    <div>
-      <h2>User Profile</h2>
-      <div>
-        <strong>Name:</strong> {user.name}
-      </div>
-      <div>
-        <strong>Birthday:</strong> {user.birthdate}
-      </div>
+    <>
+      <Container className="">
+        <Row className="justify-content-md-center">
+          <Col md={8}>
+            <CardGroup>
+              <Card className="mb-5 border border-0 card-custom">
+                <Card.Body>
+                  <Card.Title>My Profile</Card.Title>
+                  <Card.Text>
+                    <strong>Name:</strong> {user.username}<br />
+                    <strong>Birthdate:</strong> {user.birthdate ? new Date(user.birthdate).toLocaleDateString() : 'N/A'}
+                  </Card.Text>
+                  <Card.Text>Want to Update some info?</Card.Text>
+                  <Form onSubmit={handleUpdate}>
+                    <Form.Group>
+                      <Form.Label>
+                        Username:
+                        <Form.Control
+                          type="text"
+                          value={username}
+                          onChange={(e) => {
+                            setUsername(e.target.value);
+                          }}
+                          placeholder={user.username}
+                        />
+                      </Form.Label>
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>
+                        Password:
+                        <Form.Control
+                          type="password"
+                          value={password}
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                          }}
+                          placeholder="*******"
+                        />
+                      </Form.Label>
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>
+                        Email:
+                        <Form.Control
+                          type="email"
+                          value={email}
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
+                          placeholder={user.email}
+                        />
+                      </Form.Label>
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>
+                        Birthdate:
+                        <Form.Control
+                          type="date"
+                          value={birthdate}
+                          onChange={(e) => {
+                            setBirthdate(e.target.value);
+                          }}
+                        />
+                      </Form.Label>
+                    </Form.Group>
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      onClick={handleUpdate}
+                      className="text-white mt-4"
+                    >
+                      update profile
+                    </Button>
+                  </Form>
+                  <Link to="/login">
+                    <Button
+                      variant="danger"
+                      type=""
+                      onClick={deleteAccount}
+                      className="text-white mt-3"
+                    >
+                      delete your account
+                    </Button>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </CardGroup>
+          </Col>
+        </Row>
+      </Container>
 
-      <Button variant="danger" onClick={onDeleteAccount}>
-        Delete Account
-      </Button>
-
-      <h2>Favorite Movies</h2>
-      <ul>
-        {favoriteMovies.map((movie) => (
-          <li key={movie.id}>
-            Title: {movie.title}, Genre: {movie.genre ? movie.genre.name : 'Unknown genre'}
-           <Button variant="link" onClick={() => handleRemoveFavoriteMovie(movie.id)}>
-  Remove
-</Button>
-
-          </li>
-        ))}
-      </ul>
-
-      {/* Update Profile Form */}
-      <Form onSubmit={handleUpdateProfile}>
-        <Form.Group controlId="name">
-          <Form.Label>Update Name:</Form.Label>
-          <Form.Control
-            type="text"
-            value={newProfileData.name}
-            onChange={(e) => setNewProfileData((prevState) => ({ ...prevState, name: e.target.value }))}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="birthday">
-          <Form.Label>Update Birthday:</Form.Label>
-          <Form.Control
-            type="date"
-            value={newProfileData.birthdate}
-            onChange={(e) =>
-              setNewProfileData((prevState) => ({ ...prevState, birthdate: e.target.value }))
+      <Container>
+        <Row className="justify-content-md-center align-items-center">
+          {favoriteMovies.map((movieId) => {
+            const movie = movies.find((movie) => movie._id === movieId);
+            if (movie) {
+              return (
+                <Col
+                  key={movie._id}
+                  className="mb-4 justify-content-center align-items-center d-flex"
+                >
+                  <MovieCard
+                    movie={movie}
+                    token={token}
+                    setUser={setUser}
+                    user={user}
+                  />
+                </Col>
+              );
             }
-            required
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit" disabled={isUpdating}>
-          {isUpdating ? 'Updating...' : 'Update Profile'}
-        </Button>
-      </Form>
-    </div>
+            return null;
+          })}
+        </Row>
+      </Container>
+    </>
   );
 };
 

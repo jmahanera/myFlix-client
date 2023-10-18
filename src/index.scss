@@ -1,11 +1,9 @@
 // index.scss
 $primary: SeaGreen;
-$color: steelblue;
+$color: steelblue; // Define the $color variable
 
 @import "~bootstrap/scss/bootstrap.scss";
 
-$color: steelblue;
-
 .my-flix {
-  color: $color;
+  color: $color; /* Use the $color variable defined in index.scss */
 }

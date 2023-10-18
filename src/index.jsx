@@ -1,21 +1,17 @@
 import React from 'react';
-import 'react-dom';
-import Container from 'react-bootstrap/Container';
 import { createRoot } from 'react-dom/client';
-import { MainView } from './components/MainView/main-view';
+import MainView from './components/MainView/main-view'; // Update the import to match your file structure
 import './index.scss';
-
 
 const App = () => {
   return (
-    <Container className="">
-    <MainView />
-  </Container>
+    <div>
+      <MainView />
+    </div>
   );
 };
 
-
-const container = document.querySelector('#root');
-const root = createRoot(container);
-
+const root = createRoot(document.getElementById('root'));
 root.render(<App />);
+
+export default App;
