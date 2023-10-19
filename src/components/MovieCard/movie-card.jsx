@@ -12,6 +12,7 @@ export const MovieCard = ({ movie, cardClassName }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.description}</Card.Text>
         <Link to={`/movies/${movie.id}`}>Click for more Info</Link>
+
       </Card.Body>
     </Card>
   );
