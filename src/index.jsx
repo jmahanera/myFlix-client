@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import MainView from './components/MainView/main-view'; // Update the import to match your file structure
+import MainView from './components/MainView/main-view'; // Update the import path to match your file structure
 import './index.scss';
 
 const App = () => {
@@ -14,4 +14,4 @@ const App = () => {
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
 
-export default App;
+

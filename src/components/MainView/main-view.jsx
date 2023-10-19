@@ -9,8 +9,6 @@ import { MovieCard } from '../MovieCard/movie-card';
 import ProfileView from '../ProfileView/profile-view';
 import '../../index.scss';
 
-const rootContainer = document.getElementById('root');
-
 const App = () => {
   return (
     <div>
@@ -20,13 +18,14 @@ const App = () => {
 };
 
 
-
 export const MainView = () => {
   const storedToken = localStorage.getItem('token');
   const storedUser = localStorage.getItem('user');
   const [token, setToken] = useState(storedToken || null);
   const [user, setUser] = useState(JSON.parse(storedUser) || null);
   const [movies, setMovies] = useState([]);
+
+
 
   useEffect(() => {
     if (!token) return;
