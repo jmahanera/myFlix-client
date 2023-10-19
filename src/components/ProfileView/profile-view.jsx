@@ -80,10 +80,10 @@ const ProfileView = ({ user, token, movies, setUser }) => {
       });
   };
 
-  const deleteFavoriteMovie = (movie_id) => {
-    const updatedFavorites = favoriteMovies.filter((id) => id !== movieId);
-    setFavoriteMovies(updatedFavorites);
-  };
+  const deleteFavoriteMovie = (movieId) => {
+  const updatedFavorites = favoriteMovies.filter((id) => id !== movieId);
+  setFavoriteMovies(updatedFavorites);
+};
 
 
   return (

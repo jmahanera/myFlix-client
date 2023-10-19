@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { NavigationBar } from '../Navigation-bar/navigation-bar';
 import { LoginView } from '../loginView/login-view';
-import Container from 'react-bootstrap/Container';
 import { SignupView } from '../signupView/sign-up-view';
 import { MovieView } from '../MovieView/movie-view';
 import { MovieCard } from '../MovieCard/movie-card';
@@ -14,9 +13,9 @@ const rootContainer = document.getElementById('root');
 
 const App = () => {
   return (
-    <Container className="">
+    <div>
       <MainView />
-    </Container>
+    </div>
   );
 };
 
