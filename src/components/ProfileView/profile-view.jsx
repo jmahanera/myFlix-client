@@ -97,7 +97,7 @@ const ProfileView = ({ user, token, movies, setUser }) => {
                   <Card.Title>My Profile</Card.Title>
                   <Card.Text>
                     <strong>Name:</strong> {user.username}<br />
-                    <strong>Birthdate:</strong> {user.birthdate ? new Date(user.birthdate).toLocaleDateString() : 'N/A'}
+                    <strong>Birthdate:</strong> {user.birthDate ? new Date(user.birthDate).toLocaleDateString() : 'N/A'}
                   </Card.Text>
                   <Card.Text>Want to Update some info?</Card.Text>
                   <Form onSubmit={handleUpdate}>

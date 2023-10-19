@@ -48259,7 +48259,7 @@ const ProfileView = ({ user, token, movies, setUser })=>{
                                                     columnNumber: 21
                                                 }, undefined),
                                                 " ",
-                                                user.birthdate ? new Date(user.birthdate).toLocaleDateString() : "N/A"
+                                                user.birthDate ? new Date(user.birthDate).toLocaleDateString() : "N/A"
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/ProfileView/profile-view.jsx",
