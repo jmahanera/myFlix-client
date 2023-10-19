@@ -9,9 +9,11 @@ const MovieView = ({ movies }) => {
 
   // Find the movie based on movieId
   React.useEffect(() => {
-    const selectedMovie = movies.find((movie) => movie && movie.id === movieId);
-    setMovie(selectedMovie);
-  }, [movies, movieId]);
+  const selectedMovie = movies.find((movie) => movie && movie.id === movieId);
+  setMovie(selectedMovie);
+  console.log('Selected Movie:', selectedMovie);
+}, [movies, movieId]);
+
 
   // Handle case where movie is not found
   if (!movie) {
