@@ -1,22 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import React from 'react';
-import { Button, Card, CardGroup, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import MovieCard from '../MovieCard/movie-card';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Button, Card, CardGroup, Col, Container, Form, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import MovieCard from "../MovieCard/movie-card";
 
 const ProfileView = ({ user, token, movies, setUser }) => {
-  const [username, setUsername] = useState(user.username || '');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState(user.email || '');
-  const [birthdate, setBirthdate] = useState('');
+  const [username, setUsername] = useState(user.username || "");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(user.email || "");
+  const [birthdate, setBirthdate] = useState("");
   const [favoriteMovies, setFavoriteMovies] = useState(user.favoriteMovies || []);
 
-  // Filter movies based on favoriteMovies
+  const toggleFavorite = (movieId) => {
+    if (favoriteMovies.includes(movieId)) {
+      const updatedFavorites = favoriteMovies.filter((id) => id !== movieId);
+      setFavoriteMovies(updatedFavorites);
+    } else {
+      setFavoriteMovies([...favoriteMovies, movieId]);
+    }
+  };
+
   let result = [];
   if (user.favoriteMovies) {
-    result = movies.filter((m) => user.favoriteMovies.includes(m._id));
+    result = movies.filter((m) => user.favoriteMovies.includes(m.id));
   }
-
 
   const handleUpdate = (event) => {
     event.preventDefault();
@@ -29,21 +36,15 @@ const ProfileView = ({ user, token, movies, setUser }) => {
       favoriteMovies,
     };
 
-    
-    //DEBUG
-    console.log(JSON.stringify(data));
-    console.log(username);
-
     fetch(`https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     })
-       .then(async (response) => {
-        console.log("response:", response);
+      .then(async (response) => {
         if (response.ok) {
           alert("update successful");
           const data = await response.json();
@@ -51,7 +52,6 @@ const ProfileView = ({ user, token, movies, setUser }) => {
           window.location.reload();
         } else {
           const errorText = await response.text();
-          // Read the response body as text
           console.log("Error response body:", errorText);
           alert("update failed");
         }
@@ -61,7 +61,7 @@ const ProfileView = ({ user, token, movies, setUser }) => {
 
   const deleteAccount = () => {
     fetch(`https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -70,21 +70,13 @@ const ProfileView = ({ user, token, movies, setUser }) => {
         if (response.ok) {
           setUser(null);
           localStorage.clear();
-          alert('Your account has been deleted');
-          window.location.replace('/login');
+          alert("Your account has been deleted");
+          window.location.replace("/login");
         } else {
-          alert('Could not delete account');
-          console.log('Result:', result);
-
+          alert("Could not delete account");
         }
       });
   };
-
-  const deleteFavoriteMovie = (movieId) => {
-  const updatedFavorites = favoriteMovies.filter((id) => id !== movieId);
-  setFavoriteMovies(updatedFavorites);
-};
-
 
   return (
     <>
@@ -96,8 +88,12 @@ const ProfileView = ({ user, token, movies, setUser }) => {
                 <Card.Body>
                   <Card.Title>My Profile</Card.Title>
                   <Card.Text>
-                    <strong>Name:</strong> {user.username}<br />
-                    <strong>Birthdate:</strong> {user.birthDate ? new Date(user.birthDate).toLocaleDateString() : 'N/A'}
+                    <strong>Name:</strong> {user.username}
+                    <br />
+                    <strong>Birthdate:</strong>{" "}
+                    {user.birthDate
+                      ? new Date(user.birthDate).toLocaleDateString()
+                      : "N/A"}
                   </Card.Text>
                   <Card.Text>Want to Update some info?</Card.Text>
                   <Form onSubmit={handleUpdate}>
@@ -181,18 +177,16 @@ const ProfileView = ({ user, token, movies, setUser }) => {
       <Container>
         <Row className="justify-content-md-center align-items-center">
           {favoriteMovies.map((movieId) => {
-            const movie = movies.find((movie) => movie._id === movieId);
+            const movie = movies.find((movie) => movie.id === movieId);
             if (movie) {
               return (
-                <Col
-                  key={movie._id}
-                  className="mb-4 justify-content-center align-items-center d-flex"
-                >
+                <Col key={movie._id} className="mb-4 justify-content-center align-items-center d-flex">
                   <MovieCard
                     movie={movie}
                     token={token}
                     setUser={setUser}
                     user={user}
+                    toggleFavorite={toggleFavorite}
                   />
                 </Col>
               );
@@ -203,6 +197,13 @@ const ProfileView = ({ user, token, movies, setUser }) => {
       </Container>
     </>
   );
+};
+
+ProfileView.propTypes = {
+  user: PropTypes.object,
+  token: PropTypes.string,
+  movies: PropTypes.array,
+  setUser: PropTypes.func,
 };
 
 export default ProfileView;

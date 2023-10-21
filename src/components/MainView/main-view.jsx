@@ -153,12 +153,15 @@ export const MainView = () => {
                       <Col className="mb-4" key={movie.id} md={3}>
                         <MovieCard movie={movie} />
                       </Col>
+                      
                     ))}
                   </>
                 )}
               </>
             }
           />
+          <Route path="/profile" element={<ProfileView user={user} token={token} movies={movies} setUser={setUser} />} />
+
         </Routes>
       </Row>
     </BrowserRouter>
