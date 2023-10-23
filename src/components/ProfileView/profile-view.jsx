@@ -11,19 +11,21 @@ const ProfileView = ({ user, token, setUser }) => {
   const [birthDate, setBirthdate] = useState(user.birthDate || "");
   const [FavoriteMovies, setFavoriteMovies] = useState([]);
 
+
   console.log("user.FavoriteMovies:", user.FavoriteMovies);
   // Fetch user's favorite movies when the component mounts
   useEffect(() => {
     if (user.FavoriteMovies && user.FavoriteMovies.length > 0) {
-      const moviePromises = user.FavoriteMovies.map( async (movieId) => {
-        try {
-          const response = await fetch(`https://primemovies-39075872fbeb.herokuapp.com/movies/${movie.id}`);
-          return await response.json();
-        } catch (error) {
-          console.error("Error fetching movie:", error);
-          return null;
-        }
-      });
+      const moviePromises = user.FavoriteMovies.map(async (movieId) => {
+  try {
+    const response = await fetch(`https://primemovies-39075872fbeb.herokuapp.com/movies/${movieId}`,);
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching movie:", error);
+    return null;
+  }
+});
+
 
       Promise.all(moviePromises).then((movies) => {
         // Filter out null values (failed requests)
