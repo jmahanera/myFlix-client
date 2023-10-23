@@ -106,7 +106,7 @@ const ProfileView = ({ user, token, setUser }) => {
             </Col>
           ))
         ) : (
-          <p>No favorite movies selected.</p>
+          <p>......................</p>
         )}
       </Row>
 

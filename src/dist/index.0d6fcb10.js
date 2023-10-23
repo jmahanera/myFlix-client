@@ -48746,7 +48746,7 @@ const ProfileView = ({ user, token, setUser })=>{
                         lineNumber: 104,
                         columnNumber: 13
                     }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: "No favorite movies selected."
+                    children: "......................"
                 }, void 0, false, {
                     fileName: "src/components/ProfileView/profile-view.jsx",
                     lineNumber: 109,
