@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createRoot } from 'react-dom/client';
-import MainView from './components/MainView/main-view'; // Update the import path to match your file structure
-import './index.scss';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { MainView } from './components/MainView/main-view';
+import "./index.scss";
 
 const App = () => {
   return (
-    <div>
+    <Container>
       <MainView />
-    </div>
-  );
+    </Container>
+  ); 
 };
 
-ReactDOM.render(<MainView />, document.getElementById('root'));
-
-
+const container = document.querySelector("#root");
+const root = createRoot(container);
+root.render(<App />);

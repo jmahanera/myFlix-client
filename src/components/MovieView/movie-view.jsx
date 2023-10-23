@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 import './movie-view.scss';
 
-const MovieView = ({ movies }) => {
+  export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -78,4 +78,4 @@ MovieView.propTypes = {
   ).isRequired,
 };
 
-export default MovieView;
+

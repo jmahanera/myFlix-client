@@ -9,23 +9,12 @@ import { MovieCard } from '../MovieCard/movie-card';
 import ProfileView from '../ProfileView/profile-view';
 import '../../index.scss';
 
-const App = () => {
-  return (
-    <div>
-      <MainView />
-    </div>
-  );
-};
-
-
 export const MainView = () => {
   const storedToken = localStorage.getItem('token');
   const storedUser = localStorage.getItem('user');
   const [token, setToken] = useState(storedToken || null);
   const [user, setUser] = useState(JSON.parse(storedUser) || null);
   const [movies, setMovies] = useState([]);
-
-
 
   useEffect(() => {
     if (!token) return;
@@ -120,23 +109,23 @@ export const MainView = () => {
             }
           />
           <Route path="/movies/:movieId" element={<MovieView movies={movies} />} />
-         <Route
-        path="/profile"
-        element={
-          <>
-            {user ? (
-              <Col md={8}>
-                <ProfileView
-                  user={user}
-                  token={token}  // Pass token as a prop
-                  movies={movies}
-                  setUser={setUser}
-                />
-              </Col>
-            ) : (
-              <Navigate to="/login" replace />
-            )}
-          </>
+          <Route
+            path="/profile"
+            element={
+              <>
+                {user ? (
+                  <Col md={8}>
+                    <ProfileView
+                      user={user}
+                      token={token} // Pass token as a prop
+                      movies={movies}
+                      setUser={setUser}
+                    />
+                  </Col>
+                ) : (
+                  <Navigate to="/login" replace />
+                )}
+              </>
             }
           />
           <Route
@@ -146,14 +135,13 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col>Movie List is Empty!</Col>
                 ) : (
                   <>
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie.id} md={3}>
-                        <MovieCard movie={movie} />
+                        <MovieCard movie={movie} user={user} token={token} username={user.username} />
                       </Col>
-                      
                     ))}
                   </>
                 )}
@@ -161,11 +149,8 @@ export const MainView = () => {
             }
           />
           <Route path="/profile" element={<ProfileView user={user} token={token} movies={movies} setUser={setUser} />} />
-
         </Routes>
       </Row>
     </BrowserRouter>
   );
 };
-
-export default App;
