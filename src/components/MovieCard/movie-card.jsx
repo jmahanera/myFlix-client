@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Card } from "react-bootstrap";
+import { Card, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie, cardClassName, toggleFavorite, user, token }) => {
@@ -108,11 +108,12 @@ const removeFavoriteMovie = () => {
         <Link to="#" onClick={toggleDetails}>
           {showDetails ? "Hide Details" : "Show Details"}
         </Link>
-        <Link to={`/movies/${movie.id}`}>Click for more Info</Link>
+        <br></br>
+        <Link to={`/movies/${movie.id}`}>Click for Image and Info</Link>
         {isFavorite ? (
-          <button onClick={removeFavoriteMovie}>Remove from Favorites</button>
+          <button onClick={removeFavoriteMovie}>Deselect Favorite</button>
         ) : (
-          <button onClick={addFavoriteMovie}>Add to Favorites</button>
+          <button onClick={addFavoriteMovie}>Select as Favorite</button>
         )}
       </Card.Body>
     </Card>
@@ -147,5 +148,3 @@ MovieCard.propTypes = {
   username: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), // Correct the username prop type
 };
 
-
-export default MovieCard;
