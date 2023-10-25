@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 import './movie-view.scss';
 
   export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
-
-  // Find the movie based on movieId
-  React.useEffect(() => {
-  const selectedMovie = movies.find((movie) => movie && movie.id === movieId);
-  setMovie(selectedMovie);
-  console.log('Selected Movie:', selectedMovie);
-}, [movies, movieId]);
-
-
+    //const [movie, setMovie] = useState(null);
+    
+    const movie = movies.find((movie) => movie.id === movieId);
+    
   // Handle case where movie is not found
   if (!movie) {
     return <div>Loading...</div>; // or display an error message
@@ -23,7 +16,18 @@ import './movie-view.scss';
   const directorName = movie.director ? movie.director.name : 'Unknown';
   const genreName = movie.genre ? movie.genre.name : 'Unknown';
   const actorsList =
-    movie.actors && movie.actors.length > 0 ? movie.actors.join(', ') : 'No actors listed';
+      movie.actors && movie.actors.length > 0 ? movie.actors.join(', ') : 'No actors listed';
+
+  // Find the movie based on movieId
+  /*React.useEffect(() => {
+  const selectedMovie = movies.find((movie) => movie && movie.id === movieId);
+  setMovie(selectedMovie);
+  console.log('Selected Movie:', selectedMovie);
+}, [movies, movieId]);*/
+
+
+    
+    
 
   return (
     <div>

@@ -148,3 +148,5 @@ MovieCard.propTypes = {
   username: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), // Correct the username prop type
 };
 
+
+export default MovieCard;

@@ -4,36 +4,47 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import MovieCard from "../MovieCard/movie-card";
 
 const ProfileView = ({ user, token, setUser }) => {
+  // Modify the birthDate to remove the time part
+  if (user.birthDate) {
+    const dateParts = user.birthDate.split('T');
+    user.birthDate = dateParts[0];
+  }
   const [username, setUsername] = useState(user.username || "");
-  const [name, setName] = useState(user.username || "");
+  const [name, setName] = useState(user.name || "");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.email || "");
   const [birthDate, setBirthdate] = useState(user.birthDate || "");
-  const [FavoriteMovies, setFavoriteMovies] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
 
-  console.log("user.FavoriteMovies:", user.FavoriteMovies);
-  // Fetch user's favorite movies when the component mounts
-  useEffect(() => {
-    if (user.FavoriteMovies && user.FavoriteMovies.length > 0) {
-      const moviePromises = user.FavoriteMovies.map(async (movieId) => {
-  try {
-    const response = await fetch(`https://primemovies-39075872fbeb.herokuapp.com/movies/${movieId}`,);
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching movie:", error);
-    return null;
-  }
-});
-
-
-      Promise.all(moviePromises).then((movies) => {
-        // Filter out null values (failed requests)
-        const filteredMovies = movies.filter((movie) => movie !== null);
-        setFavoriteMovies(filteredMovies);
-      });
+ const fetchUserFavoriteMovies = () => {
+  fetch(`https://primemovies-39075872fbeb.herokuapp.com/users/${username}/favoriteMovies`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
     }
-  }, [user.FavoriteMovies]);
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Error fetching favorite movies: ${response.status} - ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    setFavoriteMovies(data);
+  })
+  .catch((error) => {
+    console.error("Fetch Error:", error);
+  });
+};
+
+
+  useEffect(() => {
+  fetchUserFavoriteMovies();
+}, [user.username, token]);
+
+
+
 
   const handleUpdate = (event) => {
     event.preventDefault();
@@ -45,7 +56,7 @@ const ProfileView = ({ user, token, setUser }) => {
       password,
       email,
       birthDate,
-      FavoriteMovies: FavoriteMovies.map((movie) => movie.id),
+      FavoriteMovies: favoriteMovies.map((movie) => movie.id),
     };
 
     fetch(`https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}`, {
@@ -94,19 +105,24 @@ const ProfileView = ({ user, token, setUser }) => {
   return (
     <Container>
       <Row className="justify-content-md-center mx-3 my-4">
-        <h2 className="profile-title">Profile Name: {user.username}</h2>
-        <h2 className="profile-title">Birthday: {user.birthDate}</h2>
-      </Row>
+  <h2 className="profile-title">Profile Name: {user.username}</h2>
+  <h2 className="profile-title">Birthday: {user.birthDate}</h2>
+</Row>
 
-      <Row className="justify-content-md-center mx-3 my-4">
-        {FavoriteMovies && FavoriteMovies.length > 0 ? (
-          FavoriteMovies.map((movie) => (
-            <Col key={movie.id} className="m-3">
-              <MovieCard movie={movie} user={user} token={token} />
-            </Col>
-          ))
-        ) : (
-          <p>......................</p>
+<Row className="justify-content-md-center mx-3 my-4">
+  {favoriteMovies && favoriteMovies.length > 0 ? (
+  favoriteMovies.map((movie) => (
+    <Col key={movie._id} className="m-3">
+      <MovieCard
+        movie={movie}
+        user={user}
+        token={token}
+        toggleFavorite={fetchUserFavoriteMovies}
+      />
+    </Col>
+  ))
+) : (
+          <p>......................................................................................................................................................</p>
         )}
       </Row>
 
