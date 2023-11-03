@@ -9,12 +9,28 @@ const ProfileView = ({ user, token, setUser }) => {
     const dateParts = user.birthDate.split('T');
     user.birthDate = dateParts[0];
   }
-  const [username, setUsername] = useState(user.username || "");
+  const [username] = useState(user.username || "");
+  const [firstName] = useState(user.firstName || "");
+  const [lastName] = useState(user.lastName || "");
   const [name, setName] = useState(user.name || "");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.email || "");
   const [birthDate, setBirthdate] = useState(user.birthDate || "");
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+
+  const [selectedFavoriteMovies, setSelectedFavoriteMovies] = useState([]);
+
+  // Function to handle selecting and deselecting favorite movies
+  const handleSelectFavorite = (movieId) => {
+    const isFavorite = selectedFavoriteMovies.includes(movieId);
+    if (isFavorite) {
+      // Deselect the movie
+      setSelectedFavoriteMovies(selectedFavoriteMovies.filter(id => id !== movieId));
+    } else {
+      // Select the movie
+      setSelectedFavoriteMovies([...selectedFavoriteMovies, movieId]);
+    }
+  };
 
 
  const fetchUserFavoriteMovies = () => {
@@ -83,6 +99,9 @@ const ProfileView = ({ user, token, setUser }) => {
   };
 
   const handleDelete = () => {
+  const shouldDelete = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+
+  if (shouldDelete) {
     fetch(`https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}`, {
       method: "DELETE",
       headers: {
@@ -93,33 +112,39 @@ const ProfileView = ({ user, token, setUser }) => {
         if (response.ok) {
           setUser(null);
           localStorage.clear();
-          alert("Your account has been deleted");
+          alert("Account deleted. You will be logged out.");
           window.location.replace("/login");
         } else {
           alert("Could not delete account");
           console.log("Result:", response);
         }
       });
-  };
+  }
+};
+
 
   return (
     <Container>
-      <Row className="justify-content-md-center mx-3 my-4">
-  <h2 className="profile-title">Profile Name: {user.username}</h2>
-  <h2 className="profile-title">Birthday: {user.birthDate}</h2>
-</Row>
+     <Row className="justify-content-md-center mx-3 my-4">
+        <h2 className="profile-title">
+          Profile Name: {firstName && lastName ? `${firstName} ${lastName}` : username}
+        </h2>
+        <h2 className="profile-title">Birthday: {user.birthDate}</h2>
+      </Row>
 
 <Row className="justify-content-md-center mx-3 my-4">
-  {favoriteMovies && favoriteMovies.length > 0 ? (
-  favoriteMovies.map((movie) => (
-    <Col key={movie._id} className="m-3">
-      <MovieCard
-        movie={movie}
-        user={user}
-        token={token}
-        toggleFavorite={fetchUserFavoriteMovies}
-      />
-    </Col>
+        {favoriteMovies && favoriteMovies.length > 0 ? (
+          favoriteMovies.map((movie) => (
+            <Col key={movie._id} className="m-3">
+              <MovieCard
+                movie={movie}
+                user={user}
+                token={token}
+                toggleFavorite={fetchUserFavoriteMovies}
+                onSelectFavorite={handleSelectFavorite}
+                isSelected={selectedFavoriteMovies.includes(movie.id)}
+              />
+            </Col>
   ))
 ) : (
           <p>......................................................................................................................................................</p>

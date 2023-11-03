@@ -8,16 +8,24 @@ export const SignupView = () => {
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fullName, setFullName] = useState(""); // New state to store the full name
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+
+    // Split the full name into first name and last name
+    const nameParts = fullName.split(" ");
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(" ");
 
     const data = {
       username: username,
       password: password,
       email: email,
       birthdate: birthdate,
+      firstName: firstName,
+      lastName: lastName,
     };
 
     fetch("https://primemovies-39075872fbeb.herokuapp.com/users", {
@@ -44,6 +52,17 @@ export const SignupView = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* New input field for full name */}
+      <Form.Group controlId="formFullName">
+        <Form.Label>Full Name:</Form.Label>
+        <Form.Control
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          required
+        />
+      </Form.Group>
+
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
