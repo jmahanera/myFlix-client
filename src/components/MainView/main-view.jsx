@@ -5,7 +5,7 @@ import { NavigationBar } from '../Navigation-bar/navigation-bar';
 import { LoginView } from '../loginView/login-view';
 import { SignupView } from '../signupView/sign-up-view';
 import { MovieView } from '../MovieView/movie-view';
-import { MovieCard } from '../MovieCard/movie-card';
+import MovieCard from '../MovieCard/movie-card';
 import ProfileView from '../ProfileView/profile-view';
 import '../../index.scss';
 
@@ -148,7 +148,8 @@ export const MainView = () => {
               </>
             }
           />
-          <Route path="/profile" element={<ProfileView user={user} token={token} movies={movies} setUser={setUser} />} />
+          <Route path="/profile" element={<ProfileView user={user} token={token} setUser={setUser} movies={movies} />
+} />
         </Routes>
       </Row>
     </BrowserRouter>

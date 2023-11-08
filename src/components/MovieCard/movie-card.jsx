@@ -1,20 +1,18 @@
-
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap'; // Import Button from react-bootstrap
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, cardClassName, toggleFavorite, user, token }) => {
+const MovieCard = ({ movie, user, token }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
-const [showDetails, setShowDetails] = useState(false);
-const toggleDetails = () => {
-  setShowDetails(!showDetails);
-};
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
 
   // Use useEffect to determine if the movie is in the user's favorite list
   useEffect(() => {
-    console.log("user object in parent component:", user); 
     if (user && user.FavoriteMovies && user.FavoriteMovies.includes(movie.id)) {
       setIsFavorite(true);
     } else {
@@ -22,104 +20,91 @@ const toggleDetails = () => {
     }
   }, [user, movie]);
 
- const addFavoriteMovie = () => {
-  if (user) {
-    fetch(
-      `https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}/movies/${movie.id}`,
-      { method: "POST", headers: { Authorization: `Bearer ${token}` } }
-    )
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        console.log("Failed to add fav movie");
-        throw new Error("Failed to add favorite movie");
-      }
-    })
-    .then((updateduser) => {
-      if (updateduser) {
-        alert("Successfully added to favorites");
-        // Update user data and isFavorite state
-        localStorage.setItem("user", JSON.stringify(updateduser));
-        if (toggleFavorite) {
-          toggleFavorite(movie.id);
+  const addFavoriteMovie = () => {
+    if (user) {
+      fetch(
+        `https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}/movies/${movie._id}`,
+        { method: "POST", headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.log("Failed to add fav movie");
+          throw Error("Failed to add favorite movie");
         }
-        setIsFavorite(true);
-      }
-    })
-    .catch((error) => {
-      alert(error);
-    });
-  } else {
-    console.error("user object is undefined.");
-  }
-};
-
-
-
-const removeFavoriteMovie = () => {
-  if (user) {
-    fetch(
-      `https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}/movies/${movie.id}`,
-      { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
-    )
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        console.log("Failed to remove fav movie");
-        throw new Error("Failed to remove favorite movie");
-      }
-    })
-    .then((updateduser) => {
-      if (updateduser) {
-        alert("Successfully removed from favorites");
-        // Update user data and isFavorite state
-        localStorage.setItem("user", JSON.stringify(updateduser));
-        if (toggleFavorite) {
-          toggleFavorite(movie.id);
+      })
+      .then((updateduser) => {
+        if (updateduser) {
+          alert("Successfully added to favorites");
+          // Update user data and isFavorite state
+          localStorage.setItem("user", JSON.stringify(updateduser));
+          setIsFavorite(true);
         }
-        setIsFavorite(false);
-      }
-    })
-    .catch((error) => {
-      alert(error);
-    });
-  } else {
-    console.error("user object is undefined.");
-  }
-};
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    } else {
+      console.error("user object is undefined.");
+    }
+  };
 
-
+  const removeFavoriteMovie = () => {
+    if (user) {
+      fetch(
+        `https://primemovies-39075872fbeb.herokuapp.com/users/${user.username}/movies/${movie._id}`,
+        { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.log("Failed to remove fav movie");
+          throw Error("Failed to remove favorite movie");
+        }
+      })
+      .then((updateduser) => {
+        if (updateduser) {
+          alert("Successfully removed from favorites");
+          // Update user data and isFavorite state
+          localStorage.setItem("user", JSON.stringify(updateduser));
+          setIsFavorite(false);
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    } else {
+      console.error("user object is undefined.");
+    }
+  };
 
   return (
-    <Card className={`movie-card ${cardClassName} h-100`}>
+    <Card className="movie-card h-100">
       <Card.Img variant="top" src={movie.imageUrl} />
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
-        <Card.Text>{movie.description}</Card.Text>
-        {showDetails && (
-          <div>
-            <p>Director: {movie.director.name}</p>
-            <p>Actors: {movie.actors.join(", ")}</p>
-            {/* Add other movie details here */}
-          </div>
-        )}
-        <Link to="#" onClick={toggleDetails}>
-          {showDetails ? "Hide Details" : "Show Details"}
-        </Link>
-        <br></br>
-        <Link to={`/movies/${movie.id}`}>Click for Image and Info</Link>
+
+        <br />
+        <Link to={`/movies/${movie.id}`}>Click for more Info</Link>
         {isFavorite ? (
-          <button onClick={removeFavoriteMovie}>Deselect Favorite</button>
+          <>
+            <Button className="update" onClick={removeFavoriteMovie} style={{ backgroundColor: 'green', color: 'white' }}>
+              Deselect Favorite
+            </Button>
+          </>
         ) : (
-          <button onClick={addFavoriteMovie}>Select as Favorite</button>
+          <>
+            <Button className="delete" onClick={addFavoriteMovie} style={{ backgroundColor: 'green', color: 'white' }}>
+              Select as Favorite
+            </Button>
+          </>
         )}
       </Card.Body>
     </Card>
   );
 };
-
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
@@ -141,12 +126,8 @@ MovieCard.propTypes = {
     actors: PropTypes.arrayOf(PropTypes.string),
     imageUrl: PropTypes.string.isRequired,
   }).isRequired,
-  cardClassName: PropTypes.string,
-  toggleFavorite: PropTypes.func, // Include the toggleFavorite prop
-  user: PropTypes.object, // Update user prop to match the actual data type
-  token: PropTypes.string, // Update token prop to match the actual data type
-  username: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), // Correct the username prop type
+  user: PropTypes.object,
+  token: PropTypes.string,
 };
-
 
 export default MovieCard;

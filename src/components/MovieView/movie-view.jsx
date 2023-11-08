@@ -18,17 +18,6 @@ import './movie-view.scss';
   const actorsList =
       movie.actors && movie.actors.length > 0 ? movie.actors.join(', ') : 'No actors listed';
 
-  // Find the movie based on movieId
-  /*React.useEffect(() => {
-  const selectedMovie = movies.find((movie) => movie && movie.id === movieId);
-  setMovie(selectedMovie);
-  console.log('Selected Movie:', selectedMovie);
-}, [movies, movieId]);*/
-
-
-    
-    
-
   return (
     <div>
       <div>
