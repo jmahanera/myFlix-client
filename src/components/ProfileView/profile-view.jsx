@@ -15,8 +15,13 @@ const ProfileView = ({ user, token, setUser, movies }) => {
 
   // Function to format date to "yyyy-MM-dd"
   function formatDate(dateString) {
-    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-    return new Date(dateString).toLocaleDateString("en-CA", options);
+    try {
+      const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+      return new Date(dateString).toLocaleDateString("en-CA", options);
+    } catch (error) {
+      console.error("Error formatting date:", error.message);
+      return ""; // Return an empty string if the date is invalid
+    }
   }
 
   // Fetch user's favorite movies
@@ -123,7 +128,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
             <Form.Label>Birth Date</Form.Label>
             <Form.Control
               type="date"
-              value={birthDate}
+              value={birthDate || ""}
               onChange={(e) => setBirthDate(e.target.value)}
             />
           </Form.Group>
@@ -156,7 +161,7 @@ ProfileView.propTypes = {
     username: PropTypes.string,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    birthDate: PropTypes.string.isRequired,
+    birthDate: PropTypes.string,
     favoriteMovies: PropTypes.array,
   }),
   token: PropTypes.string,
