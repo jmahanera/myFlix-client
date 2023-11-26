@@ -38,6 +38,7 @@ Let's get you up and running with myFlix-client! Follow these steps:
 4. **Run the project using Parcel:**
    Start the project using Parcel with the command:
    parcel ./src/index.html
+   run on cmd: parcel index.html
 
 ## Project Structure
 Understanding the organization of the project is crucial for anyone delving into the development process. Here's a glimpse into the key elements of the project structure:
