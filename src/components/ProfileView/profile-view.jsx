@@ -153,7 +153,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
 ProfileView.propTypes = {
   user: PropTypes.shape({
     _id: PropTypes.string.isRequired,
-    name: PropTypes.string,
+    username: PropTypes.string,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     birthDate: PropTypes.string.isRequired,

@@ -41984,7 +41984,7 @@ _c = ProfileView;
 ProfileView.propTypes = {
     user: (0, _propTypesDefault.default).shape({
         _id: (0, _propTypesDefault.default).string.isRequired,
-        name: (0, _propTypesDefault.default).string,
+        username: (0, _propTypesDefault.default).string,
         password: (0, _propTypesDefault.default).string.isRequired,
         email: (0, _propTypesDefault.default).string.isRequired,
         birthDate: (0, _propTypesDefault.default).string.isRequired,
